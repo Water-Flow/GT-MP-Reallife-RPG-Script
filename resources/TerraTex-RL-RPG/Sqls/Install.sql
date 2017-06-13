@@ -59,3 +59,4 @@ ALTER TABLE user_inventory ALTER COLUMN Money SET DEFAULT '2500.00';
 ALTER TABLE user_inventory ALTER COLUMN BankAccount SET DEFAULT '2500.00';
 ALTER TABLE user_data ADD RP INT DEFAULT 0 NULL;
 ALTER TABLE user_data ADD Level INT DEFAULT 0 NULL;
+ALTER TABLE user_data ADD PayDay TEXT DEFAULT '{"Income": {}, "Outgoings": {}}';

@@ -5,6 +5,7 @@ using System.Threading;
 using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Shared;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json.Linq;
 
 namespace TerraTex_RL_RPG.Lib.Threads
 {
@@ -48,7 +49,7 @@ namespace TerraTex_RL_RPG.Lib.Threads
 
         private void StoreTableUserInventory(Client player)
         {
-            string[] fields = {"Money", "BankAccount", "Phone"};
+            string[] fields = {"Money", "BankAccount", "Phone", "PayDay"};
             Dictionary<string, dynamic> valueReplacements = new Dictionary<string, dynamic>();
 
             
@@ -60,6 +61,11 @@ namespace TerraTex_RL_RPG.Lib.Threads
             {
                 valueReplacements.Add("Phone", null);
             }
+
+            Dictionary<string, Dictionary<string, double>> payDay = new Dictionary<string, Dictionary<string, double>>();
+            payDay.Add("Income", player.getSyncedData("PayDayIncome"));
+            payDay.Add("Outgoings", player.getSyncedData("PayDayOutgoings"));
+            valueReplacements.Add("PayDay", JObject.FromObject(payDay).ToString());
 
             BuildAndExecuteTableQuery(player, "user_inventory", fields, valueReplacements);
         }

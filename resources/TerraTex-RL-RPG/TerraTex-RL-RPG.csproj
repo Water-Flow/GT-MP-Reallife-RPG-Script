@@ -256,8 +256,6 @@
     <PostBuildEvent>IF EXIST $(ProjectDir)..\..\Server (
 rmdir  /S /Q "$(ProjectDir)..\..\Server\resources/TerraTex-RL-RPG" 
 xcopy /S /I /Y /E "$(ProjectDir)." "$(ProjectDir)..\..\Server\resources/TerraTex-RL-RPG"
-)
-
-</PostBuildEvent>
+)</PostBuildEvent>
   </PropertyGroup>
 </Project>
