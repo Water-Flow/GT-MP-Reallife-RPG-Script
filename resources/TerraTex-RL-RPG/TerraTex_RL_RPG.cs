@@ -12,6 +12,7 @@ namespace TerraTex_RL_RPG
         private static API _api;
         private static StorePlayerData _storePlayerDataThread;
         private static UpdatePlayerPlayTime _updatePlayerPlayTimeThread;
+        private static UpdateWeather _dynamicWeatherThread;
 
         public static Database Mysql => _mysql;
 
@@ -52,6 +53,9 @@ namespace TerraTex_RL_RPG
 
             _updatePlayerPlayTimeThread = new UpdatePlayerPlayTime();
             _api.startThread(_updatePlayerPlayTimeThread.DoWork);
+
+            _dynamicWeatherThread = new UpdateWeather();
+            _api.startThread(_dynamicWeatherThread.DoWork);
 
             _api.exported.scoreboard.addScoreboardColumn("Level", "Level", 120);
             _api.exported.scoreboard.addScoreboardColumn("PlayTime", "PlayTime", 120);
