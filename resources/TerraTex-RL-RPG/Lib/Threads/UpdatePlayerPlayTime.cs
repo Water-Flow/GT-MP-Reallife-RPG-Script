@@ -4,6 +4,7 @@ using System.ServiceModel.Security.Tokens;
 using System.Text;
 using System.Threading;
 using GrandTheftMultiplayer.Server.Elements;
+using Newtonsoft.Json.Linq;
 using TerraTex_RL_RPG.Lib.User.Management;
 
 namespace TerraTex_RL_RPG.Lib.Threads
@@ -65,9 +66,33 @@ namespace TerraTex_RL_RPG.Lib.Threads
 
             Dictionary<string, double> income = player.getSyncedData("PayDayIncome");
             Dictionary<string, double> outgoings = player.getSyncedData("PayDayOutgoings");
-            // @todo: implement PayDay Calculation + Notification
 
+            double sum = 0;
 
+            foreach (KeyValuePair<string, double> value in income)
+            {
+                sum += value.Value;
+            }
+
+            foreach (KeyValuePair<string, double> value in outgoings)
+            {
+                sum -= value.Value;
+            }
+
+            Dictionary<string, Dictionary<string, double>> payDay = new Dictionary<string, Dictionary<string, double>>();
+            payDay.Add("Income", player.getSyncedData("PayDayIncome"));
+            payDay.Add("Outgoings", player.getSyncedData("PayDayOutgoings"));
+
+            MoneyManager.ChangePlayerMoney(player, (float) sum, true, MoneyManager.Categorys.PayDay, "PayDay", JObject.FromObject(payDay).ToString());
+
+            if (sum > 0)
+            {
+                TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~g~" + sum + " €~s~ überwiesen.");
+            } 
+            else
+            {
+                TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~r~" + sum + " €~s~ abgezogen.");
+            }
 
             player.setSyncedData("LastPayDayIncome", income);
             player.setSyncedData("LastPayDayOutgoings", outgoings);
