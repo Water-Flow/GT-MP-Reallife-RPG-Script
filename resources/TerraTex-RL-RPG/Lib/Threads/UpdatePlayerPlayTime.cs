@@ -85,7 +85,7 @@ namespace TerraTex_RL_RPG.Lib.Threads
 
             MoneyManager.ChangePlayerMoney(player, (float) sum, true, MoneyManager.Categorys.PayDay, "PayDay", JObject.FromObject(payDay).ToString());
 
-            if (sum > 0)
+            if (sum >= 0)
             {
                 TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~g~" + sum + " €~s~ überwiesen.");
             } 
