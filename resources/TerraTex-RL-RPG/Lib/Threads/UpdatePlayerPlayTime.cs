@@ -59,10 +59,22 @@ namespace TerraTex_RL_RPG.Lib.Threads
 
         public static void SendPayDay(Client player)
         {
-            // @todo: implement
 
             // Add additional 10 RP for each PayDay
             RpLevelManager.AddRpToPlayer(player, 10, false);
+
+            Dictionary<string, double> income = player.getSyncedData("PayDayIncome");
+            Dictionary<string, double> outgoings = player.getSyncedData("PayDayOutgoings");
+            // @todo: implement PayDay Calculation + Notification
+
+
+
+            player.setSyncedData("LastPayDayIncome", income);
+            player.setSyncedData("LastPayDayOutgoings", outgoings);
+            income.Clear();
+            outgoings.Clear();
+            player.setSyncedData("PayDayIncome", income);
+            player.setSyncedData("PayDayOutgoings", outgoings);
         }
 
         public void StopThread()
