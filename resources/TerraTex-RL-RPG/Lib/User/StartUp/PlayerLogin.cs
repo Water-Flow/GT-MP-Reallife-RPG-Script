@@ -139,6 +139,8 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
             Dictionary<string, Dictionary<string, double>> payDay = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, double>>>((string) data["PayDay"]);
             player.setSyncedData("PayDayIncome", payDay.Get("Income"));
             player.setSyncedData("PayDayOutgoings", payDay.Get("Outgoings"));
+            player.setSyncedData("LastPayDayIncome", payDay.Get("LastIncome"));
+            player.setSyncedData("LastPayDayOutgoings", payDay.Get("LastOutgoings"));
         }
 
         private void ApplyTableToPlayerUserInventory(Client player, DataRow data)

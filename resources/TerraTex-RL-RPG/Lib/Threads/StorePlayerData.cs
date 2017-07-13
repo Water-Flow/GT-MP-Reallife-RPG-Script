@@ -66,6 +66,8 @@ namespace TerraTex_RL_RPG.Lib.Threads
             Dictionary<string, Dictionary<string, double>> payDay = new Dictionary<string, Dictionary<string, double>>();
             payDay.Add("Income", player.getSyncedData("PayDayIncome"));
             payDay.Add("Outgoings", player.getSyncedData("PayDayOutgoings"));
+            payDay.Add("LastIncome", player.getSyncedData("LastPayDayIncome"));
+            payDay.Add("LastOutgoings", player.getSyncedData("LastPayDayOutgoings"));
             valueReplacements.Add("PayDay", JObject.FromObject(payDay).ToString());
 
             BuildAndExecuteTableQuery(player, "user_inventory", fields, valueReplacements);
