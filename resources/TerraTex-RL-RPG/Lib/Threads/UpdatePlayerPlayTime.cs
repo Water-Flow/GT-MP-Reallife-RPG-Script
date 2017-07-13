@@ -29,6 +29,11 @@ namespace TerraTex_RL_RPG.Lib.Threads
                         UpdatePlayerPlayTimeDisplay(player);
                         // Add one RP for playtime
                         RpLevelManager.AddRpToPlayer(player, 1, false);
+
+                        if (player.getSyncedData("PlayTime") % 60 == 0)
+                        {
+                            SendPayDay(player);
+                        }
                     }
                 }
 
@@ -50,6 +55,14 @@ namespace TerraTex_RL_RPG.Lib.Threads
             sbd.Append(minutes.ToString("D2"));
 
             TTRPG.Api.exported.scoreboard.setPlayerScoreboardData(player, "PlayTime", sbd.ToString());
+        }
+
+        public static void SendPayDay(Client player)
+        {
+            // @todo: implement
+
+            // Add additional 10 RP for each PayDay
+            RpLevelManager.AddRpToPlayer(player, 10, false);
         }
 
         public void StopThread()
