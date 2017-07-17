@@ -41,9 +41,7 @@ node('windows'){
 node('master') {
 	stage('Deploy') {
 		if (env.BRANCH_NAME == 'master') {
-			unstash 'compiled'
-		
-			sh 'sed -i -- \'s/9090/9091/g\' resources/LocalTelnetAdmin/meta.xml'
+			unstash 'compiled'		
 		
 			sh 'ssh root@terratex.eu "rmdir \\"D:/TerraTex/Spiele/GTMP/01_server/live/resources\\" /s /q"'
 			sh 'ssh root@terratex.eu "mkdir \\"D:/TerraTex/Spiele/GTMP/01_server/live/resources/TerraTex-RL-RPG\\""'
