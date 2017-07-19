@@ -1,12 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Elements;
+using GrandTheftMultiplayer.Server.Managers;
 using Newtonsoft.Json.Linq;
 
 namespace TerraTex_RL_RPG.Lib.User.Management
 {
-    public static class PayDayManager
+    public class PayDayManager : Script
     {
+        [Command("payday", Group = "general", SensitiveInfo = false)]
+        public void PayDayCommand(Client player)
+        {
+            throw new NotImplementedException("Currently not implemented.");
+        }
+
         public class Category
         {
             private readonly string _name;
