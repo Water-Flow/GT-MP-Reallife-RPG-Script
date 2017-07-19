@@ -34,7 +34,7 @@ API.onServerEventTrigger.connect(function(eventName, args) {
         endRpBarY = API.getScreenResolution().Width * rpPercentage;
     }
     if (eventName === "NewLevel") {
-        API.showShard("Du hast Level " + args[0] + "erreicht!", 2000);
+        API.showShard("Du hast Level " + args[0] + " erreicht!", 2000);
     }
 });
 
