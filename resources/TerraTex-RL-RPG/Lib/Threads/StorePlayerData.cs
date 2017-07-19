@@ -41,15 +41,23 @@ namespace TerraTex_RL_RPG.Lib.Threads
 
         private void StoreTableUserData(Client player)
         {
-            string[] fields = { "PlayTime", "RP", "Level", "Skin" };
+            string[] fields = { "PlayTime", "RP", "Level", "Skin", "PayDay"};
             Dictionary<string, dynamic> valueReplacements = new Dictionary<string, dynamic>();
-            BuildAndExecuteTableQuery(player, "user_data", fields, valueReplacements);
 
+            Dictionary<string, Dictionary<string, double>> payDay = new Dictionary<string, Dictionary<string, double>>();
+            payDay.Add("Income", (Dictionary<string, double>)player.getData("PayDayIncome"));
+            payDay.Add("Outgoings", (Dictionary<string, double>)player.getData("PayDayOutgoings"));
+            payDay.Add("LastIncome", (Dictionary<string, double>)player.getData("LastPayDayIncome"));
+            payDay.Add("LastOutgoings", (Dictionary<string, double>)player.getData("LastPayDayOutgoings"));
+            valueReplacements.Add("PayDay", JObject.FromObject(payDay).ToString());
+
+
+            BuildAndExecuteTableQuery(player, "user_data", fields, valueReplacements);
         }
 
         private void StoreTableUserInventory(Client player)
         {
-            string[] fields = {"Money", "BankAccount", "Phone", "PayDay"};
+            string[] fields = {"Money", "BankAccount", "Phone"};
 			
             Dictionary<string, dynamic> valueReplacements = new Dictionary<string, dynamic>();
 
@@ -62,13 +70,6 @@ namespace TerraTex_RL_RPG.Lib.Threads
             {
                 valueReplacements.Add("Phone", null);
             }
-
-            Dictionary<string, Dictionary<string, double>> payDay = new Dictionary<string, Dictionary<string, double>>();
-            payDay.Add("Income", player.getSyncedData("PayDayIncome"));
-            payDay.Add("Outgoings", player.getSyncedData("PayDayOutgoings"));
-            payDay.Add("LastIncome", player.getSyncedData("LastPayDayIncome"));
-            payDay.Add("LastOutgoings", player.getSyncedData("LastPayDayOutgoings"));
-            valueReplacements.Add("PayDay", JObject.FromObject(payDay).ToString());
 
             BuildAndExecuteTableQuery(player, "user_inventory", fields, valueReplacements);
         }

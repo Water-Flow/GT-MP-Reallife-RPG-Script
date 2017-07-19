@@ -23,7 +23,7 @@ namespace TerraTex_RL_RPG.Lib.Threads
 
                 foreach (Client player in players)
                 {
-                    if (player.hasSyncedData("loggedin") && (bool)player.getSyncedData("loggedin"))
+                    if (player.hasSyncedData("loggedin") && (bool) player.getSyncedData("loggedin"))
                     {
                         player.setSyncedData("PlayTime", player.getSyncedData("PlayTime") + 1);
 
@@ -60,12 +60,11 @@ namespace TerraTex_RL_RPG.Lib.Threads
 
         public static void SendPayDay(Client player)
         {
-
             // Add additional 10 RP for each PayDay
             RpLevelManager.AddRpToPlayer(player, 10, false);
 
-            Dictionary<string, double> income = player.getSyncedData("PayDayIncome");
-            Dictionary<string, double> outgoings = player.getSyncedData("PayDayOutgoings");
+            Dictionary<string, double> income = (Dictionary<string, double>) player.getData("PayDayIncome");
+            Dictionary<string, double> outgoings = (Dictionary<string, double>) player.getData("PayDayOutgoings");
 
             double sum = 0;
 
@@ -79,27 +78,29 @@ namespace TerraTex_RL_RPG.Lib.Threads
                 sum -= value.Value;
             }
 
-            Dictionary<string, Dictionary<string, double>> payDay = new Dictionary<string, Dictionary<string, double>>();
-            payDay.Add("Income", player.getSyncedData("PayDayIncome"));
-            payDay.Add("Outgoings", player.getSyncedData("PayDayOutgoings"));
+            Dictionary<string, Dictionary<string, double>> payDay =
+                new Dictionary<string, Dictionary<string, double>>();
+            payDay.Add("Income", income);
+            payDay.Add("Outgoings", outgoings);
 
-            MoneyManager.ChangePlayerMoney(player, (float) sum, true, MoneyManager.Categorys.PayDay, "PayDay", JObject.FromObject(payDay).ToString());
+            MoneyManager.ChangePlayerMoney(player, (float) sum, true, MoneyManager.Categorys.PayDay, "PayDay",
+                JObject.FromObject(payDay).ToString());
 
             if (sum >= 0)
             {
                 TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~g~" + sum + " €~s~ überwiesen.");
-            } 
+            }
             else
             {
                 TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~r~" + sum + " €~s~ abgezogen.");
             }
 
-            player.setSyncedData("LastPayDayIncome", income);
-            player.setSyncedData("LastPayDayOutgoings", outgoings);
+            player.setData("LastPayDayIncome", new Dictionary<string, double>(income));
+            player.setData("LastPayDayOutgoings", new Dictionary<string, double>(outgoings));
             income.Clear();
             outgoings.Clear();
-            player.setSyncedData("PayDayIncome", income);
-            player.setSyncedData("PayDayOutgoings", outgoings);
+            player.setData("PayDayIncome", income);
+            player.setData("PayDayOutgoings", outgoings);
         }
 
         public void StopThread()
