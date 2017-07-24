@@ -11,6 +11,7 @@
     <script src="Lib/User/StartUp/PlayerConnection_Client.js" type="client" lang="javascript" />
     <script src="Lib/User/StartUp/PlayerConnection_Register_Client.js" type="client" lang="javascript" />
     <script src="Lib/User/StartUp/PlayerConnection_Login_Client.js" type="client" lang="javascript" />
+    <script src="Lib/User/Management/UI/PayDayUI.js" type="client" lang="javascript" />
     <script src="Lib/Hud/InfoHud.js" type="client" lang="javascript" />
   
   

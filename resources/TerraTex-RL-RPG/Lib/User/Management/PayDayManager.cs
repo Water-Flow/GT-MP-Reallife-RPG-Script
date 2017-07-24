@@ -12,7 +12,15 @@ namespace TerraTex_RL_RPG.Lib.User.Management
         [Command("payday", Group = "general", SensitiveInfo = false)]
         public void PayDayCommand(Client player)
         {
-            throw new NotImplementedException("Currently not implemented.");
+
+            Dictionary<string, double> income = (Dictionary<string, double>)player.getData("LastPayDayIncome");
+            Dictionary<string, double> outgoings = (Dictionary<string, double>)player.getData("LastPayDayOutgoings");
+
+            Dictionary<string, Dictionary<string, double>> payDay = new Dictionary<string, Dictionary<string, double>>();
+            payDay.Add("Income", income);
+            payDay.Add("Outgoings", outgoings);
+
+            player.triggerEvent("openPayDayUI", JObject.FromObject(payDay).ToString());
         }
 
         public class Category
