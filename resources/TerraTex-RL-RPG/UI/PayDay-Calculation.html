@@ -100,8 +100,9 @@
                     .replace(/./g,
                         function(c, i, a) {
                             return i && c !== "," && ((a.length - i) % 3 === 0) ? '.' + c : c;
-                    });
-
+                        });
+
+
                 $("#totalsum").text("- " + sumStr + " €");
                 $("#totalsum").removeClass("text-success").addClass("text-danger");
             } else {
@@ -111,21 +112,24 @@
                     .replace(/./g,
                         function(c, i, a) {
                             return i && c !== "," && ((a.length - i) % 3 === 0) ? '.' + c : c;
-                    });
+                        });
 
                 $("#totalsum").text(sumStr + " €");
                 $("#totalsum").removeClass("text-danger").addClass("text-success");
-            } 
+            }
+ 
         }
 
         $(document).ready(function() {
             $("#close").click(function() {
                 resourceCall("closeWindow");
-            }); 
+            });
+ 
             resourceCall("loadComplete");
-        }); 
+        });
+ 
     
-</script>
+    </script>
 </div>
 </body>
 </html>

@@ -143,11 +143,11 @@ namespace TerraTex_RL_RPG.Lib.User.Management
 
             if (sum >= 0)
             {
-                TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~g~" + sum + " €~s~ überwiesen.", true);
+                TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~g~" + sum + " €~s~ überwiesen.");
             }
             else
             {
-                TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~r~" + sum + " €~s~ abgezogen.", true);
+                TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~r~" + sum + " €~s~ abgezogen.");
             }
 
             player.setData("LastPayDayIncome", new Dictionary<string, double>(income));
