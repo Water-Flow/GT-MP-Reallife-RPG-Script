@@ -37,5 +37,6 @@ function loadComplete() {
 }
 
 function closeWindow() {
+    API.showCursor(false);
     API.destroyCefBrowser(browser);
 }

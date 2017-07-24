@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using GrandTheftMultiplayer.Server.API;
+using GrandTheftMultiplayer.Server.Constant;
 using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Server.Managers;
+using GrandTheftMultiplayer.Shared;
 using Newtonsoft.Json.Linq;
 
 namespace TerraTex_RL_RPG.Lib.User.Management
@@ -27,14 +29,17 @@ namespace TerraTex_RL_RPG.Lib.User.Management
         {
             private readonly string _name;
             private readonly string _identifier;
+            private readonly double _tax;
     
-            public static readonly Category Tax =new Category("Tax", "Steuern");
-            public static readonly Category Job =new Category("Job", "Jobgehälter");
+            public static readonly Category Tax =new Category("Tax", "Steuern", 0);
+            public static readonly Category Job =new Category("Job", "Jobgehälter", 0.25);
+            public static readonly Category BasicSalary =new Category("BasicSalary", "Grundgehalt", 0);
 
-            private Category(String identifier, String name)
+            private Category(String identifier, String name, double tax)
             {
                 this._identifier = identifier;
                 this._name = name;
+                this._tax = tax;
             }
 
             public override String ToString()
@@ -47,6 +52,11 @@ namespace TerraTex_RL_RPG.Lib.User.Management
                 return _identifier;
             }
 
+            public double GetTax()
+            {
+                return _tax;
+            }
+
             public bool Equals(Category obj)
             {
                 return obj.ToIdentifierString().Equals(_identifier);
@@ -56,12 +66,48 @@ namespace TerraTex_RL_RPG.Lib.User.Management
 
         public static void AddOutgoingToPayDay(Client player, double amount, Category category)
         {
-            throw new NotImplementedException("Currently not implemented.");
+            Dictionary<string, double> outgoings = (Dictionary<string, double>)player.getData("PayDayOutgoings");
+
+            if (amount < 0)
+            {
+                amount = -amount;
+                TTRPG.Api.consoleOutput(LogCat.Warn, "Tried to add negative amount to income of payday in category '" + category.ToString() + "' . Used positive amount instead.");
+            }
+
+            if (outgoings.ContainsKey(category.ToString()))
+            {
+                outgoings.Set(category.ToString(), outgoings.Get(category.ToString()) + amount);
+            }
+            else
+            {
+                outgoings.Add(category.ToString(), amount);
+            }
         }
 
         public static void AddIncomeToPayDay(Client player, double amount, Category category, bool withTax)
         {
-            throw new NotImplementedException("Currently not implemented.");
+            Dictionary<string, double> income = (Dictionary<string, double>)player.getData("PayDayIncome");
+
+            if (amount < 0)
+            {
+                amount = -amount;
+                TTRPG.Api.consoleOutput(LogCat.Warn, "Tried to add negative amount to income of payday in category '" + category.ToString() + "' . Used positive amount instead.");
+            }
+
+            if (income.ContainsKey(category.ToString()))
+            {
+                income.Set(category.ToString(), income.Get(category.ToString()) + amount);
+            }
+            else
+            {
+                income.Add(category.ToString(), amount);
+            }
+
+            if (withTax && category.GetTax() > 0)
+            {
+                double tax = category.GetTax() * amount;
+                AddOutgoingToPayDay(player, tax, Category.Tax);
+            }
         }
 
         public static void SendPayDay(Client player)
@@ -71,6 +117,9 @@ namespace TerraTex_RL_RPG.Lib.User.Management
 
             Dictionary<string, double> income = (Dictionary<string, double>)player.getData("PayDayIncome");
             Dictionary<string, double> outgoings = (Dictionary<string, double>)player.getData("PayDayOutgoings");
+
+            // default Values
+            AddIncomeToPayDay(player, 250, Category.BasicSalary, false);
 
             double sum = 0;
 
@@ -94,11 +143,11 @@ namespace TerraTex_RL_RPG.Lib.User.Management
 
             if (sum >= 0)
             {
-                TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~g~" + sum + " €~s~ überwiesen.");
+                TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~g~" + sum + " €~s~ überwiesen.", true);
             }
             else
             {
-                TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~r~" + sum + " €~s~ abgezogen.");
+                TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~r~" + sum + " €~s~ abgezogen.", true);
             }
 
             player.setData("LastPayDayIncome", new Dictionary<string, double>(income));
