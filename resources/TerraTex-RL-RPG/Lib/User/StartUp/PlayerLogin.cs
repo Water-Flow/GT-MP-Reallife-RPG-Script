@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Shared;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using TerraTex_RL_RPG.Lib.Admin;
 using TerraTex_RL_RPG.Lib.Helper;
 using TerraTex_RL_RPG.Lib.Threads;
@@ -133,6 +135,12 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
             player.setSyncedData("PlayTime", (int) data["PlayTime"]);
             player.setSyncedData("Skin", (string) data["Skin"]);
             player.setSyncedData("RP", (int) data["RP"]);
+
+            Dictionary<string, Dictionary<string, double>> payDay = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, double>>>((string) data["PayDay"]);
+            player.setData("PayDayIncome", payDay.Get("Income"));
+            player.setData("PayDayOutgoings", payDay.Get("Outgoings"));
+            player.setData("LastPayDayIncome", payDay.Get("LastIncome"));
+            player.setData("LastPayDayOutgoings", payDay.Get("LastOutgoings"));
         }
 
         private void ApplyTableToPlayerUserInventory(Client player, DataRow data)

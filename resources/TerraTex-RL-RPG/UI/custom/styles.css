@@ -15,3 +15,24 @@ textarea {
 
 .hidden {
   display: none; }
+
+.mleft {
+  margin-left: auto; }
+
+.mtop {
+  margin-top: auto; }
+
+.pftr {
+  position: fixed;
+  right: 0;
+  top: 0; }
+
+.btn-border-white {
+  border-width: 1px;
+  border-color: #FFFFFF !important; }
+
+.btn {
+  cursor: pointer; }
+
+.flex {
+  display: flex; }

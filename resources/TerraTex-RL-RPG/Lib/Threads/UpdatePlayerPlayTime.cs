@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ServiceModel.Security.Tokens;
+﻿using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using GrandTheftMultiplayer.Server.Elements;
@@ -22,13 +20,18 @@ namespace TerraTex_RL_RPG.Lib.Threads
 
                 foreach (Client player in players)
                 {
-                    if (player.hasSyncedData("loggedin") && (bool)player.getSyncedData("loggedin"))
+                    if (player.hasSyncedData("loggedin") && (bool) player.getSyncedData("loggedin"))
                     {
                         player.setSyncedData("PlayTime", player.getSyncedData("PlayTime") + 1);
 
                         UpdatePlayerPlayTimeDisplay(player);
                         // Add one RP for playtime
                         RpLevelManager.AddRpToPlayer(player, 1, false);
+
+                        if (player.getSyncedData("PlayTime") % 60 == 0)
+                        {
+                            PayDayManager.SendPayDay(player);
+                        }
                     }
                 }
 
