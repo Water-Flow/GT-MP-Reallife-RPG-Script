@@ -23,7 +23,7 @@ namespace TerraTex_RL_RPG.Lib.Threads
                     Vehicle veh = TTRPG.Api.getEntityFromHandle<Vehicle>(handle);
 
                     int maxIdleTime = -1;
-                    if (veh.getSyncedData("MaxIdleTime"))
+                    if (veh.getSyncedData("MaxIdleTime") != null)
                     {
                         maxIdleTime = (int) veh.getSyncedData("MaxIdleTime");
                     }
