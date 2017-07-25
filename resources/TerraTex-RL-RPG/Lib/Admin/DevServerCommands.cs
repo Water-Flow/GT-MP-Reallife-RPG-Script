@@ -64,9 +64,8 @@ namespace TerraTex_RL_RPG.Lib.Admin
                 {
                     sb.AppendLine("// " + info);
                 }
-                
 
-                String name = veh.ClassName.ToString();
+                String name = veh.displayName;
 
                 string posText = position.X.ToString("R").Replace(",", ".") + ", " +
                                  position.Y.ToString("R").Replace(",", ".") + ", " +
