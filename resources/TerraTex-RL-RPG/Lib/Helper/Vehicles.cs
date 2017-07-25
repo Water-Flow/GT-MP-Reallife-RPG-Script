@@ -19,6 +19,10 @@ namespace TerraTex_RL_RPG.Lib.Helper
             veh.setSyncedData("MaxIdleTime", respawnMinutes * 60000);
             veh.setSyncedData("SpawnPosition", pos);
             veh.setSyncedData("SpawnRotation", rot);
+            veh.setData("last-driver-name", "");
+            veh.setData("last-driver-id", -1);
+            veh.setData("last-driver-time", DateTime.Now);
+            veh.setData("last-death-time", DateTime.Now);
 
             return veh;
         }
@@ -31,6 +35,10 @@ namespace TerraTex_RL_RPG.Lib.Helper
             veh.setSyncedData("MaxIdleTime", -1);
             veh.setSyncedData("SpawnPosition", pos);
             veh.setSyncedData("SpawnRotation", rot);
+            veh.setData("last-driver-name", "");
+            veh.setData("last-driver-id", -1);
+            veh.setData("last-driver-time", DateTime.Now);
+            veh.setData("last-death-time", DateTime.Now);
 
             return veh;
         }
