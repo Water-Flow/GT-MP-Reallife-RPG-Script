@@ -22,10 +22,15 @@ namespace TerraTex_RL_RPG.Lib.Threads
                 {
                     Vehicle veh = TTRPG.Api.getEntityFromHandle<Vehicle>(handle);
 
-                    if (veh.occupants.Length == 0 && veh.health > 0 && (int) veh.getSyncedData("MaxIdleTime") != -1)
+                    int maxIdleTime = -1;
+                    if (veh.getSyncedData("MaxIdleTime"))
+                    {
+                        maxIdleTime = (int) veh.getSyncedData("MaxIdleTime");
+                    }
+
+                    if (veh.occupants.Length == 0 && veh.health > 0 && maxIdleTime != -1)
                     {
                         // Idle
-                        int maxIdleTime = (int) veh.getSyncedData("MaxIdleTime");
                         DateTime lastUsage = (DateTime) veh.getData("last-driver-time");
 
                         if (DateTime.Now.Subtract(lastUsage).TotalMilliseconds >= maxIdleTime)
@@ -35,11 +40,10 @@ namespace TerraTex_RL_RPG.Lib.Threads
                     }
                     else if (veh.health <= 0)
                     {
-                        int maxIdleTime = (int)veh.getSyncedData("MaxIdleTime");
-                        DateTime lastUsage = (DateTime)veh.getData("last-death-time");
+                        DateTime lastUsage = (DateTime) veh.getData("last-death-time");
 
                         // destroyed
-                        if ((int) veh.getSyncedData("MaxIdleTime") != -1 &&
+                        if (maxIdleTime != -1 &&
                             DateTime.Now.Subtract(lastUsage).TotalMilliseconds >= maxIdleTime)
                         {
                             VehiclesHelper.RespawnVehicle(veh, true);
@@ -49,7 +53,6 @@ namespace TerraTex_RL_RPG.Lib.Threads
                             veh.delete();
                         }
                     }
-
                 }
 
 
@@ -57,7 +60,7 @@ namespace TerraTex_RL_RPG.Lib.Threads
                 Thread.Sleep(60000);
             }
         }
-        
+
         public void StopThread()
         {
             _interuped = true;
