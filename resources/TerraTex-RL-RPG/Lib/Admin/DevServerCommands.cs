@@ -10,6 +10,7 @@ using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Server.Managers;
 using GrandTheftMultiplayer.Shared;
 using GrandTheftMultiplayer.Shared.Math;
+using TerraTex_RL_RPG.Lib.Helper;
 
 namespace TerraTex_RL_RPG.Lib.Admin
 {
@@ -36,6 +37,52 @@ namespace TerraTex_RL_RPG.Lib.Admin
                 File.AppendAllText(path, appendText);
                 player.sendNotification("Dev-System",
                     "Saved Position: X: " + position.X + "; Y: " + position.Y + "; Z: " + position.Z);
+            }
+        }
+
+        [Command("saveVeh", Group = "dev", SensitiveInfo = false, GreedyArg = true)]
+        public void SaveVehCommand(Client player, string info = "")
+        {
+            if (DevServer.CheckDevCommandAccess(player) && player.isInVehicle)
+            {
+                Vehicle veh = player.vehicle;
+                Vector3 position = veh.position;
+                Vector3 rotation = veh.rotation;
+
+                Directory.CreateDirectory(API.getResourceFolder() + "/Logs");
+                string path = API.getResourceFolder() + "/Logs/Position.log";
+
+                if (!File.Exists(path))
+                {
+                    string createText = "" + Environment.NewLine;
+                    File.WriteAllText(path, createText);
+                }
+
+                StringBuilder sb  = new StringBuilder();
+
+                if (info.Length > 0)
+                {
+                    sb.AppendLine("// " + info);
+                }
+                
+
+                String name = veh.ClassName.ToString();
+
+                string posText = position.X.ToString("R").Replace(",", ".") + ", " +
+                                 position.Y.ToString("R").Replace(",", ".") + ", " +
+                                 position.Z.ToString("R").Replace(",", ".");
+
+                string rotText = rotation.X.ToString("R").Replace(",", ".") + ", " +
+                                 rotation.Y.ToString("R").Replace(",", ".") + ", " +
+                                 rotation.Z.ToString("R").Replace(",", ".");
+
+                sb.AppendLine("VehiclesHelper.CreateVehicleFromName(\"" + name + "\", new Vector3(" + posText +
+                              "), new Vector3(" + rotText + "));");
+                sb.AppendLine("");
+
+                File.AppendAllText(path, sb.ToString());
+                player.sendNotification("Dev-System",
+                    "Saved Vehicle-Position: X: " + position.X + "; Y: " + position.Y + "; Z: " + position.Z);
             }
         }
 
