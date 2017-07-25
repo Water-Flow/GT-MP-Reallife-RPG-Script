@@ -84,6 +84,8 @@
     <Compile Include="Lib\Helper\LoadedDie.cs" />
     <Compile Include="Lib\Helper\Password.cs" />
     <Compile Include="Lib\Helper\Player.cs" />
+    <Compile Include="Lib\Helper\Vehicles.cs" />
+    <Compile Include="Lib\Threads\CleanVehicles.cs" />
     <Compile Include="Lib\Threads\UpdatePlayerPlayTime.cs" />
     <Compile Include="Lib\Threads\UpdateWeather.cs" />
     <Compile Include="Lib\User\Management\MoneyManager.cs" />
@@ -95,6 +97,8 @@
     <Compile Include="Lib\User\StartUp\PlayerRegister.cs" />
     <Compile Include="Lib\User\StartUp\PlayerConnection.cs" />
     <Compile Include="Lib\Threads\StorePlayerData.cs" />
+    <Compile Include="Lib\Vehicles\LastUsage.cs" />
+    <Compile Include="Lib\Vehicles\RookieSpawnVehicles.cs" />
     <Compile Include="TerraTex_RL_RPG.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -186,8 +190,6 @@
     <None Include="UI\general\Styles\bootstrap\_utilities.scss" />
     <None Include="UI\general\Styles\bootstrap\_variables.scss" />
     <None Include="packages.config" />
-    <None Include="UI\general\Scripts\jquery-3.1.1.min.map" />
-    <None Include="UI\general\Scripts\jquery-3.1.1.slim.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configs\database_example.xml" />
@@ -204,14 +206,9 @@
     <Content Include="UI\custom\Images\logo.png" />
     <Content Include="UI\custom\clipboard.js" />
     <Content Include="UI\custom\styles.css" />
-    <Content Include="UI\general\Scripts\bootstrap.js" />
     <Content Include="UI\general\Scripts\bootstrap.min.js" />
     <Content Include="UI\general\Scripts\fingerprint2.min.js" />
-    <Content Include="UI\general\Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="UI\general\Scripts\jquery-3.1.1.js" />
     <Content Include="UI\general\Scripts\jquery-3.1.1.min.js" />
-    <Content Include="UI\general\Scripts\jquery-3.1.1.slim.js" />
-    <Content Include="UI\general\Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Sqls\Install.sql" />
     <Content Include="UI\general\Styles\bootstrap\bootstrap.css" />
     <Content Include="UI\PayDay-Calculation.html" />
