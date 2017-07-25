@@ -19,9 +19,10 @@ namespace TerraTex_RL_RPG.Lib.Admin
 
         public static bool CheckDevCommandAccess(Client player)
         {
+            int devlevel = (int) player.getSyncedData("Dev");
             if (TTRPG.Configs.GetConfig("server").GetElementsByTagName("isDevServer")[0].InnerText.Equals("1"))
             {
-                if (player.getSyncedData("Dev") > 1)
+                if (devlevel > 1)
                 {
                     return true;
                 }
@@ -32,7 +33,7 @@ namespace TerraTex_RL_RPG.Lib.Admin
             }
             else
             {
-                if (player.getSyncedData("Dev") > 2)
+                if (devlevel > 2)
                 {
                     return true;
                 }

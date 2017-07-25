@@ -62,10 +62,11 @@ namespace TerraTex_RL_RPG.Lib.Admin
 
                 if (info.Length > 0)
                 {
-                    sb.AppendLine("// " + info);
+                    sb.AppendLine("// (ModelHash: " + veh.model.ToString() + ") " + info);
                 }
 
-                String name = veh.ToString();
+
+                String name = veh.displayName;
 
                 string posText = position.X.ToString("R").Replace(",", ".") + ", " +
                                  position.Y.ToString("R").Replace(",", ".") + ", " +

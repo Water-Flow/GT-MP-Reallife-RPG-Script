@@ -57,7 +57,8 @@ namespace TerraTex_RL_RPG.Lib.Helper
         public static double GetDistanceToSpawnLocation(Vehicle veh)
         {
             Vector3 spawn = (Vector3) veh.getSyncedData("SpawnPosition");
-            return spawn.DistanceTo(spawn);
+
+            return spawn.DistanceTo(veh.position);
         }
     }
 }
