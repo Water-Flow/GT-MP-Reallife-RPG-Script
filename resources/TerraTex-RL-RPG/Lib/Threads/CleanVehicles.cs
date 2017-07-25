@@ -33,7 +33,7 @@ namespace TerraTex_RL_RPG.Lib.Threads
                         // Idle
                         DateTime lastUsage = (DateTime) veh.getData("last-driver-time");
 
-                        if (DateTime.Now.Subtract(lastUsage).TotalMilliseconds >= maxIdleTime)
+                        if (DateTime.Now.Subtract(lastUsage).TotalMilliseconds >= maxIdleTime && VehiclesHelper.GetDistanceToSpawnLocation(veh) >= 0.5)
                         {
                             VehiclesHelper.RespawnVehicle(veh, true);
                         }
