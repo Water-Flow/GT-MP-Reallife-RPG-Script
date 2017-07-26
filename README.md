@@ -9,6 +9,7 @@ Hauptverantwortlicher ist Geramy92 (Colin Weber)
 # Requirements
 - Visual Studio 2017
 - NodeJs
+- MariaDB 10.2.7 (MySql sollte mit Anpassungen auch gehen, ist aber nicht von uns supportet bzw. empfohlen)
 
 # Installation
 1. Das Project muss zum starten zunächst compiled werden. 
