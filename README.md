@@ -6,6 +6,10 @@ Dieses Projekt steht unter der MIT Lizenz.
 Erstellt wird dieses Script von TerraTex / TerraTex-Community.
 Hauptverantwortlicher ist Geramy92 (Colin Weber)
 
+# Requirements
+- Visual Studio 2017
+- NodeJs
+
 # Installation
 1. Das Project muss zum starten zunächst compiled werden. 
     1. Project in Visual Studio öffnen (Projectdatei liegt im Ordner resources bei)  
