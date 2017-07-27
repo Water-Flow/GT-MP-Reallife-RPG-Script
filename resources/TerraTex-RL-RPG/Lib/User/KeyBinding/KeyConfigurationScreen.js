@@ -21,6 +21,7 @@ function openConfigurationScreen() {
         API.loadPageCefBrowser(browser, 'UI/KeyConfiguration.html', false);
         API.showCursor(true);
         API.waitUntilCefBrowserLoaded(browser);
+        resource.KeyBinds.setDisableKeyInput(true);
     }
 }
 
@@ -43,4 +44,10 @@ function closeWindow() {
     API.showCursor(false);
     API.destroyCefBrowser(browser);
     resource.KeyBinds.setWaitForKey(false);
+    resource.KeyBinds.setDisableKeyInput(false);
+}
+
+function save(json) {
+    resource.KeyBinds.setNewKeyBinds(JSON.parse(json));
+    API.triggerServerEvent("setNewKeyBindings", json);
 }

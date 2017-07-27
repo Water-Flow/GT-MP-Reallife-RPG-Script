@@ -84,7 +84,8 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
             string[] tables = new string[]
             {
                 "user_data",
-                "user_inventory"
+                "user_inventory",
+                "user_configuration_storage"
             };
 
             foreach (string table in tables)

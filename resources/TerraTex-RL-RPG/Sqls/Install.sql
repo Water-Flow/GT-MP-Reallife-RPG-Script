@@ -60,3 +60,10 @@ ALTER TABLE user_inventory ALTER COLUMN BankAccount SET DEFAULT '2500.00';
 ALTER TABLE user_data ADD RP INT DEFAULT 0 NULL;
 ALTER TABLE user_data ADD Level INT DEFAULT 0 NULL;
 ALTER TABLE user_data ADD PayDay TEXT DEFAULT '{"Income": {}, "Outgoings": {}, "LastIncome": {}, "LastOutgoings": {}}';
+
+CREATE TABLE user_configuration_storage
+(
+    UserId INT PRIMARY KEY,
+    KeyBindings TEXT DEFAULT '{"functionKeys":{"ShowCursor":{"key":"X","keyValue":"88"},"ToggleEngine":{"key":"M","keyValue":"77"},"ToggleLight":{"key":"L","keyValue":"76"}},"customBindings":[]}',
+    CONSTRAINT user_configuration_storage_user_ID_fk FOREIGN KEY (UserId) REFERENCES user (ID) ON DELETE CASCADE ON UPDATE CASCADE
+);

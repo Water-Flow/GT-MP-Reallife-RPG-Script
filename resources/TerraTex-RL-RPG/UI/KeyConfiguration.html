@@ -93,6 +93,28 @@
         let waitForKey = false;
         let inputRow = false;
 
+        function setFunctionalKey(name, key, keyValue) {
+            const field = $("[data-function-name=" + row + "]").parent().find("td:first-child");
+            field.attr("data-key-value", keyValue);
+            field.text(key);
+        }
+
+        function addBinding(content, key, keyValue) {
+            let row = '<tr>' +
+                '<td data-key-value="' + keyValue + '" data-key-modifier="0">' + key + '</td>' +
+                '<td>' + content+ '</td>' +
+                '<td>' +
+                '<div class="btn-group btn-group-sm">' +
+                '<button class="btn btn-primary changekey">Taste Ändern</button>' +
+                '<button class="btn btn-info changeText">Text Ändern</button>' +
+                '<button class="btn btn-danger deleteRow">Löschen</button>' +
+                '</div>' +
+                '</td>' +
+                '</tr>';
+
+            $("#customBinds").append(row);
+        }
+
         function setNewKey(key, keyValue) {
             $("button").show();
             const field = waitForKey.find("td:first-child");

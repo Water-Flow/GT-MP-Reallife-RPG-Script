@@ -91,6 +91,7 @@
     <Compile Include="Lib\Threads\CleanVehicles.cs" />
     <Compile Include="Lib\Threads\UpdatePlayerPlayTime.cs" />
     <Compile Include="Lib\Threads\UpdateWeather.cs" />
+    <Compile Include="Lib\User\KeyBinding\KeyBindings.cs" />
     <Compile Include="Lib\User\Management\MoneyManager.cs" />
     <Compile Include="Lib\User\Management\PayDayManager.cs" />
     <Compile Include="Lib\User\Management\RpLevelManager.cs" />
