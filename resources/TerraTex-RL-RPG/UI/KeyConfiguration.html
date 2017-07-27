@@ -27,43 +27,43 @@
                 </th>
             </tr>
             <tr>
-                <td>
-                    
+                <td data-key-value="none" data-key-modifier="0">
+                    ~no~Key~defined~
                 </td>
                 <td data-function-name="ShowCursor">
                     Zeige Cursor
                 </td>
                 <td>
                     <div class="btn-group btn-group-sm">
-                        <button class="btn btn-primary">Ändern</button>
+                        <button class="btn btn-primary">Taste/n Ändern</button>
                         <button class="btn btn-danger">Zurücksetzen</button>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>
-                    
+                <td data-key-value="none" data-key-modifier="0">
+                    ~no~Key~defined~
                 </td>
-                <td data-function-name="ShowCursor">
+                <td data-function-name="ToggleEngine">
                     Motor An/Aus
                 </td>
                 <td>
                     <div class="btn-group btn-group-sm">
-                        <button class="btn btn-primary">Ändern</button>
+                        <button class="btn btn-primary">Taste/n Ändern</button>
                         <button class="btn btn-danger">Zurücksetzen</button>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td>
-                    
+                <td data-key-value="none" data-key-modifier="0">
+                    ~no~Key~defined~
                 </td>
-                <td data-function-name="ShowCursor">
+                <td data-function-name="ToggleLight">
                     Licht An/Aus
                 </td>
                 <td>
                     <div class="btn-group btn-group-sm">
-                        <button class="btn btn-primary">Ändern</button>
+                        <button class="btn btn-primary">Taste/n Ändern</button>
                         <button class="btn btn-danger">Zurücksetzen</button>
                     </div>
                 </td>
@@ -88,11 +88,11 @@
             </tr>
 
             <tr>
-                <td>
-                    Strg + Shift + F3
+                <td data-key-value="none" data-key-modifier="0">
+                    ~no~Key~defined~
                 </td>
                 <td>
-                    Das ist ein sehr sehr langer Text
+                    ~no~Text~defined~
                 </td>
                 <td>
                     <div class="btn-group btn-group-sm">
@@ -114,7 +114,40 @@
             $("#close").click(function() {
                 resourceCall("closeWindow");
             });
- 
+
+            $("#save").click(function() {
+                //@todo: read keys + modifier
+                const showCursor = $("[data-function-name=ShowCursor]").parent().find("td:first-child");
+                const toggleEngine = $("[data-function-name=ToggleEngine]").parent().find("td:first-child");
+                const toggleLight = $("[data-function-name=ToggleLight]").parent().find("td:first-child");
+
+                let keyDefinition = {
+                    functionKeys: {
+                        ShowCursor: {
+                            key: showCursor.text(),
+                            keyValue: showCursor.attr("data-key-value"),
+                            keyModifier: showCursor.attr("data-key-modifier")
+                        },
+                        ToggleEngine: {
+                            key: toggleEngine.text(),
+                            keyValue: toggleEngine.attr("data-key-value"),
+                            keyModifier: toggleEngine.attr("data-key-modifier")
+                        },
+                        ToggleLight: {
+                            key: toggleLight.text(),
+                            keyValue: toggleLight.attr("data-key-value"),
+                            keyModifier: toggleLight.attr("data-key-modifier")
+                        }
+                    },
+                    customBindings: [
+                        // {Key: , keyValue: , keyModifier: , content: }
+                    ],
+                };
+
+                let jsondata = JSON.stringify(keyDefinition);
+                resourceCall("save", jsondata);
+            });
+
             resourceCall("loadComplete");
         });
     </script>
