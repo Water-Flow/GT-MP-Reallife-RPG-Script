@@ -28,15 +28,15 @@ namespace TerraTex_RL_RPG.Lib.Enviroment.Chat
                 float distance = player.position.DistanceTo(sendToPlayer.position);
                 if (distance >= 15)
                 {
-                    sendToPlayer.sendChatMessage("~m~" + player.name, message);
+                    sendToPlayer.sendChatMessage("~m~" + player.name + " sagt: " + message);
                 }
                 else if(distance >= 10)
                 {
-                    sendToPlayer.sendChatMessage("~c~" + player.name, message);
+                    sendToPlayer.sendChatMessage("~c~" + player.name + " sagt: " + message);
                 }
                 else
                 {
-                    sendToPlayer.sendChatMessage("~s~" + player.name, message);
+                    sendToPlayer.sendChatMessage("~s~" + player.name + " sagt: " + message);
                 }
             }
         }
