@@ -86,7 +86,7 @@
                     Bearbeitung
                 </th>
             </tr>
-
+            <tbody id="customBinds">
             <tr>
                 <td data-key-value="none" data-key-modifier="0">
                     ~no~Key~defined~
@@ -102,6 +102,7 @@
                     </div>
                 </td>
             </tr>
+            </tbody>
         </table>
     </div>
     <div class="btn-group pftr">
@@ -116,7 +117,6 @@
             });
 
             $("#save").click(function() {
-                //@todo: read keys + modifier
                 const showCursor = $("[data-function-name=ShowCursor]").parent().find("td:first-child");
                 const toggleEngine = $("[data-function-name=ToggleEngine]").parent().find("td:first-child");
                 const toggleLight = $("[data-function-name=ToggleLight]").parent().find("td:first-child");
@@ -141,8 +141,20 @@
                     },
                     customBindings: [
                         // {Key: , keyValue: , keyModifier: , content: }
-                    ],
+                    ]
                 };
+
+                $("#customBinds tr").each(function() {
+                    let definition = {
+                        key: $(this).find("td:first-child").text(),
+                        keyValue: $(this).find("td:first-child").attr("data-key-value"),
+                        keyModifier: $(this).find("td:first-child").attr("data-key-modifier"),
+                        content: $(this).find("td:nth-child(2)").text()
+                    };
+
+                    keyDefinition.customBindings.push(definition);
+
+                });
 
                 let jsondata = JSON.stringify(keyDefinition);
                 resourceCall("save", jsondata);
