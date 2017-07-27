@@ -27,6 +27,7 @@
       <file src="UI/Register_Login_Profile/Login.html" />
       <file src="UI/Register_Login_Profile/GetFingerprint.html" />
       <file src="UI/PayDay-Calculation.html" />
+      <file src="UI/KeyConfiguration.html" />
 
 
     <include resource="scoreboard" />
