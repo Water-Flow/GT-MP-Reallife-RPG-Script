@@ -33,5 +33,14 @@
 
 
     <include resource="scoreboard" />
+
+    <!-- Included Resources in _IncludedExternalResources -->
+    <!-- cefchat -->
+    <script src="_IncludedExternalResources/cefchat/chatcontroller.js" type="client" lang="javascript" />
+    <file src="_IncludedExternalResources/cefchat/chat.html" />
+    <file src="_IncludedExternalResources/cefchat/chat.js" />
+    <file src="_IncludedExternalResources/cefchat/jquery.js" />
+    <file src="_IncludedExternalResources/cefchat/Roboto-Regular.ttf" />
+    <file src="_IncludedExternalResources/cefchat/Roboto-Thin.ttf" />
   
 </meta>

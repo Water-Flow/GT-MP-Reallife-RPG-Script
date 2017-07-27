@@ -115,6 +115,17 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
 
             DataRow userInventory = GetDataFromUserTable("user_inventory", userId);
             ApplyTableToPlayerUserInventory(player, userInventory);
+
+            DataRow userConfigurationStorage = GetDataFromUserTable("user_configuration_storage", userId);
+            ApplyTableToPlayerUserConfigurationStorage(player, userConfigurationStorage);
+        }
+
+        private void ApplyTableToPlayerUserConfigurationStorage(Client player, DataRow data)
+        {
+            player.setSyncedData("KeyBindings", (string)data["KeyBindings"]);
+
+
+            player.triggerEvent("updateKeyBindings", (string)data["KeyBindings"]);
         }
 
         private void ApplyTableToPlayerUser(Client player, DataRow data)

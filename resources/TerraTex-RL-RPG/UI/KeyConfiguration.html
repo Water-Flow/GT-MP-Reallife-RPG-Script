@@ -94,7 +94,7 @@
         let inputRow = false;
 
         function setFunctionalKey(name, key, keyValue) {
-            const field = $("[data-function-name=" + row + "]").parent().find("td:first-child");
+            const field = $("[data-function-name=" + name + "]").parent().find("td:first-child");
             field.attr("data-key-value", keyValue);
             field.text(key);
         }

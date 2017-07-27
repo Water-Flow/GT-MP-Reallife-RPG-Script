@@ -27,7 +27,6 @@ function openConfigurationScreen() {
 
 function sendKey(key, keyValue) {
     resource.KeyBinds.setWaitForKey(false);
-    API.sendChatMessage("waitForKey(" + key + ", " + keyValue + ")");
     browser.call("setNewKey", key, keyValue);
 }
 
@@ -36,7 +35,23 @@ function waitForKey() {
 }
 
 function loadComplete() {
-    // @todo load keybindings from JSON
+    const keyBinds = resource.KeyBinds.getKeyBinds();
+
+    for (const functionName in keyBinds.functionKeys) {
+        if (keyBinds.functionKeys.hasOwnProperty(functionName)) {
+            const definition = keyBinds.functionKeys[functionName];
+            browser.call("setFunctionalKey", functionName, definition.key, definition.keyValue);
+        }
+    }
+
+    if (keyBinds.customBindings.length > 0) {
+        for (const bindingObjectIndex in keyBinds.customBindings) {
+            if (keyBinds.customBindings.hasOwnProperty(bindingObjectIndex)) {
+                const definition = keyBinds.customBindings[bindingObjectIndex];
+                browser.call("addBinding", definition.content, definition.key, definition.keyValue);
+            }
+        }
+    }
 }
 
 function closeWindow() {

@@ -194,6 +194,8 @@
     <None Include="UI\general\Styles\bootstrap\_utilities.scss" />
     <None Include="UI\general\Styles\bootstrap\_variables.scss" />
     <None Include="packages.config" />
+    <None Include="_IncludedExternalResources\cefchat\Roboto-Regular.ttf" />
+    <None Include="_IncludedExternalResources\cefchat\Roboto-Thin.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configs\database_example.xml" />
@@ -222,6 +224,11 @@
     <Content Include="UI\Register_Login_Profile\GetFingerprint.html" />
     <Content Include="UI\Register_Login_Profile\Login.html" />
     <Content Include="UI\Register_Login_Profile\Register.html" />
+    <Content Include="_IncludedExternalResources\cefchat\chat.html" />
+    <Content Include="_IncludedExternalResources\cefchat\chat.js" />
+    <Content Include="_IncludedExternalResources\cefchat\chatcontroller.js" />
+    <Content Include="_IncludedExternalResources\cefchat\jquery.js" />
+    <Content Include="_IncludedExternalResources\cefchat\meta.xml" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\Google.Protobuf.dll" />
