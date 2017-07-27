@@ -10,6 +10,11 @@
 </head>
 <body>
 <div class="container-fluid">
+    <div class="alert alert-info">
+        Der Keybinder unterstützt nicht Strg, Alt oder Shift. <br />
+        Weder als Zusatzvariante noch als generelle Belegung.<br/>
+        Die Tasten F1-F4 sind für TerraTex Interne Belegungen reserviert.
+    </div>
     <div class="card">
         <div class="card-header font-weight-bold">
             TerraTex - Bindings
@@ -35,8 +40,8 @@
                 </td>
                 <td>
                     <div class="btn-group btn-group-sm">
-                        <button class="btn btn-primary">Taste/n Ändern</button>
-                        <button class="btn btn-danger">Zurücksetzen</button>
+                        <button class="btn btn-primary changekey">Taste/n Ändern</button>
+                        <button class="btn btn-danger resetbtn" data-default-key-value="88" data-default-key="X">Zurücksetzen</button>
                     </div>
                 </td>
             </tr>
@@ -49,8 +54,8 @@
                 </td>
                 <td>
                     <div class="btn-group btn-group-sm">
-                        <button class="btn btn-primary">Taste/n Ändern</button>
-                        <button class="btn btn-danger">Zurücksetzen</button>
+                        <button class="btn btn-primary changekey">Taste/n Ändern</button>
+                        <button class="btn btn-danger resetbtn" data-default-key-value="77" data-default-key="M">Zurücksetzen</button>
                     </div>
                 </td>
             </tr>
@@ -63,8 +68,8 @@
                 </td>
                 <td>
                     <div class="btn-group btn-group-sm">
-                        <button class="btn btn-primary">Taste/n Ändern</button>
-                        <button class="btn btn-danger">Zurücksetzen</button>
+                        <button class="btn btn-primary changekey">Taste/n Ändern</button>
+                        <button class="btn btn-danger resetbtn" data-default-key-value="76" data-default-key="L">Zurücksetzen</button>
                     </div>
                 </td>
             </tr>
@@ -96,7 +101,7 @@
                 </td>
                 <td>
                     <div class="btn-group btn-group-sm">
-                        <button class="btn btn-primary">Taste Ändern</button>
+                        <button class="btn btn-primary changekey">Taste Ändern</button>
                         <button class="btn btn-info">Text Ändern</button>
                         <button class="btn btn-danger">Löschen</button>
                     </div>
@@ -106,12 +111,42 @@
         </table>
     </div>
     <div class="btn-group pftr">
-        <div class="btn btn-danger btn-border-white" id="close"> Beenden / Abbrechen </div>
-        <div class="btn btn-success btn-border-white" id="save"> Speichern </div>
+        <button class="btn btn-danger btn-border-white" id="close"> Beenden / Abbrechen </button>
+        <button class="btn btn-success btn-border-white" id="save"> Speichern </button>
     </div>
 
     <script>
-        $(document).ready(function() {
+        let waitForKey = false;
+
+        function setNewKey(key, keyValue) {
+            $("button").show();
+            const field = waitForKey.find("td:first-child");
+            field.attr("data-key-value", keyValue);
+            field.html(key);
+            waitForKey = false;
+        }
+
+        $(document).ready(function () {
+
+            $("html").on("click", ".changekey", function() {
+                $("button").hide();
+                $(this).parent().parent().parent().find("td:first-child")
+                    .html("<span class='text-danger font-weight-bold'> ~~ Drücke eine Taste ~~</span>");
+
+                waitForKey = $(this).parent().parent().parent();
+
+                resourceCall("waitForKey");
+            });
+
+            $("html").on("click", ".resetbtn", function() {
+                const keyValue = $(this).attr("data-default-key-value");
+                const keyName = $(this).attr("data-default-key");
+
+                const keyField = $(this).parent().parent().parent().find("td:first-child");
+                keyField.attr("data-key-value", keyValue);
+                keyField.text(keyName);
+            });
+
             $("#close").click(function() {
                 resourceCall("closeWindow");
             });
@@ -125,22 +160,18 @@
                     functionKeys: {
                         ShowCursor: {
                             key: showCursor.text(),
-                            keyValue: showCursor.attr("data-key-value"),
-                            keyModifier: showCursor.attr("data-key-modifier")
+                            keyValue: showCursor.attr("data-key-value")
                         },
                         ToggleEngine: {
                             key: toggleEngine.text(),
-                            keyValue: toggleEngine.attr("data-key-value"),
-                            keyModifier: toggleEngine.attr("data-key-modifier")
+                            keyValue: toggleEngine.attr("data-key-value")
                         },
                         ToggleLight: {
                             key: toggleLight.text(),
-                            keyValue: toggleLight.attr("data-key-value"),
-                            keyModifier: toggleLight.attr("data-key-modifier")
+                            keyValue: toggleLight.attr("data-key-value")
                         }
                     },
                     customBindings: [
-                        // {Key: , keyValue: , keyModifier: , content: }
                     ]
                 };
 
@@ -148,7 +179,6 @@
                     let definition = {
                         key: $(this).find("td:first-child").text(),
                         keyValue: $(this).find("td:first-child").attr("data-key-value"),
-                        keyModifier: $(this).find("td:first-child").attr("data-key-modifier"),
                         content: $(this).find("td:nth-child(2)").text()
                     };
 

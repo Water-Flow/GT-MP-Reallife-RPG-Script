@@ -199,6 +199,8 @@
     <Content Include="Configs\server_example.xml" />
     <Content Include="Gruntfile.js" />
     <Content Include="Lib\Hud\InfoHud.js" />
+    <Content Include="Lib\User\KeyBinding\KeyBinds.js" />
+    <Content Include="Lib\User\KeyBinding\KeyConfigurationScreen.js" />
     <Content Include="Lib\User\Management\UI\PayDayUI.js" />
     <Content Include="Lib\User\StartUp\PlayerConnection_Client.js" />
     <Content Include="Lib\User\StartUp\PlayerConnection_Login_Client.js" />
