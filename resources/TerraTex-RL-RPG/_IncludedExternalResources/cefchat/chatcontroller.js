@@ -1,9 +1,6 @@
 var mainChat = null;
 var mainBrowser = null;
 
-//@todo: arrow up for older entries
-//@todo: darker Input line and more padding
-
 function getMainChat() {
     return mainChat;
 }
