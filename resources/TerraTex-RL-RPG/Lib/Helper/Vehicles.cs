@@ -23,7 +23,7 @@ namespace TerraTex_RL_RPG.Lib.Helper
             veh.setData("last-driver-id", -1);
             veh.setData("last-driver-time", DateTime.Now);
             veh.setData("last-death-time", DateTime.Now);
-
+            veh.engineStatus = false;
             return veh;
         }
 
@@ -39,6 +39,7 @@ namespace TerraTex_RL_RPG.Lib.Helper
             veh.setData("last-driver-id", -1);
             veh.setData("last-driver-time", DateTime.Now);
             veh.setData("last-death-time", DateTime.Now);
+            veh.engineStatus = false;
 
             return veh;
         }

@@ -73,5 +73,7 @@ API.onServerEventTrigger.connect(function(eventname, args) {
 });
 
 function runClientKeyBinding(functionName) {
-    //@todo add functions
+    if (functionName === "ShowCursor") {
+        API.showCursor(!API.isCursorShown());
+    }
 }

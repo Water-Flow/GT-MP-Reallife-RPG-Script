@@ -103,6 +103,7 @@
     <Compile Include="Lib\Threads\StorePlayerData.cs" />
     <Compile Include="Lib\Vehicles\LastUsage.cs" />
     <Compile Include="Lib\Vehicles\RookieSpawnVehicles.cs" />
+    <Compile Include="Lib\Vehicles\VehicleFunction.cs" />
     <Compile Include="TerraTex_RL_RPG.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

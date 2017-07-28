@@ -51,16 +51,6 @@
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td data-key-value="none" data-key-modifier="0">~no~Key~defined~</td>
-                <td data-function-name="ToggleLight">Licht An/Aus</td>
-                <td>
-                    <div class="btn-group btn-group-sm">
-                        <button class="btn btn-primary changekey">Taste/n Ändern</button>
-                        <button class="btn btn-danger resetbtn" data-default-key-value="76" data-default-key="L">Zurücksetzen</button>
-                    </div>
-                </td>
-            </tr>
         </table>
     </div>
     <div class="card">
@@ -205,10 +195,6 @@
                         ToggleEngine: {
                             key: toggleEngine.text(),
                             keyValue: toggleEngine.attr("data-key-value")
-                        },
-                        ToggleLight: {
-                            key: toggleLight.text(),
-                            keyValue: toggleLight.attr("data-key-value")
                         }
                     },
                     customBindings: [
