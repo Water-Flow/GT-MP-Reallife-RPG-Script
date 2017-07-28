@@ -19,8 +19,12 @@ namespace TerraTex_RL_RPG.Lib.User.KeyBinding
         {
             if (eventName == "setNewKeyBindings")
             {
-                string json = (string)arguments[0];
+                string json = (string) arguments[0];
                 player.setSyncedData("KeyBindings", json);
+            }
+            else if (eventName == "runKeyBindingFunction")
+            {
+                //@todo add functions
             }
         }
     }

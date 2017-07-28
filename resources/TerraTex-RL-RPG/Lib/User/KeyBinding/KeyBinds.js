@@ -1,6 +1,7 @@
 ﻿let waitForKey = false;
 let disableKeyInput = false;
 let keyBinds = {};
+const clientKeyFunctions = ["ShowCursor"];
 
 function getKeyBinds() {
     return keyBinds;
@@ -34,7 +35,12 @@ API.onKeyDown.connect(function(sender, e) {
                                 const definition = keyBinds.functionKeys[functionName];
 
                                 if (definition.key === e.KeyCode.ToString()) {
-                                    //@todo do what the key wants
+                                    if (clientKeyFunctions.indexOf(functionName) !== -1) {
+                                        runClientKeyBinding(functionName);
+                                    } else {
+                                        API.triggerServerEvent("runKeyBindingFunction", functionName);
+                                    }
+
                                 }
                             }
                         }
@@ -65,3 +71,7 @@ API.onServerEventTrigger.connect(function(eventname, args) {
         keyBinds = JSON.parse(args[0]);
     }
 });
+
+function runClientKeyBinding(functionName) {
+    //@todo add functions
+}
