@@ -1,9 +1,8 @@
 var mainChat = null;
 var mainBrowser = null;
 
-//@todo: translate ~color~ stuff
 //@todo: arrow up for older entries
-//@todo: is it possible to get Chat without overwritting it?
+//@todo: darker Input line and more padding
 
 function getMainChat() {
     return mainChat;
