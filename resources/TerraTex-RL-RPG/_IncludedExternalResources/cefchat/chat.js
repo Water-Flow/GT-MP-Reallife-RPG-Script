@@ -2,17 +2,17 @@ var False = false;
 var True = true;
 
 function updateScroll() {
-	var body = $("#chat-body");
-	if (body.scrollTop() >= body[0].scrollHeight - 400) {
-		body.scrollTop(body[0].scrollHeight);
-	}		
+    var body = $("#chat-body");
+    if (body.scrollTop() >= body[0].scrollHeight - 400) {
+        body.scrollTop(body[0].scrollHeight);
+    }
 }
 
 function formatMsg(input) {
-	var start = '<span style="color: white;">';
-	var output = start;
-	
-	var result = input.replace(/~r~/gi, '</span><span style="color: red;">');
+    var start = '<span style="color: white;">';
+    var output = start;
+
+    var result = input.replace(/~r~/gi, '</span><span style="color: red;">');
     result = result.replace(/~b~/gi, '</span><span style="color: blue;">');
     result = result.replace(/~g~/gi, '</span><span style="color: green;">');
     result = result.replace(/~p~/gi, '</span><span style="color: purple;">');
@@ -35,33 +35,33 @@ function formatMsg(input) {
 }
 
 function addMessage(msg) {
-	var child = $("<p>" + formatMsg(msg) + "</p>");
-	child.hide();
-	$("#chat-body").append(child);
-	child.fadeIn();
+    var child = $("<p>" + formatMsg(msg) + "</p>");
+    child.hide();
+    $("#chat-body").append(child);
+    child.fadeIn();
 
-	updateScroll();
+    updateScroll();
 }
 
-function addColoredMessage(msg, r,g,b) {
-	var child = $('<p style="color: rgb(' + r + ', ' + g + ', ' + b + ');">' + formatMsg(msg) + '</p>');
-	child.hide();
-	$("#chat-body").append(child);
-	child.fadeIn();
+function addColoredMessage(msg, r, g, b) {
+    var child = $('<p style="color: rgb(' + r + ', ' + g + ', ' + b + ');">' + formatMsg(msg) + '</p>');
+    child.hide();
+    $("#chat-body").append(child);
+    child.fadeIn();
 
-	updateScroll();
+    updateScroll();
 }
 
 function setFocus(focus) {
-	var mainInput = $("#main-input");
-	if (focus) {		
-		mainInput.show();
-		mainInput.val("");
-		mainInput.focus();
-	} else {
-		mainInput.hide();
-		mainInput.val("");
-	}
+    var mainInput = $("#main-input");
+    if (focus) {
+        mainInput.show();
+        mainInput.val("");
+        mainInput.focus();
+    } else {
+        mainInput.hide();
+        mainInput.val("");
+    }
 }
 
 let oldMessages = [];
@@ -69,24 +69,21 @@ let lastIndex = -1;
 let currentInput = "";
 
 function onKeyUp(event) {
-	if (event.keyCode === 13) {
-		var m = $("#main-input").val();
-		if (m)		
-		{
-			try
-			{
-				resourceCall("commitMessage", m+"");
-			}
-			catch(err) {
-				$("body").text(err);
+    if (event.keyCode === 13) {
+        var m = $("#main-input").val();
+        if (m) {
+            try {
+                resourceCall("commitMessage", m + "");
+            } catch (err) {
+                $("body").text(err);
             }
             lastIndex = -1;
             currentInput = "";
-		    oldMessages.unshift(m + "");
-		}
-		setFocus(false);	
-	} else if (event.keyCode === 38) {
-	    //Key Up
+            oldMessages.unshift(m + "");
+        }
+        setFocus(false);
+    } else if (event.keyCode === 38) {
+        //Key Up
         if (lastIndex === -1) {
             currentInput = $("#main-input").val();
         }
@@ -96,17 +93,17 @@ function onKeyUp(event) {
         }
         setActiveMessage(lastIndex);
 
-	} else if (event.keyCode === 40) {
-	    //Key down
-	    if (lastIndex === -1) {
-	        currentInput = $("#main-input").val();
-	    }
-	    lastIndex--;
-	    if (lastIndex <= -1) {
-	        lastIndex = -1;
+    } else if (event.keyCode === 40) {
+        //Key down
+        if (lastIndex === -1) {
+            currentInput = $("#main-input").val();
         }
-	    setActiveMessage(lastIndex);
-	}
+        lastIndex--;
+        if (lastIndex <= -1) {
+            lastIndex = -1;
+        }
+        setActiveMessage(lastIndex);
+    }
 }
 
 function setActiveMessage(id) {

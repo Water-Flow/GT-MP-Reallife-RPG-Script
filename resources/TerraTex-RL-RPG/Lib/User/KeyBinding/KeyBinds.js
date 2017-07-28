@@ -28,8 +28,6 @@ API.onKeyDown.connect(function(sender, e) {
                     if (e.KeyCode === Keys.F2) {
                         resource.KeyConfigurationScreen.openConfigurationScreen();
                     } else {
-                        API.sendChatMessage(e.KeyValue + "");
-
                         for (const functionName in keyBinds.functionKeys) {
                             if (keyBinds.functionKeys.hasOwnProperty(functionName)) {
                                 const definition = keyBinds.functionKeys[functionName];
@@ -53,8 +51,6 @@ API.onKeyDown.connect(function(sender, e) {
                                 }
                             }
                         }
-
-
                     }
                 }
             } else {
