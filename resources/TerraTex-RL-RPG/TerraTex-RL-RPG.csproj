@@ -48,7 +48,7 @@
       <HintPath>..\packages\MySql.Data.7.0.7-m61\lib\net451\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.5.0.0-beta07\lib\net45\NLog.dll</HintPath>
@@ -79,13 +79,24 @@
     <Compile Include="Lib\Admin\AdminChecks.cs" />
     <Compile Include="Lib\Admin\DevServer.cs" />
     <Compile Include="Lib\Admin\DevServerCommands.cs" />
+    <Compile Include="Lib\Admin\Teleports.cs" />
     <Compile Include="Lib\Data\Configs.cs" />
     <Compile Include="Lib\Data\Database.cs" />
+    <Compile Include="Lib\Enviroment\Chat\BasicChatCommands.cs" />
+    <Compile Include="Lib\Enviroment\Chat\DistanceChat.cs" />
     <Compile Include="Lib\Helper\LoadedDie.cs" />
     <Compile Include="Lib\Helper\Password.cs" />
     <Compile Include="Lib\Helper\Player.cs" />
+    <Compile Include="Lib\Helper\Text.cs" />
+    <Compile Include="Lib\Helper\Vehicles.cs" />
+    <Compile Include="Lib\Jobs\Bergwerk\Bergwerk.cs" />
+    <Compile Include="Lib\Jobs\Job.cs" />
+    <Compile Include="Lib\Jobs\IJob.cs" />
+    <Compile Include="Lib\Jobs\JobSystem.cs" />
+    <Compile Include="Lib\Threads\CleanVehicles.cs" />
     <Compile Include="Lib\Threads\UpdatePlayerPlayTime.cs" />
     <Compile Include="Lib\Threads\UpdateWeather.cs" />
+    <Compile Include="Lib\User\KeyBinding\KeyBindings.cs" />
     <Compile Include="Lib\User\Management\MoneyManager.cs" />
     <Compile Include="Lib\User\Management\PayDayManager.cs" />
     <Compile Include="Lib\User\Management\RpLevelManager.cs" />
@@ -95,6 +106,9 @@
     <Compile Include="Lib\User\StartUp\PlayerRegister.cs" />
     <Compile Include="Lib\User\StartUp\PlayerConnection.cs" />
     <Compile Include="Lib\Threads\StorePlayerData.cs" />
+    <Compile Include="Lib\Vehicles\LastUsage.cs" />
+    <Compile Include="Lib\Vehicles\RookieSpawnVehicles.cs" />
+    <Compile Include="Lib\Vehicles\VehicleFunction.cs" />
     <Compile Include="TerraTex_RL_RPG.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -186,14 +200,18 @@
     <None Include="UI\general\Styles\bootstrap\_utilities.scss" />
     <None Include="UI\general\Styles\bootstrap\_variables.scss" />
     <None Include="packages.config" />
-    <None Include="UI\general\Scripts\jquery-3.1.1.min.map" />
-    <None Include="UI\general\Scripts\jquery-3.1.1.slim.min.map" />
+    <None Include="_IncludedExternalResources\cefchat\Roboto-Regular.ttf" />
+    <None Include="_IncludedExternalResources\cefchat\Roboto-Thin.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configs\database_example.xml" />
     <Content Include="Configs\server_example.xml" />
     <Content Include="Gruntfile.js" />
-    <Content Include="Lib\Hud\InfoHud.js" />
+    <Content Include="Lib\Enviroment\Clicksystem.js" />
+    <Content Include="Lib\Enviroment\Hud\InfoHud.js" />
+    <Content Include="Lib\Jobs\Bergwerk\BergWerk.js" />
+    <Content Include="Lib\User\KeyBinding\KeyBinds.js" />
+    <Content Include="Lib\User\KeyBinding\KeyConfigurationScreen.js" />
     <Content Include="Lib\User\Management\UI\PayDayUI.js" />
     <Content Include="Lib\User\StartUp\PlayerConnection_Client.js" />
     <Content Include="Lib\User\StartUp\PlayerConnection_Login_Client.js" />
@@ -204,25 +222,26 @@
     <Content Include="UI\custom\Images\logo.png" />
     <Content Include="UI\custom\clipboard.js" />
     <Content Include="UI\custom\styles.css" />
-    <Content Include="UI\general\Scripts\bootstrap.js" />
     <Content Include="UI\general\Scripts\bootstrap.min.js" />
     <Content Include="UI\general\Scripts\fingerprint2.min.js" />
-    <Content Include="UI\general\Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="UI\general\Scripts\jquery-3.1.1.js" />
     <Content Include="UI\general\Scripts\jquery-3.1.1.min.js" />
-    <Content Include="UI\general\Scripts\jquery-3.1.1.slim.js" />
-    <Content Include="UI\general\Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Sqls\Install.sql" />
     <Content Include="UI\general\Styles\bootstrap\bootstrap.css" />
+    <Content Include="UI\KeyConfiguration.html" />
     <Content Include="UI\PayDay-Calculation.html" />
     <Content Include="UI\Register_Login_Profile\GetFingerprint.html" />
     <Content Include="UI\Register_Login_Profile\Login.html" />
     <Content Include="UI\Register_Login_Profile\Register.html" />
+    <Content Include="_IncludedExternalResources\cefchat\chat.html" />
+    <Content Include="_IncludedExternalResources\cefchat\chat.js" />
+    <Content Include="_IncludedExternalResources\cefchat\chatcontroller.js" />
+    <Content Include="_IncludedExternalResources\cefchat\jquery.js" />
+    <Content Include="_IncludedExternalResources\cefchat\meta.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\Google.Protobuf.dll" />
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\SonarAnalyzer.CSharp.dll" />
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.5.11.0.1761\analyzers\SonarAnalyzer.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.2.0.2536\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.2.0.2536\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.2.0.2536\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="types-gt-mp\Declarations.d.ts" />

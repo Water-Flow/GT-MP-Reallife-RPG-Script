@@ -40,10 +40,10 @@ API.onServerEventTrigger.connect(function(eventName, args) {
 
 API.onUpdate.connect(function() {
     const date = new Date();
-    const hours = date.getHours() < 10 ? " " + date.getHours() : date.getHours();
+    const hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
     const minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
 
-    API.drawText(hours + ":" + minutes, resX + 70, resY + 133, 0.5, 255, 255, 255, 200, 0, 2, false, true, 0);
+    API.drawText(hours + ":" + minutes, resX -10, resY + 133, 0.5, 255, 255, 255, 200, 0, 0, false, true, 0);
     API.drawText(lastMoneyString, resX - 10, resY + 165, 0.5, 50, 255, 50, 200, 0, 0, false, true, 0);
     API.drawRectangle(0, 0, endRpBarY, 5, 0, 0, 220, 150);
 });

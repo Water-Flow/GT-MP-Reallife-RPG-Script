@@ -37,11 +37,19 @@ namespace TerraTex_RL_RPG.Lib.Threads
         {
             StoreTableUserData(player);
             StoreTableUserInventory(player);
+            StorePlayerStorage(player);
+        }
+        
+        public void StorePlayerStorage(Client player)
+        {
+            string[] fields = { "KeyBindings" };
+            Dictionary<string, dynamic> valueReplacements = new Dictionary<string, dynamic>();
+            BuildAndExecuteTableQuery(player, "user_configuration_storage", fields, valueReplacements);
         }
 
         private void StoreTableUserData(Client player)
         {
-            string[] fields = { "PlayTime", "RP", "Level", "Skin", "PayDay"};
+            string[] fields = { "PlayTime", "RP", "Level", "Skin", "PayDay", "CurrentJobId" };
             Dictionary<string, dynamic> valueReplacements = new Dictionary<string, dynamic>();
 
             Dictionary<string, Dictionary<string, double>> payDay = new Dictionary<string, Dictionary<string, double>>();

@@ -9,10 +9,14 @@
   
     <script src="bin/Debug/TerraTex-RL-RPG.dll" type="server" lang="compiled" />
     <script src="Lib/User/StartUp/PlayerConnection_Client.js" type="client" lang="javascript" />
+    <script src="Lib/User/KeyBinding/KeyBinds.js" type="client" lang="javascript" />
+    <script src="Lib/User/KeyBinding/KeyConfigurationScreen.js" type="client" lang="javascript" />
     <script src="Lib/User/StartUp/PlayerConnection_Register_Client.js" type="client" lang="javascript" />
     <script src="Lib/User/StartUp/PlayerConnection_Login_Client.js" type="client" lang="javascript" />
     <script src="Lib/User/Management/UI/PayDayUI.js" type="client" lang="javascript" />
-    <script src="Lib/Hud/InfoHud.js" type="client" lang="javascript" />
+    <script src="Lib/Jobs/Bergwerk/Bergwerk.js" type="client" lang="javascript" />
+    <script src="Lib/Enviroment/Hud/InfoHud.js" type="client" lang="javascript" />
+    <script src="Lib/Enviroment/Clicksystem.js" type="client" lang="javascript" />
   
   
     <!-- UI Stuff-->
@@ -27,8 +31,18 @@
       <file src="UI/Register_Login_Profile/Login.html" />
       <file src="UI/Register_Login_Profile/GetFingerprint.html" />
       <file src="UI/PayDay-Calculation.html" />
+      <file src="UI/KeyConfiguration.html" />
 
 
     <include resource="scoreboard" />
+
+    <!-- Included Resources in _IncludedExternalResources -->
+    <!-- cefchat -->
+    <script src="_IncludedExternalResources/cefchat/chatcontroller.js" type="client" lang="javascript" />
+    <file src="_IncludedExternalResources/cefchat/chat.html" />
+    <file src="_IncludedExternalResources/cefchat/chat.js" />
+    <file src="_IncludedExternalResources/cefchat/jquery.js" />
+    <file src="_IncludedExternalResources/cefchat/Roboto-Regular.ttf" />
+    <file src="_IncludedExternalResources/cefchat/Roboto-Thin.ttf" />
   
 </meta>

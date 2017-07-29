@@ -84,7 +84,8 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
             string[] tables = new string[]
             {
                 "user_data",
-                "user_inventory"
+                "user_inventory",
+                "user_configuration_storage"
             };
 
             foreach (string table in tables)
@@ -114,6 +115,17 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
 
             DataRow userInventory = GetDataFromUserTable("user_inventory", userId);
             ApplyTableToPlayerUserInventory(player, userInventory);
+
+            DataRow userConfigurationStorage = GetDataFromUserTable("user_configuration_storage", userId);
+            ApplyTableToPlayerUserConfigurationStorage(player, userConfigurationStorage);
+        }
+
+        private void ApplyTableToPlayerUserConfigurationStorage(Client player, DataRow data)
+        {
+            player.setSyncedData("KeyBindings", (string)data["KeyBindings"]);
+
+
+            player.triggerEvent("updateKeyBindings", (string)data["KeyBindings"]);
         }
 
         private void ApplyTableToPlayerUser(Client player, DataRow data)
@@ -135,6 +147,7 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
             player.setSyncedData("PlayTime", (int) data["PlayTime"]);
             player.setSyncedData("Skin", (string) data["Skin"]);
             player.setSyncedData("RP", (int) data["RP"]);
+            player.setSyncedData("CurrentJobId", (int) data["CurrentJobId"]);
 
             Dictionary<string, Dictionary<string, double>> payDay = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, double>>>((string) data["PayDay"]);
             player.setData("PayDayIncome", payDay.Get("Income"));

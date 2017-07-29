@@ -31,9 +31,9 @@ namespace TerraTex_RL_RPG.Lib.User.Management
             private readonly string _identifier;
             private readonly double _tax;
     
-            public static readonly Category Tax =new Category("Tax", "Steuern", 0);
-            public static readonly Category Job =new Category("Job", "Jobgehälter", 0.25);
-            public static readonly Category BasicSalary =new Category("BasicSalary", "Grundgehalt", 0);
+            public static readonly Category Tax = new Category("Tax", "Steuern", 0);
+            public static readonly Category Job = new Category("Job", "Jobgehälter", 0.25);
+            public static readonly Category BasicSalary = new Category("BasicSalary", "Grundgehalt", 0);
 
             private Category(String identifier, String name, double tax)
             {
@@ -140,14 +140,14 @@ namespace TerraTex_RL_RPG.Lib.User.Management
 
             MoneyManager.ChangePlayerMoney(player, (float)sum, true, MoneyManager.Categorys.PayDay, "PayDay",
                 JObject.FromObject(payDay).ToString());
-
+            
             if (sum >= 0)
             {
-                TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~g~" + sum + " €~s~ überwiesen.");
+                TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~g~" + sum.ToString("C2") + "~s~ überwiesen.");
             }
             else
             {
-                TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~r~" + sum + " €~s~ abgezogen.");
+                TTRPG.Api.sendNotificationToPlayer(player, "Zahltag! Dir wurden ~r~" + sum.ToString("C2") + "~s~ abgezogen.");
             }
 
             player.setData("LastPayDayIncome", new Dictionary<string, double>(income));
