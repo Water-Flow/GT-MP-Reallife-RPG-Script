@@ -1,13 +1,6 @@
-﻿/**
- * [
- *  {position: Vector3, Blip: blipElement, marker: markerElement, cshape}
- * ]
- * 
- */
-let allMarkers = [];
+﻿let allMarkers = [];
 
-
-API.onServerEventTrigger.connect(function (eventName, args) {
+API.onServerEventTrigger.connect(function(eventName, args) {
     if (eventName === "job_bergwerk_createMarker") {
         /**
          *
@@ -37,13 +30,13 @@ API.onServerEventTrigger.connect(function (eventName, args) {
             }
         }
 
-    } else if(eventName === "job_bergwerk_destroyAllMarkers") {
+    } else if (eventName === "job_bergwerk_destroyAllMarkers") {
         for (let key in allMarkers) {
             if (allMarkers.hasOwnProperty(key)) {
                 let definition = allMarkers[key];
                 API.deleteEntity(definition.blipElement);
                 API.deleteEntity(definition.markerElement);
-            }        
+            }
         }
         allMarkers = [];
     } else if (eventName === "job_bergwerk_destroyMarker") {
@@ -54,12 +47,14 @@ API.onServerEventTrigger.connect(function (eventName, args) {
         let position = args[0];
 
         for (let key in allMarkers) {
-            let entry = allMarkers[key];
-            if (position.DistanceTo(entry.position) < 3) {
-                API.deleteEntity(allMarkers[key].blipElement);
-                API.deleteEntity(allMarkers[key].markerElement);
-                delete allMarkers[key];
-                break;
+            if (allMarkers.hasOwnProperty(key)) {
+                let entry = allMarkers[key];
+                if (position.DistanceTo(entry.position) < 3) {
+                    API.deleteEntity(allMarkers[key].blipElement);
+                    API.deleteEntity(allMarkers[key].markerElement);
+                    allMarkers.splice(key, 1);
+                    break;
+                }
             }
         }
     }
