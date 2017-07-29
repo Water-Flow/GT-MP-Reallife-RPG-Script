@@ -62,7 +62,7 @@ namespace TerraTex_RL_RPG.Lib.Admin
                 player.sendNotification("Dev-System",
                     "Saved Position: X: " + position.X + "; Y: " + position.Y + "; Z: " + position.Z);
 
-                API.createMarker(30, position, new Vector3(0,0,0), new Vector3(0,0,0), new Vector3(0,0,100), 100, 255,255,255);
+                API.createMarker(28, position, new Vector3(0,0,0), new Vector3(0,0,0), new Vector3(0,0,100), 100, 255,255,255);
             }
         }
 
