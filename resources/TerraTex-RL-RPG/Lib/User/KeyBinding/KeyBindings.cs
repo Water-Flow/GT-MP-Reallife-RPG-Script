@@ -27,7 +27,7 @@ namespace TerraTex_RL_RPG.Lib.User.KeyBinding
             {
                 if (arguments[0].Equals("ToggleEngine"))
                 {
-                    if (player.isInVehicle && player.vehicleSeat == 0)
+                    if (player.isInVehicle && player.vehicleSeat == -1)
                     {
                         VehicleFunction.ToggleEngine(player.vehicle);
                     }
