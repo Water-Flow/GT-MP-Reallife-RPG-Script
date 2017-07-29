@@ -33,6 +33,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs
                 blip.name = "Job: " + jobEntry.Value.ToString();
                 blip.color = 77;
                 blip.sprite = 385;
+                blip.shortRange = true;
 
                 jobPickups.Add(pickup);
             }
