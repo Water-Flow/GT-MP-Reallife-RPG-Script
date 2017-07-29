@@ -40,6 +40,32 @@ namespace TerraTex_RL_RPG.Lib.Admin
             }
         }
 
+        [Command("savem", Group = "dev", SensitiveInfo = false, GreedyArg = true)]
+        public void SaveAndMarkCommand(Client player, string info = "")
+        {
+            if (DevServer.CheckDevCommandAccess(player))
+            {
+                Vector3 position = player.position;
+                Directory.CreateDirectory(API.getResourceFolder() + "/Logs");
+                string path = API.getResourceFolder() + "/Logs/Position.log";
+
+                if (!File.Exists(path))
+                {
+                    string createText = "" + Environment.NewLine;
+                    File.WriteAllText(path, createText);
+                }
+
+                string appendText = position.X.ToString("R").Replace(",", ".") + ", " +
+                                    position.Y.ToString("R").Replace(",", ".") + ", " +
+                                    position.Z.ToString("R").Replace(",", ".") + " // " + info + Environment.NewLine;
+                File.AppendAllText(path, appendText);
+                player.sendNotification("Dev-System",
+                    "Saved Position: X: " + position.X + "; Y: " + position.Y + "; Z: " + position.Z);
+
+                API.createMarker(30, position, new Vector3(0,0,0), new Vector3(0,0,0), new Vector3(0,0,100), 100, 255,255,255);
+            }
+        }
+
         [Command("saveVeh", Group = "dev", SensitiveInfo = false, GreedyArg = true)]
         public void SaveVehCommand(Client player, string info = "")
         {

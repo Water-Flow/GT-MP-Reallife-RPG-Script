@@ -27,11 +27,11 @@ namespace TerraTex_RL_RPG.Lib.Threads
                     45, //Rain
                     45, //Thunder
                     45, //Light rain
-                    45, //Smoggy light rain
-                    45, //Very light Snow
-                    45, //Windy light Snow
-                    45, //Light snow
-                    45 //Unknown (No Effect)
+                    0, //changes with time - do not use
+                    0, //Very light Snow
+                    0, //Windy light Snow
+                    0, //Light snow
+                    0 //Unknown (No Effect)
                 });
 
                 int _weatherID = _loadedDie.NextValue();
@@ -47,7 +47,7 @@ namespace TerraTex_RL_RPG.Lib.Threads
                     case 6: weather = "Rain"; break;
                     case 7: weather = "Thunder"; break;
                     case 8: weather = "Light rain"; break;
-                    case 9: weather = "Smoggy light rain"; break;
+                    case 9: weather = "changes with time"; break;
                     case 10: weather = "Very light Snow"; break;
                     case 11: weather = "Windy light Snow"; break;
                     case 12: weather = "Light snow"; break;
