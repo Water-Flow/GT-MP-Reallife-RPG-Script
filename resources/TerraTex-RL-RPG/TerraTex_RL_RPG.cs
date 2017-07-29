@@ -1,4 +1,6 @@
-﻿using GrandTheftMultiplayer.Server.API;
+﻿using System.Globalization;
+using System.Threading;
+using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Constant;
 using TerraTex_RL_RPG.Lib.Data;
 using TerraTex_RL_RPG.Lib.Threads;
@@ -27,6 +29,7 @@ namespace TerraTex_RL_RPG
 
         public TTRPG()
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("de-DE");
             _api = API;
             API.onResourceStart += PrepareStartUp;
         }

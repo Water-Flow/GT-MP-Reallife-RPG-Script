@@ -147,6 +147,7 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
             player.setSyncedData("PlayTime", (int) data["PlayTime"]);
             player.setSyncedData("Skin", (string) data["Skin"]);
             player.setSyncedData("RP", (int) data["RP"]);
+            player.setSyncedData("CurrentJobId", (int) data["CurrentJobId"]);
 
             Dictionary<string, Dictionary<string, double>> payDay = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, double>>>((string) data["PayDay"]);
             player.setData("PayDayIncome", payDay.Get("Income"));

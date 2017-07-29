@@ -49,7 +49,7 @@ namespace TerraTex_RL_RPG.Lib.Threads
 
         private void StoreTableUserData(Client player)
         {
-            string[] fields = { "PlayTime", "RP", "Level", "Skin", "PayDay"};
+            string[] fields = { "PlayTime", "RP", "Level", "Skin", "PayDay", "CurrentJobId" };
             Dictionary<string, dynamic> valueReplacements = new Dictionary<string, dynamic>();
 
             Dictionary<string, Dictionary<string, double>> payDay = new Dictionary<string, Dictionary<string, double>>();

@@ -79,6 +79,7 @@
     <Compile Include="Lib\Admin\AdminChecks.cs" />
     <Compile Include="Lib\Admin\DevServer.cs" />
     <Compile Include="Lib\Admin\DevServerCommands.cs" />
+    <Compile Include="Lib\Admin\Teleports.cs" />
     <Compile Include="Lib\Data\Configs.cs" />
     <Compile Include="Lib\Data\Database.cs" />
     <Compile Include="Lib\Enviroment\Chat\BasicChatCommands.cs" />
@@ -88,6 +89,10 @@
     <Compile Include="Lib\Helper\Player.cs" />
     <Compile Include="Lib\Helper\Text.cs" />
     <Compile Include="Lib\Helper\Vehicles.cs" />
+    <Compile Include="Lib\Jobs\Bergwerk\Bergwerk.cs" />
+    <Compile Include="Lib\Jobs\Job.cs" />
+    <Compile Include="Lib\Jobs\IJob.cs" />
+    <Compile Include="Lib\Jobs\JobSystem.cs" />
     <Compile Include="Lib\Threads\CleanVehicles.cs" />
     <Compile Include="Lib\Threads\UpdatePlayerPlayTime.cs" />
     <Compile Include="Lib\Threads\UpdateWeather.cs" />
@@ -202,7 +207,8 @@
     <Content Include="Configs\database_example.xml" />
     <Content Include="Configs\server_example.xml" />
     <Content Include="Gruntfile.js" />
-    <Content Include="Lib\Hud\InfoHud.js" />
+    <Content Include="Lib\Enviroment\Hud\InfoHud.js" />
+    <Content Include="Lib\Jobs\Bergwerk\BergWerk.js" />
     <Content Include="Lib\User\KeyBinding\KeyBinds.js" />
     <Content Include="Lib\User\KeyBinding\KeyConfigurationScreen.js" />
     <Content Include="Lib\User\Management\UI\PayDayUI.js" />

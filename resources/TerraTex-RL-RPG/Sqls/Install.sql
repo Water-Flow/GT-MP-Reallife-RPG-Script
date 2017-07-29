@@ -67,3 +67,4 @@ CREATE TABLE user_configuration_storage
     KeyBindings TEXT DEFAULT '{"functionKeys":{"ShowCursor":{"key":"X","keyValue":"88"},"ToggleEngine":{"key":"M","keyValue":"77"}},"customBindings":[]}',
     CONSTRAINT user_configuration_storage_user_ID_fk FOREIGN KEY (UserId) REFERENCES user (ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
+ALTER TABLE user_data ADD CurrentJobId INT DEFAULT 0 NULL;
