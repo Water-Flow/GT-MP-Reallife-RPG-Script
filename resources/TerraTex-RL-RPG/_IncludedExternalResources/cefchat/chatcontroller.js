@@ -6,8 +6,7 @@ function getMainChat() {
 }
 
 API.onResourceStart.connect(function() {
-    var res = API.getScreenResolution();
-    mainBrowser = API.createCefBrowser(res.Width, res.Height);
+    mainBrowser = API.createCefBrowser(770, 370);
     API.waitUntilCefBrowserInit(mainBrowser);
     API.setCefBrowserPosition(mainBrowser, 0, 0);
     API.loadPageCefBrowser(mainBrowser, "_IncludedExternalResources/cefchat/chat.html");

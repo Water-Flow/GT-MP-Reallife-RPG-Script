@@ -1,67 +1,77 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF8" />
-        <script src="jquery.js"></script>
-        <script src="chat.js"></script>
-        <style type="text/css">
-            @font-face {
-                font-family: Roboto;
-                src: url(Roboto-Regular.ttf);
-            }
+<head>
+    <meta charset="UTF8"/>
+    <script src="jquery.js"></script>
+    <script src="chat.js"></script>
+    <style type="text/css">
+        @font-face {
+            font-family: Roboto;
+            src: url(Roboto-Regular.ttf);
+        }
 
-            @font-face {
-                font-family: RobotoThin;
-                src: url(Roboto-Thin.ttf);
-            }       
+        @font-face {
+            font-family: RobotoThin;
+            src: url(Roboto-Thin.ttf);
+        }
 
-            body {
-                font-family: Roboto, Arial;
-                background-color: transparent;
-                overflow-x: hidden;          
-            }
+        body {
+            font-family: Roboto, Arial;
+            background-color: transparent;
+            overflow-x: hidden;
+        }
 
-            #wrapper {
-                overflow: hidden;
-                width: 1000px;
-            }
+        #wrapper {
+            overflow: hidden;
+            width: 1000px;
+        }
 
-            #chat-body {
-                position: absolute;
-                right: -20px;
-                width: 100%;
-                height: 300px;
-                line-height: 1px;
-                overflow-y: scroll;
-                overflow-x: hidden;
-                padding-left: 5px;
-                font-size: 1.4em;
-                color: white;
-                text-shadow:
-                -1px -1px 0 #000,
-                1px -1px 0 #000,
-                -1px 1px 0 #000,
-                1px 1px 0 #000;  
-            }
+        #chat-body {
+            position: absolute;
+            right: -20px;
+            width: 100%;
+            height: 300px;
+            line-height: 1em;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            padding-left: 5px;
+            padding-right: 5px;
+            font-size: 1em;
+            color: white;
+            text-shadow:
+                       -1px -1px 0 #000,
+                       1px -1px 0 #000,
+                       -1px 1px 0 #000,
+                       1px 1px 0 #000;
+        }
 
-            #main-input {
-                position: absolute;
-                width: 700px;
-                top: 310px;
-                font-size: 1.2em;
-                display: none;
-                padding: 7.5px;
-                background-color: rgba(50,50,50,0.75);
-                border: solid 1px rgba(10,10,10,0.9);
-                color: lightgrey;
-            }
-        </style>
-    </head>
-    <body>
-    <div id="wrapper">
+        #chat-body p {
+            padding-bottom: 0;
+            padding-top: 0;
+            word-break: break-word;
+            word-wrap: break-word;
+            margin-bottom: 0.6em;
+            margin-top: 0.6em;
+        }
+
+        #main-input {
+            position: absolute;
+            width: 700px;
+            top: 310px;
+            font-size: 1.0em;
+            display: none;
+            padding: 5px;
+            background-color: rgba(50, 50, 50, 0.75);
+            border: solid 1px rgba(10, 10, 10, 0.9);
+            color: lightgrey;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
     <div id="chat-body"/>
-    </div>
-    </div>
-    <input id="main-input" autofocus onkeyup="onKeyUp(event);" />   
-    </body>
+</div>
+</div>
+<input id="main-input" autofocus onkeyup="onKeyUp(event);"/>
+</body>
 </html>
