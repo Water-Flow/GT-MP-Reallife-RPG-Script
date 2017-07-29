@@ -47,7 +47,7 @@ namespace TerraTex_RL_RPG.Lib.Admin
             {
                 Vector3 position = player.position;
 
-                API.createMarker(31, position, new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(3,3, 50), 150, 200, 200 , 200);
+                API.createMarker(28, position, new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(5,5, 100), 150, 255, 100 , 100);
 
                 Directory.CreateDirectory(API.getResourceFolder() + "/Logs");
                 string path = API.getResourceFolder() + "/Logs/Position.log";
