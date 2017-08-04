@@ -46,6 +46,27 @@ namespace TerraTex_RL_RPG.Lib.Helper
 
         public static void RespawnVehicle(Vehicle veh, bool repair)
         {
+            if (veh.health <= 0 && repair)
+            {
+                Vehicle newVeh = TTRPG.Api.createVehicle((VehicleHash) veh.model, (Vector3) veh.getSyncedData("SpawnPosition"), (Vector3) veh.getSyncedData("SpawnRotation"), veh.primaryColor, veh.secondaryColor, veh.dimension);
+
+                string[] allData = TTRPG.Api.getAllEntityData(veh);
+                string[] allSyncedData = TTRPG.Api.getAllEntitySyncedData(veh);
+
+                foreach (string key in allData)
+                {
+                    newVeh.setData(key, veh.getData(key));
+                }
+
+                foreach (string key in allSyncedData)
+                {
+                    newVeh.setSyncedData(key, veh.getSyncedData(key));
+                }
+
+                veh.delete();
+                veh = newVeh;
+            }
+
             if (repair)
             {
                 veh.repair();
