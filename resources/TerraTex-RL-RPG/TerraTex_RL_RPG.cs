@@ -18,6 +18,7 @@ namespace TerraTex_RL_RPG
         private static UpdatePlayerPlayTime _updatePlayerPlayTimeThread;
         private static UpdateWeather _dynamicWeatherThread;
         private static CleanVehicles _cleanVehiclesThread;
+        private static ConsoleReader _consoleReaderThread;
 
         public static Database Mysql => _mysql;
 
@@ -28,10 +29,18 @@ namespace TerraTex_RL_RPG
         public static StorePlayerData StorePlayerDataThread => _storePlayerDataThread;
         public static UpdatePlayerPlayTime UpdatePlayerPlayTimeThread => _updatePlayerPlayTimeThread;
         public static CleanVehicles CleanVehiclesThread => _cleanVehiclesThread;
+        public static ConsoleReader ConsoleReaderThread => _consoleReaderThread;
+
+        public delegate void OnTerraTexStartUpFinishedEventHandler();
+
+        // Declare the event.
+        public static event OnTerraTexStartUpFinishedEventHandler OnTerraTexStartUpFinishedEvent;
+
 
         public TTRPG()
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo("de-DE");
+
             _api = API;
             API.onResourceStart += PrepareStartUp;
         }
@@ -67,11 +76,17 @@ namespace TerraTex_RL_RPG
             _cleanVehiclesThread = new CleanVehicles();
             _api.startThread(_cleanVehiclesThread.DoWork);
 
+            _consoleReaderThread = new ConsoleReader();
+            _api.startThread(_consoleReaderThread.DoWork);
+
             _api.exported.scoreboard.addScoreboardColumn("Level", "Level", 120);
             _api.exported.scoreboard.addScoreboardColumn("PlayTime", "PlayTime", 120);
             _api.exported.scoreboard.addScoreboardColumn("Nachname", "Nachname", 175);
             _api.exported.scoreboard.addScoreboardColumn("Vorname", "Vorname", 175);
             _api.exported.scoreboard.addScoreboardColumn("ID", "ID", 40);
+
+
+            OnTerraTexStartUpFinishedEvent?.Invoke();
         }
     }
 }

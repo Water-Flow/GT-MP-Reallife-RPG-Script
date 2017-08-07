@@ -94,6 +94,7 @@
     <Compile Include="Lib\Jobs\IJob.cs" />
     <Compile Include="Lib\Jobs\JobSystem.cs" />
     <Compile Include="Lib\Threads\CleanVehicles.cs" />
+    <Compile Include="Lib\Threads\ConsoleReader.cs" />
     <Compile Include="Lib\Threads\UpdatePlayerPlayTime.cs" />
     <Compile Include="Lib\Threads\UpdateWeather.cs" />
     <Compile Include="Lib\User\KeyBinding\KeyBindings.cs" />
@@ -239,11 +240,6 @@
     <Content Include="_IncludedExternalResources\cefchat\meta.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.2.0.2536\analyzers\Google.Protobuf.dll" />
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.2.0.2536\analyzers\SonarAnalyzer.CSharp.dll" />
-    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.2.0.2536\analyzers\SonarAnalyzer.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="types-gt-mp\Declarations.d.ts" />
     <TypeScriptCompile Include="types-gt-mp\GrandTheftMultiplayer.Client.GUI.d.ts" />
     <TypeScriptCompile Include="types-gt-mp\GrandTheftMultiplayer.Client.Javascript.d.ts" />
@@ -271,6 +267,11 @@
     <TypeScriptCompile Include="types-gt-mp\System.d.ts" />
     <TypeScriptCompile Include="types-gt-mp\System.Drawing.d.ts" />
     <TypeScriptCompile Include="types-gt-mp\System.Windows.Forms.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.3.0.2862\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.3.0.2862\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.3.0.2862\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
