@@ -85,7 +85,7 @@ namespace TerraTex_RL_RPG
             _api.exported.scoreboard.addScoreboardColumn("Vorname", "Vorname", 175);
             _api.exported.scoreboard.addScoreboardColumn("ID", "ID", 40);
 
-
+            _api.setServerPassword(null);
             OnTerraTexStartUpFinishedEvent?.Invoke();
         }
     }
