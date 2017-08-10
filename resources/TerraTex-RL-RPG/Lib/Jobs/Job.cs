@@ -12,7 +12,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs
         private readonly string _name;
         private readonly int _id;
         private readonly IJob _instance;
-        public static Dictionary<int, Job> JobTable = new Dictionary<int, Job>();
+        public static readonly Dictionary<int, Job> JobTable = new Dictionary<int, Job>();
 
         // list of jobs
         public static readonly Job Bergwerk = new Job(1, "Berkwerksarbeiter", new Bergwerk.Bergwerk());
@@ -43,9 +43,9 @@ namespace TerraTex_RL_RPG.Lib.Jobs
             return _id;
         }
 
-        public bool Equals(Job obj)
+        public bool Equals(Job other)
         {
-            return obj.GetId().Equals(_id);
+            return other != null && other.GetId().Equals(_id);
         }
     }
 }
