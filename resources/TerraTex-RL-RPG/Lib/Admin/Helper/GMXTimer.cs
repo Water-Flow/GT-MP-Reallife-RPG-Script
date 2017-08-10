@@ -13,7 +13,7 @@ namespace TerraTex_RL_RPG.Lib.Admin.Helper
     class GMXTimer
     {
         private int _time;
-        private string _reason;
+        private readonly string _reason;
         private Timer _timer;
 
         public delegate void OnTerraTexStopEventHandler();
