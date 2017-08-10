@@ -1,7 +1,7 @@
 # GTMP-Real--Roleplay-Script
 GTMP Real-/Roleplay Script des TerraTex Servers   
    
-##Build Status:##
+## Build Status:
 - Master: [![Build Status: master](http://build.terratex.eu:8080/buildStatus/icon?job=TerraTex-Community/GT-MP-Reallife-RPG-Script/master)](http://build.terratex.eu:8080/job/TerraTex-Community/GT-MP-Reallife-RPG-Script/master)    
 - Develop: [![Build Status: develop](http://build.terratex.eu:8080/buildStatus/icon?job=TerraTex-Community/GT-MP-Reallife-RPG-Script/develop)](http://build.terratex.eu:8080/job/TerraTex-Community/GT-MP-Reallife-RPG-Script/develop)    
    
