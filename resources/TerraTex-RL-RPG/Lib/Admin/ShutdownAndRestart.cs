@@ -40,6 +40,7 @@ namespace TerraTex_RL_RPG.Lib.Admin
         {
             
             System.Environment.Exit(1);
+            // Replace with API.stopServer();
         }
 
         public void InitShutdown(string admin, int timeInMinutes, string reason)
