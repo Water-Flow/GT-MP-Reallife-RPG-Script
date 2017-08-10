@@ -10,7 +10,7 @@ using Object = System.Object;
 
 namespace TerraTex_RL_RPG.Lib.Admin.Helper
 {
-    class GMXTimer
+    class GmxTimer
     {
         private int _time;
         private readonly string _reason;
@@ -21,7 +21,7 @@ namespace TerraTex_RL_RPG.Lib.Admin.Helper
         // Declare the event.
         public static event OnTerraTexStopEventHandler OnTerraTexStopEvent;
 
-        public GMXTimer(int minutes, string reason)
+        public GmxTimer(int minutes, string reason)
         {
             _time = minutes;
             _reason = reason;

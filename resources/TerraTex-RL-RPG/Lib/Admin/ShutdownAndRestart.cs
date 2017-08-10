@@ -13,7 +13,7 @@ namespace TerraTex_RL_RPG.Lib.Admin
 {
     class ShutdownAndRestart : Script
     {
-        private GMXTimer _gmxTimer;
+        private GmxTimer _gmxTimer;
 
         public ShutdownAndRestart()
         {
@@ -57,7 +57,7 @@ namespace TerraTex_RL_RPG.Lib.Admin
                     _gmxTimer = null;
                 }
 
-                _gmxTimer = new GMXTimer(timeInMinutes, reason);
+                _gmxTimer = new GmxTimer(timeInMinutes, reason);
                 _gmxTimer.Start();
             }
         }

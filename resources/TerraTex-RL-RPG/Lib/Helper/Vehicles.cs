@@ -76,10 +76,10 @@ namespace TerraTex_RL_RPG.Lib.Helper
             veh.rotation = (Vector3) veh.getSyncedData("SpawnRotation");
         }
 
-        public static double GetDistanceToSpawnLocation(Vehicle veh)
+        public static double GetDistanceToSpawnLocation(Entity veh)
         {
             Vector3 spawn = (Vector3) veh.getSyncedData("SpawnPosition");
-
+            
             return spawn.DistanceTo(veh.position);
         }
     }

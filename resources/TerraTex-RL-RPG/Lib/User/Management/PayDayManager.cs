@@ -57,9 +57,9 @@ namespace TerraTex_RL_RPG.Lib.User.Management
                 return _tax;
             }
 
-            public bool Equals(Category obj)
+            public bool Equals(Category other)
             {
-                return obj.ToIdentifierString().Equals(_identifier);
+                return other != null && other.ToIdentifierString().Equals(_identifier);
             }
         }
 

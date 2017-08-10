@@ -30,6 +30,7 @@ namespace TerraTex_RL_RPG
         public static UpdatePlayerPlayTime UpdatePlayerPlayTimeThread => _updatePlayerPlayTimeThread;
         public static CleanVehicles CleanVehiclesThread => _cleanVehiclesThread;
         public static ConsoleReader ConsoleReaderThread => _consoleReaderThread;
+        public static UpdateWeather DynamicWeatherThread => _dynamicWeatherThread;
 
         public delegate void OnTerraTexStartUpFinishedEventHandler();
 

@@ -7,12 +7,12 @@ using GrandTheftMultiplayer.Shared;
 
 namespace TerraTex_RL_RPG.Lib.Jobs
 {
-    class Job
+    class Job : IEquatable<Job>
     {
         private readonly string _name;
         private readonly int _id;
         private readonly IJob _instance;
-        public static readonly Dictionary<int, Job> JobTable = new Dictionary<int, Job>();
+        public static Dictionary<int, Job> JobTable = new Dictionary<int, Job>();
 
         // list of jobs
         public static readonly Job Bergwerk = new Job(1, "Berkwerksarbeiter", new Bergwerk.Bergwerk());

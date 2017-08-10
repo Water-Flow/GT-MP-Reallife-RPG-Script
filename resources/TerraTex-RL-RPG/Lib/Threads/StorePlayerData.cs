@@ -82,7 +82,7 @@ namespace TerraTex_RL_RPG.Lib.Threads
             BuildAndExecuteTableQuery(player, "user_inventory", fields, valueReplacements);
         }
 
-        private void BuildAndExecuteTableQuery(Client player, string table, string[] fields, Dictionary<string, dynamic> valueReplacements)
+        private void BuildAndExecuteTableQuery(Client player, string table, string[] fields, IDictionary<string, dynamic> valueReplacements)
         {
             MySqlCommand updateUserCommand = TTRPG.Mysql.Conn.CreateCommand();
 
