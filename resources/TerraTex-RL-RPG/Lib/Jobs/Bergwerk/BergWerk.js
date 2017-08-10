@@ -12,7 +12,7 @@ API.onServerEventTrigger.connect(function(eventName, args) {
 
 /**
  * Creates all Markers and Blips
- * 
+ *
  * @param {Vector3[]} listOfMarkers
  */
 function createBergwerksMarker(listOfMarkers) {
@@ -55,7 +55,7 @@ function deleteAllBergwerksMarker() {
 
 /**
  * Deletes Marker and Blip
- * 
+ *
  * @param {Vector3} position
  */
 function destroyBergwerkMarker(position) {
