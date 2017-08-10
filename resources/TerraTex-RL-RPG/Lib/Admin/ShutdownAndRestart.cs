@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Server.Managers;
+using TerraTex_RL_RPG.Lib.Admin.Helper;
 using TerraTex_RL_RPG.Lib.Threads;
 
 namespace TerraTex_RL_RPG.Lib.Admin
 {
     class ShutdownAndRestart : Script
     {
+        private GMXTimer _gmxTimer;
+
         public ShutdownAndRestart()
         {
             API.onResourceStop += OnResourceStopHandler;
@@ -20,7 +23,7 @@ namespace TerraTex_RL_RPG.Lib.Admin
 
         private void OnConsoleMessage(string cmd, string[] infos)
         {
-            if (cmd.Equals("shutdown"))
+            if (cmd.Equals("gmx") || cmd.Equals("shutdown"))
             {
                 int timeInMinutes = Int32.Parse(infos.Length > 0 ? infos[0] : "0");
                 string reason = "UNKNOWN";
@@ -35,8 +38,8 @@ namespace TerraTex_RL_RPG.Lib.Admin
 
         private void OnResourceStopHandler()
         {
-            API.consoleOutput("shutdown init");
-            //@todo: create stopfile
+            
+            System.Environment.Exit(1);
         }
 
         public void InitShutdown(string admin, int timeInMinutes, string reason)
@@ -47,11 +50,18 @@ namespace TerraTex_RL_RPG.Lib.Admin
             }
             else
             {
-                //@todo: timer
+                if (_gmxTimer != null)
+                {
+                    _gmxTimer.Stop();
+                    _gmxTimer = null;
+                }
+
+                _gmxTimer = new GMXTimer(timeInMinutes, reason);
+                _gmxTimer.Start();
             }
         }
 
-        [Command("shutdown", Group = "admin", SensitiveInfo = false, GreedyArg = true)]
+        [Command("gmx", Group = "admin", SensitiveInfo = false, GreedyArg = true)]
         public void SaveAndMarkCommand(Client player, int timeInMinutes, string info = "")
         {
             if (AdminChecks.CheckAdminLvl(player, 4))
