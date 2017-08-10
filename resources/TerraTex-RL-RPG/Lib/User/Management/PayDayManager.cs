@@ -25,7 +25,7 @@ namespace TerraTex_RL_RPG.Lib.User.Management
             player.triggerEvent("openPayDayUI", JObject.FromObject(payDay).ToString());
         }
 
-        public class Category
+        public class Category : IEquatable<Category>
         {
             private readonly string _name;
             private readonly string _identifier;
