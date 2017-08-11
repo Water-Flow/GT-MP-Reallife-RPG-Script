@@ -15,6 +15,7 @@
     <script src="Lib/User/StartUp/PlayerConnection_Login_Client.js" type="client" lang="javascript" />
     <script src="Lib/User/Management/UI/PayDayUI.js" type="client" lang="javascript" />
     <script src="Lib/Jobs/Bergwerk/Bergwerk.js" type="client" lang="javascript" />
+    <script src="Lib/Jobs/Fischer/Fischer.js" type="client" lang="javascript" />
     <script src="Lib/Enviroment/Hud/InfoHud.js" type="client" lang="javascript" />
     <script src="Lib/Enviroment/Clicksystem.js" type="client" lang="javascript" />
   
@@ -32,6 +33,12 @@
       <file src="UI/Register_Login_Profile/GetFingerprint.html" />
       <file src="UI/PayDay-Calculation.html" />
       <file src="UI/KeyConfiguration.html" />
+
+  <!-- Flappy Bird -->
+  <file src="_IncludedExternalResources/clumsy-bird-master/js/melonJS-min.js" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/build/clumsy-min.js" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/index.html" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/index.css" />
 
 
     <include resource="scoreboard" />

@@ -92,6 +92,7 @@
     <Compile Include="Lib\Helper\Text.cs" />
     <Compile Include="Lib\Helper\Vehicles.cs" />
     <Compile Include="Lib\Jobs\Bergwerk\Bergwerk.cs" />
+    <Compile Include="Lib\Jobs\Fischer\Fischer.cs" />
     <Compile Include="Lib\Jobs\Job.cs" />
     <Compile Include="Lib\Jobs\IJob.cs" />
     <Compile Include="Lib\Jobs\JobSystem.cs" />
@@ -205,6 +206,23 @@
     <None Include="packages.config" />
     <None Include="_IncludedExternalResources\cefchat\Roboto-Regular.ttf" />
     <None Include="_IncludedExternalResources\cefchat\Roboto-Thin.ttf" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\.jshintrc" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\app.json" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\CUSTOMIZING.md" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\data\bgm\.placeholder" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\data\bgm\theme.ogg" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\data\css\gamefont.eot" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\data\css\gamefont.ttf" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\data\css\gamefont.woff" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\data\img\.placeholder" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\data\sfx\.placeholder" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\data\sfx\hit.ogg" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\data\sfx\lose.ogg" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\data\sfx\wing.ogg" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\LICENSE.md" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\package.json" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\Procfile" />
+    <None Include="_IncludedExternalResources\clumsy-bird-master\README.md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configs\database_example.xml" />
@@ -213,6 +231,7 @@
     <Content Include="Lib\Enviroment\Clicksystem.js" />
     <Content Include="Lib\Enviroment\Hud\InfoHud.js" />
     <Content Include="Lib\Jobs\Bergwerk\BergWerk.js" />
+    <Content Include="Lib\Jobs\Fischer\Fischer.js" />
     <Content Include="Lib\User\KeyBinding\KeyBinds.js" />
     <Content Include="Lib\User\KeyBinding\KeyConfigurationScreen.js" />
     <Content Include="Lib\User\Management\UI\PayDayUI.js" />
@@ -240,6 +259,40 @@
     <Content Include="_IncludedExternalResources\cefchat\chatcontroller.js" />
     <Content Include="_IncludedExternalResources\cefchat\jquery.js" />
     <Content Include="_IncludedExternalResources\cefchat\meta.xml" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\.gitignore" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\build\clumsy-min.js" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\bgm\theme.mp3" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\css\gamefont.svg" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\bg.png" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\clumsy.png" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\favicon.ico" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\gameover.png" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\gameoverbg.png" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\getready.png" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\ground.png" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\hit.png" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\logo.png" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\new.png" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\pipe.png" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\share.png" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\touch-icon-iphone-retina.png" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\touch-icon-iphone.png" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\img\tweet.png" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\sfx\hit.mp3" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\sfx\lose.mp3" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\sfx\wing.mp3" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\data\sfx\wing.wav" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\Gruntfile.js" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\humans.txt" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\index.css" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\index.html" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\js\entities\entities.js" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\js\entities\HUD.js" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\js\game.js" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\js\melonJS-min.js" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\js\screens\gameover.js" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\js\screens\play.js" />
+    <Content Include="_IncludedExternalResources\clumsy-bird-master\js\screens\title.js" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="types-gt-mp\Declarations.d.ts" />
@@ -275,6 +328,7 @@
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.3.0.2862\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.3.0.2862\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>npm install &amp;&amp; npm run-script build</PreBuildEvent>

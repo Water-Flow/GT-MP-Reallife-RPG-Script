@@ -16,6 +16,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs
 
         // list of jobs
         public static readonly Job Bergwerk = new Job(1, "Berkwerksarbeiter", new Bergwerk.Bergwerk());
+        public static readonly Job Fischer = new Job(2, "Fischer", new Fischer.Fischer());
 
 
         // job class
