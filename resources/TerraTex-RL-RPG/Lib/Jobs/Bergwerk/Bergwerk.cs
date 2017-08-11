@@ -196,7 +196,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Bergwerk
             }
         }
 
-        public void OnPlayerExitVehicleHandler(Client player, NetHandle vehicle)
+        private void OnPlayerExitVehicleHandler(Client player, NetHandle vehicle)
         {
             Vehicle veh = TTRPG.Api.getEntityFromHandle<Vehicle>(vehicle);
             if (veh.getData("job_bergwerk_bulldozer") != null && (bool) veh.getData("job_bergwerk_bulldozer"))
