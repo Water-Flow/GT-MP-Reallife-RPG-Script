@@ -12,36 +12,38 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Fischer
     {
         public void StartJob(Client player)
         {
+            // öffne gui im client!
             throw new NotImplementedException();
         }
 
         public Vector3 GetJobStartPoint()
         {
+            // Fischersteg? Wo ist einer?
             throw new NotImplementedException();
         }
 
         public void SendJobHelp(Client player)
         {
-            throw new NotImplementedException();
+            player.sendChatMessage(
+                "~b~Fischkäufer Karl sagt: Benutz einfach deine Angel mit /startjob und bring mir große Fische. Je größer der Fisch um so mehr lohnt es sich!");
         }
 
-        public string GetAdditionalPickUpJobInfo()
-        {
-            throw new NotImplementedException();
-        }
+        public string GetAdditionalPickUpJobInfo() => "";
 
         public bool HasPlayerAllRequirements(Client player)
         {
-            throw new NotImplementedException();
+            //@todo: See #45 - https://github.com/TerraTex-Community/GT-MP-Reallife-RPG-Script/issues/45
+            return true;
         }
 
         public void SendMissingRequirementsToPlayer(Client player)
         {
-            throw new NotImplementedException();
+            //@todo: See #45 - https://github.com/TerraTex-Community/GT-MP-Reallife-RPG-Script/issues/45
         }
 
         public bool CanPlayerQuitJob(Client player)
         {
+            // only if gui is closed!
             throw new NotImplementedException();
         }
     }
