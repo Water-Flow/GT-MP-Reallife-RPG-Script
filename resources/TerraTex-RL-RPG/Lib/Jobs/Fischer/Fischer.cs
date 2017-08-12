@@ -19,7 +19,8 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Fischer
         public Vector3 GetJobStartPoint()
         {
             // Fischersteg? Wo ist einer?
-            throw new NotImplementedException();
+            return new Vector3(1000,1000,1000);
+            //throw new NotImplementedException();
         }
 
         public void SendJobHelp(Client player)
