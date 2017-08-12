@@ -7,11 +7,16 @@
  * @param {function} func - function to call on event trigger
  */
 function registerHandler(eventName, func) {
+    eventName = eventName.toLowerCase();
     if (!eventHandlers[eventName]) {
         eventHandlers[eventName] = [];
     }
 
-    eventHandlers[eventName].push(func);
+    if (typeof func === "function") {
+        eventHandlers[eventName].push(func);
+    } else {
+        throw new Error("registered Eventhandler without function");
+    }
 }
 
 /**
@@ -21,9 +26,10 @@ function registerHandler(eventName, func) {
  * @param {any} args - Arguments
  */
 function triggerEvent(eventName, ...args) {
+    eventName = eventName.toLowerCase();
     if (eventHandlers[eventName]) {
         for (const func of eventHandlers[eventName]) {
-            eventHandlers[eventName].apply(null, args);
+            func.apply(null, args);
         }
     }
 }

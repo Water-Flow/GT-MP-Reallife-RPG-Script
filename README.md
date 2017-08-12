@@ -37,5 +37,4 @@ Sie sind integriert worden um einfacher mit dem Script zu interagieren bzw. modi
 - cefchat  
 
 # Additional Scripting Docs
-- [resources/TerraTex-RL-RPG/_Docs/CustomEvents.md](Custom Events)
 - <a href="resources/TerraTex-RL-RPG/_Docs/CustomEvents.md">Custom Events</a>
