@@ -35,6 +35,7 @@ Hauptverantwortlicher ist Geramy92 (Colin Weber)
 Die folgenden Resourcen sind Integriert worden im Ordner _IncludedExternalResources. Sie sind nicht Bestandteil der Lizenz des TerraTex Scriptes.
 Sie sind integriert worden um einfacher mit dem Script zu interagieren bzw. modifiziert zu werden.
 - cefchat  
+- https://github.com/ellisonleao/clumsy-bird
 
 # Additional Scripting Docs
 - <a href="resources/TerraTex-RL-RPG/_Docs/CustomEvents.md">Custom Events</a>
