@@ -2,7 +2,7 @@
 
 /**
  * Register a function that is called on an event trigger.
- * 
+ *
  * @param {string} eventName - Name of Event
  * @param {function} func - function to call on event trigger
  */
@@ -21,7 +21,7 @@ function registerHandler(eventName, func) {
 
 /**
  * Triggers registered Eventhandlers of event
- * 
+ *
  * @param {string} eventName - Name of Event
  * @param {any} args - Arguments
  */
