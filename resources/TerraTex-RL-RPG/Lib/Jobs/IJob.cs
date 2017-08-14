@@ -15,8 +15,15 @@ namespace TerraTex_RL_RPG.Lib.Jobs
         /// Pickup Position
         /// </summary>
         /// <returns></returns>
-        Vector3 GetJobStartPoint();
+        Vector3 GetJobAcceptionPoint();
         void SendJobHelp(Client player);
+
+        /// <summary>
+        ///     Checks upfront if startjob can be executed
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        bool CanPlayerStartJob(Client player);
 
         /// <summary>
         /// Additional Informations about Job on Pickup

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Server.Managers;
@@ -25,12 +19,12 @@ namespace TerraTex_RL_RPG.Lib.Jobs
             foreach (KeyValuePair<int, Job> jobEntry in allJobs)
             {
                 Pickup pickup = API.createPickup(PickupHash.MoneySecurityCase,
-                    jobEntry.Value.GetInstance().GetJobStartPoint(), new Vector3(0, 0, 0), 0, 1, 0);
+                    jobEntry.Value.GetInstance().GetJobAcceptionPoint(), new Vector3(0, 0, 0), 0, 1);
                 pickup.setData("ConnectedJob", jobEntry.Value);
                 pickup.setData("IsJobPickup", true);
 
-                Blip blip = API.createBlip(jobEntry.Value.GetInstance().GetJobStartPoint());
-                blip.name = "Job: " + jobEntry.Value.ToString();
+                Blip blip = API.createBlip(jobEntry.Value.GetInstance().GetJobAcceptionPoint());
+                blip.name = "Job: " + jobEntry.Value;
                 blip.color = 77;
                 blip.sprite = 385;
                 blip.shortRange = true;
@@ -52,7 +46,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs
                 Job connectedJob = (Job) pickup.getData("ConnectedJob");
                 if (player.getSyncedData("CurrentJobId") == connectedJob.GetId())
                 {
-                    player.sendNotification("Job: " + connectedJob.ToString(),
+                    player.sendNotification("Job: " + connectedJob,
                         "Du kannst hier deinen Job fortsetzen. Nutze einfach /startjob oder nutze /jobhelp um eine Hilfe zu erhalten. ~n~Kündigen kannst du mit /quitjob",
                         false);
                 }
@@ -60,7 +54,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs
                 {
                     if (player.getSyncedData("CurrentJobId") != 0)
                     {
-                        player.sendNotification("Job: " + connectedJob.ToString(),
+                        player.sendNotification("Job: " + connectedJob,
                             "Du hast bereits einen anderen Job, um diesen zu beginnen zu können, kündige erst bei deinem alten Job!");
                     }
                     else
@@ -71,20 +65,20 @@ namespace TerraTex_RL_RPG.Lib.Jobs
                             additional = "~n~" + additional;
                         }
 
-                        player.sendNotification("Job: " + connectedJob.ToString(),
+                        player.sendNotification("Job: " + connectedJob,
                             "Du kannst den annehmen mit /getjob." + additional, false);
                     }
                 }
             }
         }
-
+        
         private Job GetJobAtPlayerPosition(Client player)
         {
             Dictionary<int, Job> allJobs = Job.JobTable;
 
             foreach (KeyValuePair<int, Job> jobEntry in allJobs)
             {
-                if (jobEntry.Value.GetInstance().GetJobStartPoint().DistanceTo(player.position) < 5)
+                if (jobEntry.Value.GetInstance().GetJobAcceptionPoint().DistanceTo(player.position) < 5)
                 {
                     return jobEntry.Value;
                 }
@@ -112,7 +106,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs
                         else
                         {
                             player.setSyncedData("CurrentJobId", currentJobPosition.GetId());
-                            player.sendNotification("~b~Job " + currentJobPosition.ToString(),
+                            player.sendNotification("~b~Job " + currentJobPosition,
                                 "~b~Willkommen im Dienst! Nutze einfach /startjob oder nutze /jobhelp um eine Hilfe zu erhalten.");
                         }
                     }
@@ -127,7 +121,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs
                 {
                     Job currentJob = Job.JobTable.Get((int) player.getSyncedData("CurrentJobId"));
                     player.sendNotification("~r~Job Error",
-                        "~r~Du hast bereits den Job " + currentJob.ToString() +
+                        "~r~Du hast bereits den Job " + currentJob +
                         ". Kündige bei deinem aktuellen Arbeitgeber, dann kannst du wiederkommen!");
                 }
             }
@@ -157,7 +151,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs
                         else
                         {
                             player.setSyncedData("CurrentJobId", 0);
-                            player.sendNotification("~b~Job " + currentJobPosition.ToString(),
+                            player.sendNotification("~b~Job " + currentJobPosition,
                                 "~b~Schade, dass du nicht mehr für uns arbeiten möchtest...");
                         }
                     }
@@ -185,30 +179,30 @@ namespace TerraTex_RL_RPG.Lib.Jobs
         [Command("startjob", Group = "job", SensitiveInfo = false)]
         public void StartJobCommand(Client player)
         {
-            Job currentJobPosition = GetJobAtPlayerPosition(player);
-
-            if (currentJobPosition != null)
+            int jobId = (int)player.getSyncedData("CurrentJobId");
+            if (jobId > 0)
             {
-                if ((int) player.getSyncedData("CurrentJobId") == currentJobPosition.GetId())
+                Job job = Job.JobTable.Get(jobId);
+                if (job.GetInstance().CanPlayerStartJob(player))
                 {
-                    if (currentJobPosition.GetInstance().CanPlayerQuitJob(player))
+                    if (job.GetInstance().HasPlayerAllRequirements(player))
                     {
-                        currentJobPosition.GetInstance().StartJob(player);
+
+                        job.GetInstance().StartJob(player);
                     }
-                }
-                else
-                {
-                    player.sendNotification("~r~Job Error",
-                        "~r~Du bist bei dem falschen Arbeitgeber. Du kannst den Job nicht von hier aus starten!");
+                    else
+                    {
+                        player.sendChatMessage(
+                            "~r~Du erfüllst nicht alle Vorraussetzungen für den Job. Folgende Vorrausetzungen musst du erüllen: ");
+                        job.GetInstance().SendMissingRequirementsToPlayer(player);
+                    }
                 }
             }
             else
             {
-                if ((int) player.getSyncedData("CurrentJobId") > 0)
-                {
-                    player.sendNotification("~r~Job Error",
-                        "~r~Du bist nicht bei deinem aktuellen Arbeitgeber. Du kannst den Job nicht von hier aus starten!");
-                }
+                player.sendNotification("~r~Job Error",
+                    "~r~Du hast keine Arbeit, melde dich bei einem Arbeitgeber an!");
+
             }
         }
 
@@ -219,7 +213,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs
             {
                 Job job = Job.JobTable.Get((int) player.getSyncedData("CurrentJobId"));
 
-                player.sendChatMessage("~b~Job Hilfe für den Job " + job.ToString() + ": ");
+                player.sendChatMessage("~b~Job Hilfe für den Job " + job + ": ");
                 job.GetInstance().SendJobHelp(player);
             }
         }

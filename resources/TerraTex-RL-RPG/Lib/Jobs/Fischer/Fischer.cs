@@ -16,17 +16,21 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Fischer
             throw new NotImplementedException();
         }
 
-        public Vector3 GetJobStartPoint()
+        public Vector3 GetJobAcceptionPoint()
         {
-            // Fischersteg? Wo ist einer?
-            return new Vector3(1000,1000,1000);
-            //throw new NotImplementedException();
+            // @todo: change to correct point 
+            return new Vector3(0,0,0);
         }
 
         public void SendJobHelp(Client player)
         {
             player.sendChatMessage(
                 "~b~Fischkäufer Karl sagt: Benutz einfach deine Angel mit /startjob und bring mir große Fische. Je größer der Fisch um so mehr lohnt es sich!");
+        }
+
+        public bool CanPlayerStartJob(Client player)
+        {
+            throw new NotImplementedException();
         }
 
         public string GetAdditionalPickUpJobInfo() => "";
