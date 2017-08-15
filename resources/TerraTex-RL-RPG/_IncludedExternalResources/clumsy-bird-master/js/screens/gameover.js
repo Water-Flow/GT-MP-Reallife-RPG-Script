@@ -18,7 +18,7 @@ game.GameOverScreen = me.ScreenObject.extend({
             game.data.newHiScore = true;
         }
         me.input.bindKey(me.input.KEY.ENTER, "enter", true);
-        me.input.bindKey(me.input.KEY.SPACE, "enter", false)
+        me.input.bindKey(me.input.KEY.SPACE, "enter", false);
         me.input.bindPointer(me.input.pointer.LEFT, me.input.KEY.ENTER);
 
         this.handler = me.event.subscribe(me.event.KEYDOWN,
@@ -67,9 +67,9 @@ game.GameOverScreen = me.ScreenObject.extend({
                     [0, 0, me.game.viewport.width/2, me.game.viewport.height/2]
                 );
                 this.font = new me.Font('gamefont', 40, 'black', 'left');
-                this.steps = 'Steps: ' + game.data.steps.toString();
-                this.topSteps= 'Higher Step: ' + me.save.topSteps.toString();
-                alert("send to resource: " + this.steps);
+                this.steps = 'Fischgewicht: ' + game.data.steps.toString() + ' kg';
+                this.topSteps= 'Größtes Gewicht (diese Sitzung): ' + me.save.topSteps.toString() + ' kg';
+               // alert("send to resource: " + this.steps);
             },
 
             draw: function (renderer) {

@@ -6,7 +6,7 @@ module.exports = function(grunt) {
         'js/entities/HUD.js',
         'js/screens/title.js',
         'js/screens/play.js',
-        'js/screens/gameover.js',
+        'js/screens/gameover.js'
     ];
 
     // Project configuration.
