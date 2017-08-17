@@ -66,10 +66,21 @@ game.GameOverScreen = me.ScreenObject.extend({
                 this._super(me.Renderable, 'init',
                     [0, 0, me.game.viewport.width/2, me.game.viewport.height/2]
                 );
-                this.font = new me.Font('gamefont', 40, 'black', 'left');
-                this.steps = 'Fischgewicht: ' + game.data.steps.toString() + ' kg';
-                this.topSteps= 'Größtes Gewicht (diese Sitzung): ' + me.save.topSteps.toString() + ' kg';
-               // alert("send to resource: " + this.steps);
+
+                var money = Math.pow(game.data.steps, 1.25) * 10;
+                this.font = new me.Font('gamefont', 30, 'black', 'left');
+                this.steps = 'Fischmenge: ' + game.data.steps.toString() + ' kg';
+
+                var lastMoneyString = money.toFixed(2).replace(/\./g, ",").replace(/./g,
+                    function (c, i, a) {
+                        return i && c !== "," && ((a.length - i) % 3 === 0) ? '.' + c : c;
+                    });
+                lastMoneyString += " €";
+                this.topSteps = 'Bezahlung: ' + lastMoneyString;
+
+                if (resourceCall) {
+                    resourceCall("payFishingMoney", money);
+                }
             },
 
             draw: function (renderer) {
