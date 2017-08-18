@@ -79,7 +79,7 @@ game.GameOverScreen = me.ScreenObject.extend({
                 this.topSteps = 'Bezahlung: ' + lastMoneyString;
 
                 if (resourceCall) {
-                    resourceCall("payFishingMoney", money);
+                    resourceCall("payFishingMoney", money, game.data.steps);
                 }
             },
 
