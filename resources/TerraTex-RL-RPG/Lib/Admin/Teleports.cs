@@ -13,7 +13,7 @@ namespace TerraTex_RL_RPG.Lib.Admin
         {
             if (AdminChecks.CheckAdminLvl(player, 1))
             {
-                player.position = Job.JobTable.Get(jobId).GetInstance().GetJobStartPoint();
+                player.position = Job.JobTable.Get(jobId).GetInstance().GetJobAcceptionPoint();
             }
         }
     }
