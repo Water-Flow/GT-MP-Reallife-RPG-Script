@@ -12,13 +12,23 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Fischer
     class Fischer : IJob
     {
         private bool _isUiOpen = false;
-
-        //@todo: fill with fishing points
+        
         private readonly Vector3[] _fishingPositions = new Vector3[]
         {
-            new Vector3(0,0,0)
+            new Vector3(-1803.04932, -1229.82117, 1.59479892),
+            new Vector3(32.12362, 856.7382, 197.73259),
+            new Vector3(-193.046249, 790.5808, 198.107437),
+            new Vector3(-1605.67407, 5258.80469, 2.08688378),
+            new Vector3(-268.7067, 6659.041, 1.28240061),
+            new Vector3(3854.83545, 4459.558, 1.84926391),
+            new Vector3(3863.94385, 4463.63037, 2.72120953),
+            new Vector3(1299.32825, 4218.44727, 33.90869),
+            new Vector3(1338.77087, 4225.44141, 33.91553),
+            new Vector3(1333.87219, 4269.881, 31.5031834),
+            new Vector3(1733.2522, 3985.55835, 31.9831886),
+            new Vector3(-879.046448, -1455.44031, 1.59539115)
         };
-
+        
         public Fischer()
         {
             TTRPG.Api.onClientEventTrigger += onClientEventHandler;
@@ -53,14 +63,17 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Fischer
 
         public Vector3 GetJobAcceptionPoint()
         {
-            // @todo: change to correct point 
-            return new Vector3(0,0,0);
+            return new Vector3(26.3082237, 863.6872, 197.739182);
         }
 
         public void SendJobHelp(Client player)
         {
             player.sendChatMessage(
                 "~b~Fischkäufer Karl sagt: Benutz einfach deine Angel mit /startjob und bring mir große Fische. Je größer der Fisch um so mehr lohnt es sich!");
+            player.sendChatMessage(
+                "~b~Fischkäufer Karl sagt: Ich habe dir alle Stege, an dennen du Angeln kannst, auf deiner Karte markiert (rote J?) !");
+            player.sendChatMessage(
+                "~b~Fischkäufer Karl sagt: Ob du in einen Bereich bist, an dem du Angeln kannst siehst du an dem Angel-Icon auf deinen Monitor oben rechts!");
         }
 
         public bool CanPlayerStartJob(Client player)

@@ -244,6 +244,7 @@
     <Content Include="meta.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="UI\custom\Images\angel-1862011_640.png" />
     <Content Include="UI\custom\Images\logo.png" />
     <Content Include="UI\custom\clipboard.js" />
     <Content Include="UI\custom\styles.css" />
