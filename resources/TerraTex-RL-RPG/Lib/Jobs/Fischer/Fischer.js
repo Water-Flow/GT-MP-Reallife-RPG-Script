@@ -1,6 +1,22 @@
-﻿// @todo: remote events: startFisherJob
-// @todo: browser events: payFishingMoney, stopFishingGame
-// @todo: client to server events: stopFisherJob(), payFisherJob(money, steps)
+﻿
+API.onServerEventTrigger.connect(function(event) {
+    if (event === "startFisherJob") {
+        const resolution = API.getScreenResolution();
+        const width = Math.round(resolution.Width < 1200 ? resolution.Width : 1200);
+        const height = Math.round(resolution.Height < 800 ? resolution.Height : 800);
+
+        browser = API.createCefBrowser(width, height, true);
+        API.waitUntilCefBrowserInit(browser);
+
+        const x = (resolution.Width - width) / 2;
+        const y = (resolution.Height - height) / 2;
+
+        API.setCefBrowserPosition(browser, x, y);
+        API.setCefBrowserHeadless(browser, false);
+        API.loadPageCefBrowser(browser, '_IncludedExternalResources/clumsy-bird-master/index.html', false);
+        API.waitUntilCefBrowserLoaded(browser);
+    }
+});
 
 const clientFishingPositions = [
     new Vector3(-1803.04932, -1229.82117, 1.59479892),
@@ -71,4 +87,12 @@ function createBlipsIfNessesary() {
 
         showingFishingBlips = true;
     }
+}
+
+function stopFishingGame() {
+    API.triggerEvent("stopFisherJob");
+}
+
+function payFishingMoney(money, steps) {
+    API.triggerEvent(money, steps);
 }
