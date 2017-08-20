@@ -24,41 +24,51 @@ API.onUpdate.connect(function() {
     const jobId = API.getEntitySyncedData(API.getLocalPlayer(), "CurrentJobId");
 
     if (jobId && parseInt(jobId) === 2) {
-        const res = API.getScreenResolution();
+        checkMonitorIcon();
+        createBlipsIfNessesary();
+    } else {
+        destroyBlipsIfNessesary();
+    }
+});
+function checkMonitorIcon() {
+    const res = API.getScreenResolution();
+    for (let posId in clientFishingPositions) {
+        if (clientFishingPositions.hasOwnProperty(posId)) {
+            const pos = clientFishingPositions[posId];
+            const playerPosition = API.getEntityPosition(API.getLocalPlayer());
+            if (pos.DistanceTo(playerPosition) <= 5) {
+                API.dxDrawTexture("/UI/custom/Images/angel-1862011_640.png",
+                    new Point(res.Width - 60, 20),
+                    new Size(50, 50));
+            }
+        }
+    }
+}
+
+function destroyBlipsIfNessesary() {
+    if (showingFishingBlips) {
+        for (const blip of blips) {
+            API.deleteEntity(blip);
+        }
+
+        blips = [];
+        showingFishingBlips = false;
+    }
+}
+
+function createBlipsIfNessesary() {
+    if (!showingFishingBlips) {
         for (let posId in clientFishingPositions) {
             if (clientFishingPositions.hasOwnProperty(posId)) {
                 const pos = clientFishingPositions[posId];
-                const playerPosition = API.getEntityPosition(API.getLocalPlayer());
-                if (pos.DistanceTo(playerPosition) <= 5) {
-                    API.dxDrawTexture("/UI/custom/Images/angel-1862011_640.png",
-                        new Point(res.Width - 60, 20),
-                        new Size(50, 50));
-                }
+                const blip = API.createBlip(pos);
+                API.setBlipSprite(blip, 385);
+                API.setBlipColor(blip, 6);
+                API.setBlipShortRange(blip, true);
+                blips.push(blip);
             }
         }
 
-        if (!showingFishingBlips) {
-            for (let posId in clientFishingPositions) {
-                if (clientFishingPositions.hasOwnProperty(posId)) {
-                    const pos = clientFishingPositions[posId];
-                    const blip = API.createBlip(pos);
-                    API.setBlipSprite(blip, 385);
-                    API.setBlipColor(blip, 6);
-                    API.setBlipShortRange(blip, true);
-                    blips.push(blip);
-                }
-            }
-
-            showingFishingBlips = true;
-        }
-    } else {
-        if (showingFishingBlips) {
-            for (const blip of blips) {
-                API.deleteEntity(blip);
-            }
-
-            blips = [];
-            showingFishingBlips = false;
-        }
+        showingFishingBlips = true;
     }
-});
+}
