@@ -14,6 +14,7 @@ game.TitleScreen = me.ScreenObject.extend({
         me.game.world.addChild(new BackgroundLayer('bg', 1));
         me.input.bindKey(me.input.KEY.ENTER, "enter", true);
         me.input.bindKey(me.input.KEY.SPACE, "enter", true);
+        // @FIXME: ESC opens menu change to something else
         me.input.bindKey(me.input.KEY.ESC, "exit", true);
 
         me.input.bindPointer(me.input.pointer.LEFT, me.input.KEY.ENTER);

@@ -41,6 +41,25 @@
   <file src="_IncludedExternalResources/clumsy-bird-master/build/clumsy-min.js" />
   <file src="_IncludedExternalResources/clumsy-bird-master/index.html" />
   <file src="_IncludedExternalResources/clumsy-bird-master/index.css" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/bgm/theme.mp3" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/bgm/theme.ogg" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/bg.png" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/clumsy.png" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/gameover.png" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/gameoverbg.png" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/getready.png" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/ground.png" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/hit.png" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/logo.png" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/new.png" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/pipe.png" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/hit.mp3" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/hit.ogg" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/lose.mp3" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/lose.ogg" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/wing.mp3" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/wing.ogg" />
+  <file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/wing.wav" />
 
 
     <include resource="scoreboard" />

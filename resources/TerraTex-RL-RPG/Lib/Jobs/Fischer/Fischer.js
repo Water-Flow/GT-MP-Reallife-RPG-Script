@@ -90,9 +90,11 @@ function createBlipsIfNessesary() {
 }
 
 function stopFishingGame() {
+    // @FIXME: triggerEvent is not a function
     API.triggerEvent("stopFisherJob");
 }
 
 function payFishingMoney(money, steps) {
+    // @FIXME: triggerEvent is not a function
     API.triggerEvent(money, steps);
 }
