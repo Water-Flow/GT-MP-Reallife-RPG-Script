@@ -14,8 +14,7 @@ game.TitleScreen = me.ScreenObject.extend({
         me.game.world.addChild(new BackgroundLayer('bg', 1));
         me.input.bindKey(me.input.KEY.ENTER, "enter", true);
         me.input.bindKey(me.input.KEY.SPACE, "enter", true);
-        // @FIXME: ESC opens menu change to something else
-        me.input.bindKey(me.input.KEY.ESC, "exit", true);
+        me.input.bindKey(me.input.KEY.TAB, "exit", true);
 
         me.input.bindPointer(me.input.pointer.LEFT, me.input.KEY.ENTER);
 
@@ -54,7 +53,7 @@ game.TitleScreen = me.ScreenObject.extend({
                 // size does not matter, it's just to avoid having a zero size
                 // renderable
                 this._super(me.Renderable, 'init', [0, 0, 100, 100]);
-                this.text = "Drücke LEERTASTE oder Linke Maustaste zum starten! \n\t\t\t\t\t\t\t\t\t\t\tDrücke \"M\" um den Ton abzuschalten. \nDrücke \"ESC\" zum Beenden (nur in diesem Screen möglich).";
+                this.text = "Drücke LEERTASTE oder Linke Maustaste zum starten! \n\t\t\t\t\t\t\t\t\t\t\tDrücke \"M\" um den Ton abzuschalten. \nDrücke \"Tab\" zum Beenden (nur in diesem Screen möglich).";
                 this.font = new me.Font('gamefont', 20, '#000');
             },
             draw: function (renderer) {
@@ -71,7 +70,7 @@ game.TitleScreen = me.ScreenObject.extend({
         me.event.unsubscribe(this.handler);
         me.input.unbindKey(me.input.KEY.ENTER);
         me.input.unbindKey(me.input.KEY.SPACE);
-        me.input.unbindKey(me.input.KEY.ESC);
+        me.input.unbindKey(me.input.KEY.TAB);
         me.input.unbindPointer(me.input.pointer.LEFT);
         this.ground1 = null;
         this.ground2 = null;
