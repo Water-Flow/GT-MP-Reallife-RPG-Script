@@ -25,7 +25,7 @@ namespace TerraTex_RL_RPG.Lib.User.Management
             player.triggerEvent("openPayDayUI", JObject.FromObject(payDay).ToString());
         }
 
-        public class Category
+        public class Category : IEquatable<Category>
         {
             private readonly string _name;
             private readonly string _identifier;
@@ -57,9 +57,9 @@ namespace TerraTex_RL_RPG.Lib.User.Management
                 return _tax;
             }
 
-            public bool Equals(Category obj)
+            public virtual bool Equals(Category other)
             {
-                return obj.ToIdentifierString().Equals(_identifier);
+                return other != null && other.ToIdentifierString().Equals(_identifier);
             }
         }
 

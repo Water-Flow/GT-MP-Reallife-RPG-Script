@@ -34,7 +34,7 @@ namespace TerraTex_RL_RPG.Lib.Helper
         public LoadedDie(IEnumerable<int> probs)
         {
             // Raise an error if nil
-            if (probs == null) throw new ArgumentNullException("probs are null");
+            if (probs == null) throw new ArgumentNullException(nameof(probs), "probs are null");
             this.prob = new List<long>();
             this.alias = new List<int>();
             this.total = 0;
@@ -51,7 +51,7 @@ namespace TerraTex_RL_RPG.Lib.Helper
             long mx = -1, mn = -1;
             foreach (var p in tmpprobs)
             {
-                if (p < 0) throw new ArgumentException("probs contains a negative probability.");
+                if (p < 0) throw new ArgumentException("probs contains a negative probability.", nameof(probs));
                 mx = (mx < 0 || p > mx) ? p : mx;
                 mn = (mn < 0 || p < mn) ? p : mn;
                 this.total += p;

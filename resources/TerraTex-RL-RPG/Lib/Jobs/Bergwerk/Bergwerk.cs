@@ -196,7 +196,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Bergwerk
             }
         }
 
-        public void OnPlayerExitVehicleHandler(Client player, NetHandle vehicle)
+        private void OnPlayerExitVehicleHandler(Client player, NetHandle vehicle)
         {
             Vehicle veh = TTRPG.Api.getEntityFromHandle<Vehicle>(vehicle);
             if (veh.getData("job_bergwerk_bulldozer") != null && (bool) veh.getData("job_bergwerk_bulldozer"))
@@ -214,9 +214,23 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Bergwerk
             }
         }
 
-        public Vector3 GetJobStartPoint()
+        public Vector3 GetJobAcceptionPoint()
         {
             return new Vector3(2569.71313, 2719.22656, 42.8665237);
+        }
+
+        public bool CanPlayerStartJob(Client player)
+        {
+            if (player.position.DistanceTo(new Vector3(2569.71313, 2719.22656, 42.8665237)) <= 10)
+            {
+                return true;
+            }
+            else
+            {
+                player.sendNotification("~r~Job Error",
+                    "~r~Du bist nicht bei deinem aktuellen Arbeitgeber. Du kannst den Job nicht von hier aus starten!");
+                return false;
+            }
         }
 
         public void SendJobHelp(Client player)

@@ -1,0 +1,38 @@
+{
+  "name": "clumsy-bird",
+  "version": "0.1.0",
+  "description": "Clumsy Bird - A MelonJS port of the famous Flappy Bird game",
+  "homepage": "http://ellisonleao.github.io/clumsy-bird/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ellisonleao/clumsy-bird"
+  },
+  "bugs": {
+    "url": "https://github.com/ellisonleao/clumsy-bird/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT License",
+      "url": "https://github.com/ellisonleao/clumsy-bird/blob/master/LICENSE"
+    }
+  ],
+  "author": {
+    "name": "Ellison Leão",
+    "email": "ellisonleao@gmail.com"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "1.0.1",
+    "grunt-contrib-jshint": "1.1.0",
+    "grunt-contrib-concat": "1.0.1",
+    "grunt-contrib-clean": "1.1.0",
+    "grunt-contrib-uglify": "3.0.1",
+    "grunt-contrib-nodeunit": "1.0.0",
+    "grunt-contrib-connect": "1.0.2",
+    "grunt-replace": "1.0.1",
+    "grunt-manifest": "0.4.4"
+  }
+}

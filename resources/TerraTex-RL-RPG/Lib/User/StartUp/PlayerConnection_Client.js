@@ -11,4 +11,3 @@ API.onResourceStart.connect(function () {
     API.setCefBrowserHeadless(browser, true);
     API.loadPageCefBrowser(browser, 'UI/Register_Login_Profile/GetFingerprint.html', false);
 });
-

@@ -23,7 +23,7 @@ API.onResourceStart.connect(function() {
 });
 
 API.onResourceStop.connect(function() {
-    if (mainBrowser != null) {
+    if (mainBrowser !== null) {
         var localCopy = mainBrowser;
         mainBrowser = null;
         API.destroyCefBrowser(localCopy);
@@ -45,7 +45,7 @@ function chatKeyDown(sender, args) {
 }
 
 function addMessage(msg, hasColor, r, g, b) {
-    if (mainBrowser != null) {
+    if (mainBrowser !== null) {
         //if (!hasColor) {
         mainBrowser.call("addMessage", msg);
         //} else {
@@ -55,7 +55,7 @@ function addMessage(msg, hasColor, r, g, b) {
 }
 
 function onFocusChange(focus) {
-    if (mainBrowser != null) {
+    if (mainBrowser !== null) {
         mainBrowser.call("setFocus", focus);
     }
 
@@ -63,7 +63,7 @@ function onFocusChange(focus) {
 }
 
 function onChatHide(hide) {
-    if (mainBrowser != null) {
+    if (mainBrowser !== null) {
         API.setCefBrowserHeadless(mainBrowser, hide);
     }
 }

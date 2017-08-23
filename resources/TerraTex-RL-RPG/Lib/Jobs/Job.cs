@@ -7,7 +7,7 @@ using GrandTheftMultiplayer.Shared;
 
 namespace TerraTex_RL_RPG.Lib.Jobs
 {
-    class Job
+    class Job : IEquatable<Job>
     {
         private readonly string _name;
         private readonly int _id;
@@ -16,6 +16,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs
 
         // list of jobs
         public static readonly Job Bergwerk = new Job(1, "Berkwerksarbeiter", new Bergwerk.Bergwerk());
+        public static readonly Job Fischer = new Job(2, "Fischer", new Fischer.Fischer());
 
 
         // job class
@@ -43,9 +44,9 @@ namespace TerraTex_RL_RPG.Lib.Jobs
             return _id;
         }
 
-        public bool Equals(Job obj)
+        public bool Equals(Job other)
         {
-            return obj.GetId().Equals(_id);
+            return other != null && other.GetId().Equals(_id);
         }
     }
 }
