@@ -51,7 +51,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Fischer
                 RpLevelManager.AddRpToPlayer(player, steps, true);
 
                 player.sendChatMessage(
-                    "~b~Fischhändler Fritz sagt: Okay, diese Menge Fisch kaufe ich dir für " + money.ToString("C2") + " € ab");
+                    "~b~Fischhändler Fritz sagt: Okay, diese Menge Fisch kaufe ich dir für " + money.ToString("C2") + " ab");
             }
         }
 
