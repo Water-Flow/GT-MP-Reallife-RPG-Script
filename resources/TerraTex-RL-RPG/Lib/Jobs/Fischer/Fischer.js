@@ -96,6 +96,7 @@ function stopFishingGame() {
     API.destroyCefBrowser(browser);
 }
 
-function payFishingMoney(money, steps) {
-    API.triggerServerEvent("payFisherJob", money, steps);
+function payFishingMoney(dataJson) {
+    const data = JSON.parse(dataJson);
+    API.triggerServerEvent("payFisherJob", data.money, data.steps);
 }

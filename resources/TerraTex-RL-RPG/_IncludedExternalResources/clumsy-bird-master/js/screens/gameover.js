@@ -78,7 +78,7 @@ game.GameOverScreen = me.ScreenObject.extend({
                 lastMoneyString += " €";
                 this.topSteps = 'Bezahlung: ' + lastMoneyString;
                 
-                resourceCall("payFishingMoney", money, game.data.steps);
+                resourceCall("payFishingMoney", JSON.stringify({ money: money, steps: game.data.steps }));
             },
 
             draw: function (renderer) {

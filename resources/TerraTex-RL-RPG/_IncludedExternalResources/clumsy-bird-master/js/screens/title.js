@@ -21,7 +21,7 @@ game.TitleScreen = me.ScreenObject.extend({
         this.handler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge) {
             if (action === "enter") {
                 me.state.change(me.state.PLAY);
-            } else if (action === exit) {
+            } else if (action === "exit") {
                 resourceCall("stopFishingGame");
             }
         });
