@@ -56,7 +56,7 @@ module.exports = function(grunt) {
         clean: {
             dist: [
                 'build/clumsy-min.js'
-            ],
+            ]
         },
 
     });
@@ -68,6 +68,6 @@ module.exports = function(grunt) {
 
 
     // Default task.
-    grunt.registerTask('default', ['uglify']);
+    grunt.registerTask('default', ['clean', 'uglify']);
     grunt.registerTask('lint', ['jshint:beforeConcat', 'concat', 'jshint:afterConcat']);
 };
