@@ -1,4 +1,5 @@
-﻿
+﻿let browser;
+
 API.onServerEventTrigger.connect(function(event) {
     if (event === "startFisherJob") {
         const resolution = API.getScreenResolution();
@@ -15,6 +16,7 @@ API.onServerEventTrigger.connect(function(event) {
         API.setCefBrowserHeadless(browser, false);
         API.loadPageCefBrowser(browser, '_IncludedExternalResources/clumsy-bird-master/index.html', false);
         API.waitUntilCefBrowserLoaded(browser);
+        API.setCefBrowserFocus(browser, true);
     }
 });
 
@@ -91,6 +93,7 @@ function createBlipsIfNessesary() {
 
 function stopFishingGame() {
     API.triggerServerEvent("stopFisherJob");
+    API.destroyCefBrowser(browser);
 }
 
 function payFishingMoney(money, steps) {

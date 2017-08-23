@@ -22,9 +22,7 @@ game.TitleScreen = me.ScreenObject.extend({
             if (action === "enter") {
                 me.state.change(me.state.PLAY);
             } else if (action === exit) {
-                if (resourceCall) {
-                    resourceCall("stopFishingGame");
-                }
+                resourceCall("stopFishingGame");
             }
         });
 
