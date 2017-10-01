@@ -41,7 +41,7 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
 
                 if (PasswordHelper.Hash(password, salt).Equals(dbPassword))
                 {
-                    // Password was correct and now Update fingerprint and last login
+                    // Password was correct and now Update HardwareID and last login
                     // before starting Login process
                     if (!DevServer.CheckDevServerLogin(player, result.Rows[0]))
                     {
@@ -49,7 +49,7 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
                         updateUserEntryCommand.CommandText =
                             "UPDATE user SET Last_Fingerprint = @fingerprint, Last_Login=current_timestamp() WHERE Nickname=@nickname";
                         updateUserEntryCommand.Parameters.AddWithValue("fingerprint",
-                            player.getSyncedData("fingerprint"));
+                            player.uniqueHardwareId);
                         updateUserEntryCommand.Parameters.AddWithValue("nickname", player.name);
 
                         updateUserEntryCommand.ExecuteNonQuery();

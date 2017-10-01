@@ -60,6 +60,7 @@ function closeWindow() {
     API.destroyCefBrowser(browser);
     resource.KeyBinds.setWaitForKey(false);
     resource.KeyBinds.setDisableKeyInput(false);
+    API.setCanOpenChat(true);
 }
 
 function save(json) {

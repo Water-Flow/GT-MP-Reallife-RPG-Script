@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GrandTheftMultiplayer.Server;
-using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Server.Managers;
 using GrandTheftMultiplayer.Shared;
@@ -188,7 +183,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Bergwerk
                         }
                         else
                         {
-                            player.sendNotification("~b~Job Info",
+                            ChatHelper.SendChatNotificationToPlayer(player, "~b~Job Info",
                                 "~b~Sehr gut! Dann fehlen ja nur noch " + markers.Count + " Positionen.");
                         }
                     }
@@ -196,7 +191,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Bergwerk
             }
         }
 
-        private void OnPlayerExitVehicleHandler(Client player, NetHandle vehicle)
+        private void OnPlayerExitVehicleHandler(Client player, NetHandle vehicle, int fromSeat)
         {
             Vehicle veh = TTRPG.Api.getEntityFromHandle<Vehicle>(vehicle);
             if (veh.getData("job_bergwerk_bulldozer") != null && (bool) veh.getData("job_bergwerk_bulldozer"))
@@ -227,7 +222,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Bergwerk
             }
             else
             {
-                player.sendNotification("~r~Job Error",
+                ChatHelper.SendChatNotificationToPlayer(player, "~r~Job Error",
                     "~r~Du bist nicht bei deinem aktuellen Arbeitgeber. Du kannst den Job nicht von hier aus starten!");
                 return false;
             }

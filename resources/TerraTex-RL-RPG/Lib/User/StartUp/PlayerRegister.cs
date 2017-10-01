@@ -43,7 +43,7 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
                 createUserCommand.Parameters.AddWithValue("@gender", gender);
                 createUserCommand.Parameters.AddWithValue("@birthday", birthday);
                 createUserCommand.Parameters.AddWithValue("@history", history);
-                createUserCommand.Parameters.AddWithValue("@last_fingerprint", player.getSyncedData("fingerprint"));
+                createUserCommand.Parameters.AddWithValue("@last_fingerprint", player.uniqueHardwareId);
                 createUserCommand.Parameters.AddWithValue("@email", email);
                 createUserCommand.Parameters.AddWithValue("@salt", salt);
 

@@ -38,9 +38,7 @@ namespace TerraTex_RL_RPG.Lib.Admin
 
         private void OnResourceStopHandler()
         {
-            
-            System.Environment.Exit(1);
-            // Replace with API.stopServer();
+            API.stopServer();
         }
 
         public void InitShutdown(string admin, int timeInMinutes, string reason)

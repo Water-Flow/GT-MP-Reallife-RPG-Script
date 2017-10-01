@@ -30,6 +30,18 @@ API.onResourceStop.connect(function() {
     }
 });
 
+API.onServerEventTrigger.connect(function (eventName, args) {
+    if (eventName === "addHtmlMessage") {
+        if (mainBrowser !== null) {
+            //if (!hasColor) {
+            mainBrowser.call("addMessage", args[0]);
+            //} else {
+
+            //}
+        }
+    }
+});
+
 function commitMessage(msg) {
     mainChat.sendMessage(msg);
 }

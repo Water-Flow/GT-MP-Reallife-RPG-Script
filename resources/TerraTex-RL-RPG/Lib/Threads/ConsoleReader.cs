@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using NLog.Targets;
 
 namespace TerraTex_RL_RPG.Lib.Threads
 {

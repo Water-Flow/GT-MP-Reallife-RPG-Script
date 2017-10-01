@@ -47,16 +47,9 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
 
                 Int32 accounts = Int32.Parse(doesPlayerExistInDb.ExecuteScalar().ToString());
                 
-                player.setSyncedData("fingerprint", arguments[0]);
+                player.setSyncedData("fingerprint", player.uniqueHardwareId);
 
-                if (accounts == 1)
-                {
-                    player.triggerEvent("startLogin", player.name);
-                }
-                else
-                {
-                    player.triggerEvent("startRegister", player.name);
-                }
+                player.triggerEvent(accounts == 1 ? "startLogin" : "startRegister", player.name);
             }
         }
     }
