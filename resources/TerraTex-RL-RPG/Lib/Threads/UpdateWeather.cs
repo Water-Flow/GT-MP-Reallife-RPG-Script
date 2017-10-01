@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TerraTex_RL_RPG.Lib.Helper;
+﻿using TerraTex_RL_RPG.Lib.Helper;
 using System.Threading;
 
 namespace TerraTex_RL_RPG.Lib.Threads

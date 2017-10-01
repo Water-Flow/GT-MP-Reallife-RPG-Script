@@ -4,6 +4,7 @@ using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Server.Managers;
 using GrandTheftMultiplayer.Shared;
 using GrandTheftMultiplayer.Shared.Math;
+using TerraTex_RL_RPG.Lib.Helper;
 
 namespace TerraTex_RL_RPG.Lib.Jobs
 {
@@ -37,24 +38,22 @@ namespace TerraTex_RL_RPG.Lib.Jobs
 
         private void OnPlayerPickupHandler(Client player, NetHandle pickupHandle)
         {
-            // Currently not working because of https://bug.gt-mp.net/view.php?id=258
-
             Pickup pickup = API.getEntityFromHandle<Pickup>(pickupHandle);
 
-            if ((bool) pickup.getSyncedData("IsJobPickup"))
+            if ((bool) pickup.getData("IsJobPickup"))
             {
                 Job connectedJob = (Job) pickup.getData("ConnectedJob");
                 if (player.getSyncedData("CurrentJobId") == connectedJob.GetId())
                 {
-                    player.sendNotification("Job: " + connectedJob,
-                        "Du kannst hier deinen Job fortsetzen. Nutze einfach /startjob oder nutze /jobhelp um eine Hilfe zu erhalten. ~n~Kündigen kannst du mit /quitjob",
-                        false);
+                    ChatHelper.SendChatNotificationToPlayer(player, "Job: " + connectedJob,
+                        "Du kannst hier deinen Job fortsetzen. Nutze einfach /startjob oder nutze /jobhelp um eine Hilfe zu erhalten. ~n~Kündigen kannst du mit /quitjob"
+                        );
                 }
                 else
                 {
                     if (player.getSyncedData("CurrentJobId") != 0)
                     {
-                        player.sendNotification("Job: " + connectedJob,
+                        ChatHelper.SendChatNotificationToPlayer(player, "Job: " + connectedJob,
                             "Du hast bereits einen anderen Job, um diesen zu beginnen zu können, kündige erst bei deinem alten Job!");
                     }
                     else
@@ -65,8 +64,8 @@ namespace TerraTex_RL_RPG.Lib.Jobs
                             additional = "~n~" + additional;
                         }
 
-                        player.sendNotification("Job: " + connectedJob,
-                            "Du kannst den annehmen mit /getjob." + additional, false);
+                        ChatHelper.SendChatNotificationToPlayer(player, "Job: " + connectedJob,
+                            "Du kannst den annehmen mit /getjob." + additional);
                     }
                 }
             }
@@ -100,19 +99,19 @@ namespace TerraTex_RL_RPG.Lib.Jobs
                     {
                         if (player.isInVehicle)
                         {
-                            player.sendNotification("~r~Job Error",
+                            ChatHelper.SendChatNotificationToPlayer(player, "~r~Job Error",
                                 "~r~Du kannst erst einen Job annehmen, wenn du dein Fahrzeug verlässt!");
                         }
                         else
                         {
                             player.setSyncedData("CurrentJobId", currentJobPosition.GetId());
-                            player.sendNotification("~b~Job " + currentJobPosition,
+                            ChatHelper.SendChatNotificationToPlayer(player, "~b~Job " + currentJobPosition,
                                 "~b~Willkommen im Dienst! Nutze einfach /startjob oder nutze /jobhelp um eine Hilfe zu erhalten.");
                         }
                     }
                     else
                     {
-                        player.sendChatMessage(
+                        ChatHelper.SendChatNotificationToPlayer(player, "~b~Job " + currentJobPosition,
                             "~r~Du erfüllst nicht alle Vorraussetzungen für den Job. Folgende Vorrausetzungen musst du erüllen: ");
                         currentJobPosition.GetInstance().SendMissingRequirementsToPlayer(player);
                     }
@@ -120,14 +119,14 @@ namespace TerraTex_RL_RPG.Lib.Jobs
                 else
                 {
                     Job currentJob = Job.JobTable.Get((int) player.getSyncedData("CurrentJobId"));
-                    player.sendNotification("~r~Job Error",
+                    ChatHelper.SendChatNotificationToPlayer(player, "~r~Job Error",
                         "~r~Du hast bereits den Job " + currentJob +
                         ". Kündige bei deinem aktuellen Arbeitgeber, dann kannst du wiederkommen!");
                 }
             }
             else
             {
-                player.sendNotification("~r~Job Error",
+                ChatHelper.SendChatNotificationToPlayer(player, "~r~Job Error",
                     "~r~Du bist bei keinen Arbeitgeber. Welchen Job willst du hier bekommen? Streifen auf dem Asphalt vielleicht?");
             }
         }
@@ -145,20 +144,20 @@ namespace TerraTex_RL_RPG.Lib.Jobs
                     {
                         if (player.isInVehicle)
                         {
-                            player.sendNotification("~r~Job Error",
+                            ChatHelper.SendChatNotificationToPlayer(player, "~r~Job Error",
                                 "~r~Du kannst erst einen Job kündigen, wenn du dein Fahrzeug verlässt!");
                         }
                         else
                         {
                             player.setSyncedData("CurrentJobId", 0);
-                            player.sendNotification("~b~Job " + currentJobPosition,
+                            ChatHelper.SendChatNotificationToPlayer(player, "~b~Job " + currentJobPosition,
                                 "~b~Schade, dass du nicht mehr für uns arbeiten möchtest...");
                         }
                     }
                 }
                 else
                 {
-                    player.sendNotification("~r~Job Error",
+                    ChatHelper.SendChatNotificationToPlayer(player, "~r~Job Error",
                         "~r~Du bist nicht bei deinem aktuellen Arbeitgeber. Du kannst so nicht kündigen!");
                 }
             }
@@ -166,12 +165,12 @@ namespace TerraTex_RL_RPG.Lib.Jobs
             {
                 if ((int) player.getSyncedData("CurrentJobId") > 0)
                 {
-                    player.sendNotification("~r~Job Error",
+                    ChatHelper.SendChatNotificationToPlayer(player, "~r~Job Error",
                         "~r~Du bist nicht bei deinem aktuellen Arbeitgeber. Du kannst so nicht kündigen!");
                 }
                 else
                 {
-                    player.sendNotification("~r~Job Error", "~r~Du hast keinen Job, den du kündigen könntest!");
+                    ChatHelper.SendChatNotificationToPlayer(player, "~r~Job Error", "~r~Du hast keinen Job, den du kündigen könntest!");
                 }
             }
         }
@@ -192,7 +191,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs
                     }
                     else
                     {
-                        player.sendChatMessage(
+                        ChatHelper.SendChatNotificationToPlayer(player, "~r~Job Error",
                             "~r~Du erfüllst nicht alle Vorraussetzungen für den Job. Folgende Vorrausetzungen musst du erüllen: ");
                         job.GetInstance().SendMissingRequirementsToPlayer(player);
                     }
@@ -200,7 +199,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs
             }
             else
             {
-                player.sendNotification("~r~Job Error",
+                ChatHelper.SendChatNotificationToPlayer(player, "~r~Job Error",
                     "~r~Du hast keine Arbeit, melde dich bei einem Arbeitgeber an!");
 
             }

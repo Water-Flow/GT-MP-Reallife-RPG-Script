@@ -13,13 +13,16 @@ namespace TerraTex_RL_RPG.Lib.Vehicles
             API.onVehicleDeath += OnVehicleDeathHandler;
         }
 
-        private void OnPlayerExitVehicleHandler(Client player, NetHandle vehicle)
+        private void OnPlayerExitVehicleHandler(Client player, NetHandle vehicle, int fromSeat)
         {
             Vehicle veh = TTRPG.Api.getEntityFromHandle<Vehicle>(vehicle);
 
-            veh.setData("last-driver-name", player.name);
-            veh.setData("last-driver-id", player.getSyncedData("ID"));
-            veh.setData("last-driver-time", DateTime.Now);
+            if (veh != null && player != null)
+            {
+                veh.setData("last-driver-name", player.name);
+                veh.setData("last-driver-id", player.getSyncedData("ID"));
+                veh.setData("last-driver-time", DateTime.Now);
+            }
         }
 
         private void OnVehicleDeathHandler(NetHandle vehicle)

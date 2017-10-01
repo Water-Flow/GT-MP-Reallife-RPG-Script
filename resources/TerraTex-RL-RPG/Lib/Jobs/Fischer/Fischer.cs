@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Shared.Math;
+using TerraTex_RL_RPG.Lib.Helper;
 using TerraTex_RL_RPG.Lib.User.Management;
 
 namespace TerraTex_RL_RPG.Lib.Jobs.Fischer
@@ -84,7 +81,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Fischer
                 return true;
             }
 
-            player.sendNotification("~r~Job Error", "~r~Du bist an keinem Steg bei dem das Fischen erlaubt ist!");
+            ChatHelper.SendChatNotificationToPlayer(player, "~r~Job Error", "~r~Du bist an keinem Steg bei dem das Fischen erlaubt ist!");
             return false;
         }
 
