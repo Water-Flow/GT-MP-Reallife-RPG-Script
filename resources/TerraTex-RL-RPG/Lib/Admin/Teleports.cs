@@ -19,11 +19,13 @@ namespace TerraTex_RL_RPG.Lib.Admin
         }
 
         [Command("gotoc", Group = "admin", SensitiveInfo = false)]
-        public void GotoCoordinatesCommand(Client player, Vector3 pos, int dim = 0)
+        public void GotoCoordinatesCommand(Client player, string pos, int dim = 0)
         {
             if (AdminChecks.CheckAdminLvl(player, 3))
             {
-                player.position = pos;
+                string[] positionParts = pos.Split(',');
+
+                player.position = new Vector3(float.Parse(positionParts[0]), float.Parse(positionParts[1]), float.Parse(positionParts[2]));
                 player.dimension = dim;
             }
         }

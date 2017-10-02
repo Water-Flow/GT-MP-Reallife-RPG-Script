@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using GrandTheftMultiplayer.Server.API;
@@ -117,7 +118,10 @@ namespace TerraTex_RL_RPG.Lib.Admin
             if (DevServer.CheckDevCommandAccess(player) || AdminChecks.CheckAdminLvl(player, 3))
             {
                 Vector3 position = player.position;
-                ChatHelper.SendChatNotificationToPlayer(player, "Position", position.X + ", " + position.Y + ", " + position.Z);
+                ChatHelper.SendChatNotificationToPlayer(player, "Position", 
+                    position.X.ToString(CultureInfo.CreateSpecificCulture("en-GB"))
+                   + ", " + position.Y.ToString(CultureInfo.CreateSpecificCulture("en-GB"))
+                   + ", " + position.Z.ToString(CultureInfo.CreateSpecificCulture("en-GB")));
             }
         }
 
