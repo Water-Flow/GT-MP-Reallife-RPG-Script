@@ -6,6 +6,7 @@ using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Server.Managers;
 using GrandTheftMultiplayer.Shared;
 using GrandTheftMultiplayer.Shared.Math;
+using TerraTex_RL_RPG.Lib.Helper;
 
 namespace TerraTex_RL_RPG.Lib.Admin
 {
@@ -107,6 +108,16 @@ namespace TerraTex_RL_RPG.Lib.Admin
                 File.AppendAllText(path, sb.ToString());
                 player.sendNotification("Dev-System",
                     "Saved Vehicle-Position: X: " + position.X + "; Y: " + position.Y + "; Z: " + position.Z);
+            }
+        }
+
+        [Command("pos", Group = "dev", SensitiveInfo = false)]
+        public void PosCommand(Client player)
+        {
+            if (DevServer.CheckDevCommandAccess(player) || AdminChecks.CheckAdminLvl(player, 3))
+            {
+                Vector3 position = player.position;
+                ChatHelper.SendChatNotificationToPlayer(player, "Position", position.X + ", " + position.Y + ", " + position.Z);
             }
         }
 
