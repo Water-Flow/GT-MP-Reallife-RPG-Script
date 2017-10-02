@@ -102,6 +102,23 @@
     <Compile Include="Lib\Jobs\Job.cs" />
     <Compile Include="Lib\Jobs\IJob.cs" />
     <Compile Include="Lib\Jobs\JobSystem.cs" />
+    <Compile Include="Lib\LicenseSystem\ILicense.cs" />
+    <Compile Include="Lib\LicenseSystem\Licenses.cs" />
+    <Compile Include="Lib\LicenseSystem\Licenses\VehicleLicenses\BoatLicense.cs" />
+    <Compile Include="Lib\LicenseSystem\Licenses\VehicleLicenses\PlaneLicense.cs" />
+    <Compile Include="Lib\LicenseSystem\Licenses\VehicleLicenses\HelicopterLicense.cs" />
+    <Compile Include="Lib\LicenseSystem\Licenses\VehicleLicenses\BusLicense.cs" />
+    <Compile Include="Lib\LicenseSystem\Licenses\VehicleLicenses\MilitaryLicense.cs" />
+    <Compile Include="Lib\LicenseSystem\Licenses\VehicleLicenses\IndustrialLicense.cs" />
+    <Compile Include="Lib\LicenseSystem\Licenses\VehicleLicenses\LkwLicense.cs" />
+    <Compile Include="Lib\LicenseSystem\Licenses\VehicleLicenses\BikeLicense.cs" />
+    <Compile Include="Lib\LicenseSystem\Licenses\VehicleLicenses\RacingPkwLicense.cs" />
+    <Compile Include="Lib\LicenseSystem\Licenses\VehicleLicenses\PkwLicense.cs" />
+    <Compile Include="Lib\LicenseSystem\Licenses\VehicleLicenses\QuadLicense.cs" />
+    <Compile Include="Lib\LicenseSystem\Licenses\VehicleLicenses\StuntVehicleLicense.cs" />
+    <Compile Include="Lib\LicenseSystem\LicenseTypes\FeatureLicense.cs" />
+    <Compile Include="Lib\LicenseSystem\LicenseTypes\VehicleLicense.cs" />
+    <Compile Include="Lib\LicenseSystem\LicenseTypes\WeaponLicense.cs" />
     <Compile Include="Lib\Threads\CleanVehicles.cs" />
     <Compile Include="Lib\Threads\ConsoleReader.cs" />
     <Compile Include="Lib\Threads\UpdatePlayerPlayTime.cs" />
@@ -338,6 +355,7 @@
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.4.1.3596\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.6.4.1.3596\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>npm install &amp;&amp; npm run-script build</PreBuildEvent>
