@@ -90,6 +90,7 @@
     <Compile Include="Lib\Data\Database.cs" />
     <Compile Include="Lib\Enviroment\Chat\BasicChatCommands.cs" />
     <Compile Include="Lib\Enviroment\Chat\DistanceChat.cs" />
+    <Compile Include="Lib\Enviroment\GeneralBlips.cs" />
     <Compile Include="Lib\Helper\ChatHelper.cs" />
     <Compile Include="Lib\Helper\LoadedDie.cs" />
     <Compile Include="Lib\Helper\Password.cs" />
