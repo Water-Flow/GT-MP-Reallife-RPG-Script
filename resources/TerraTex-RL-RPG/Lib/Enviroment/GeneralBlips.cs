@@ -18,9 +18,9 @@ namespace TerraTex_RL_RPG.Lib.Enviroment
             // City Hall
             Blip cHBlip = API.createBlip(new Vector3(245, -381.8, 44.5));
             cHBlip.color = 83;
-            rblip.name = "Stadthalle";
-            rblip.sprite = 419;
-            rblip.shortRange = true;
+            cHBlip.name = "Stadthalle";
+            cHBlip.sprite = 419;
+            cHBlip.shortRange = true;
         }
     }
 }
