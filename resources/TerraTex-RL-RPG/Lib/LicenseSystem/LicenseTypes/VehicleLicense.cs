@@ -40,7 +40,7 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.LicenseTypes
 
         public bool IsVehicleCoveredByThisLicense(Vehicle vehicle)
         {
-            return IsVehicleCoveredByThisLicense(vehicle.model);
+            return IsVehicleCoveredByThisLicense((VehicleHash) vehicle.model);
         }
 
         public abstract int GetMinRequiredLevel();
