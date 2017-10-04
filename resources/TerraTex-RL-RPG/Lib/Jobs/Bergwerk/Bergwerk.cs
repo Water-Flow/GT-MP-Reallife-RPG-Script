@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Server.Managers;
 using GrandTheftMultiplayer.Shared;
 using GrandTheftMultiplayer.Shared.Math;
 using TerraTex_RL_RPG.Lib.Helper;
+using TerraTex_RL_RPG.Lib.LicenseSystem;
 using TerraTex_RL_RPG.Lib.User.Management;
 
 namespace TerraTex_RL_RPG.Lib.Jobs.Bergwerk
@@ -243,13 +245,13 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Bergwerk
 
         public bool HasPlayerAllRequirements(Client player)
         {
-            // @todo: add license requirements after license implementation @see https://github.com/TerraTex-Community/GT-MP-Reallife-RPG-Script/issues/42
-            return true;
+            return Licenses.CanUseVehicle(player, VehicleHash.Bulldozer, true);
         }
 
         public void SendMissingRequirementsToPlayer(Client player)
         {
-            // @todo see HasPlayerAllRequirements
+            ILicense lic = (ILicense)player.getData("MissedLicense");
+            API.shared.sendNotificationToPlayer(player, "Du hast nicht die nötige Lizenz (\"" + lic.GetHumanReadableName() + "\") für dieses Fahrzeug!");
         }
 
         public bool CanPlayerQuitJob(Client player)
