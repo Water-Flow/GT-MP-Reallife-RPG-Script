@@ -103,6 +103,7 @@
     <Compile Include="Lib\Jobs\IJob.cs" />
     <Compile Include="Lib\Jobs\JobSystem.cs" />
     <Compile Include="Lib\LicenseSystem\ILicense.cs" />
+    <Compile Include="Lib\LicenseSystem\LicenseMenu.cs" />
     <Compile Include="Lib\LicenseSystem\Licenses.cs" />
     <Compile Include="Lib\LicenseSystem\Licenses\VehicleLicenses\BoatLicense.cs" />
     <Compile Include="Lib\LicenseSystem\Licenses\VehicleLicenses\PlaneLicense.cs" />
