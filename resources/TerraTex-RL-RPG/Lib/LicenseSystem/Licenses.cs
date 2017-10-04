@@ -7,14 +7,13 @@ using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Shared;
 using GrandTheftMultiplayer.Shared.Gta.Vehicle;
+using TerraTex_RL_RPG.Lib.LicenseSystem.LicenseTypes;
 using TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses;
 
 namespace TerraTex_RL_RPG.Lib.LicenseSystem
 {
     public static class Licenses
     {
-        // @todo: load & store Licenses of user in database
-
         private static List<ILicense> licenses = new List<ILicense>();
 
         public static void Init()
@@ -41,9 +40,9 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem
         /// <param name="player">The User</param>
         /// <param name="veh">The Vehicle</param>
         /// <returns></returns>
-        public static bool CanUseVehicle(Client player, Vehicle veh)
+        public static bool CanUseVehicle(Client player, Vehicle veh, bool saveMissed = false)
         {
-            return CanUseVehicle(player, (VehicleHash) veh.model);
+            return CanUseVehicle(player, (VehicleHash) veh.model, saveMissed);
         }
 
         /// <summary>
@@ -53,33 +52,60 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem
         /// <param name="player"> The User</param>
         /// <param name="entityHandle">The Entity by NetHandle</param>
         /// <returns></returns>
-        public static bool CanUseVehicle(Client player, NetHandle entityHandle)
+        public static bool CanUseVehicle(Client player, NetHandle entityHandle, bool saveMissed = false)
         {
             Vehicle veh = API.shared.getEntityFromHandle<Vehicle>(entityHandle);
-            return CanUseVehicle(player, (VehicleHash) veh.model);
+            return CanUseVehicle(player, (VehicleHash) veh.model, saveMissed);
         }
 
         /// <summary>
         /// Is Vehicle Entity by Hash useable by the user
-        /// Info: It Adds additional to the return Value an EnitiyData to the player named "missedLicenses" if there are some missing!
+        /// Info: It Adds additional to the return Value an EnitiyData to the player named "missedLicense" if there are some missing and save missed is true!
         /// </summary>
         /// <param name="player">The User</param>
         /// <param name="hash">The Entity by Hash</param>
         /// <returns></returns>
-        public static bool CanUseVehicle(Client player, VehicleHash hash)
+        public static bool CanUseVehicle(Client player, VehicleHash hash, bool saveMissed = false)
         {
             if ((VehicleClass) API.shared.getVehicleClass(hash) == VehicleClass.Cycles)
             {
                 return true;
             }
-            VehicleHash[] faggios = { };
+            VehicleHash[] faggios = { VehicleHash.Faggio, VehicleHash.Faggio2, VehicleHash.Faggio3};
             if (Array.IndexOf(faggios, hash) > -1)
             {
                 return true;
             }
             
-            // loop through all player-owned licenses and check vehicle licenses that one of them returns true
-            throw new NotImplementedException();
+            List<ILicense> userLicenses = (List<ILicense>)player.getData("UserLicenses");
+            foreach (ILicense lic in userLicenses)
+            {
+                var memberInfo = lic.GetType().BaseType;
+                if (memberInfo != null && memberInfo.Name.Equals("VehicleLicense"))
+                {
+                    if (((VehicleLicense) lic).IsVehicleCoveredByThisLicense(hash))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            if (saveMissed)
+            {
+                foreach (ILicense license in licenses)
+                {
+                    var memberInfo = license.GetType().BaseType;
+                    if (memberInfo != null && memberInfo.Name.Equals("VehicleLicense"))
+                    {
+                        if (((VehicleLicense)license).IsVehicleCoveredByThisLicense(hash))
+                        {
+                            player.setData("MissedLicense", license);
+                            return false;
+                        }
+                    }
+                }
+            }
+            return false;
         }
 
         /// <summary>
@@ -114,7 +140,15 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem
         /// <returns></returns>
         public static bool HasLicense(Client player, string licenseIdentifier)
         {
-            throw new NotImplementedException();
+            List<ILicense> userLicenses = (List<ILicense>) player.getData("UserLicenses");
+            foreach (ILicense lic in userLicenses)
+            {
+                if (lic.GetLicenseIdentifierName().Equals(licenseIdentifier))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>
@@ -124,6 +158,24 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem
         public static List<ILicense> GetAllLicenses()
         {
             return licenses;
+        }
+
+        /// <summary>
+        /// Get License by Identifier
+        /// </summary>
+        /// <param name="identifier"></param>
+        /// <returns>License or Null if there is not such license</returns>
+        public static ILicense GetLicenseByIdentifier(string identifier)
+        {
+            foreach (ILicense license in licenses)
+            {
+                if (license.GetLicenseIdentifierName().Equals(identifier))
+                {
+                    return license;
+                }
+            }
+
+            return null;
         }
 
         /// <summary>

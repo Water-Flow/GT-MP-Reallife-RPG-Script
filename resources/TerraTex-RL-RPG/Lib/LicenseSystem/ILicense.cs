@@ -4,6 +4,8 @@
     {
         int GetMinRequiredLevel();
         string GetLicenseIdentifierName();
+        string GetHumanReadableName();
+        string GetHumanReadableDescription();
         float GetLicensePrice();
     }
 }

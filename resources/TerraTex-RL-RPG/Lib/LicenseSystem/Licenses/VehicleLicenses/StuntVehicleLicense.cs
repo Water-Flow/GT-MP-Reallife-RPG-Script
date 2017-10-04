@@ -9,14 +9,25 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
     public class StuntVehicleLicense : VehicleLicense
     {
 
-        protected new VehicleHash[] AdditionalVehicleHashes =
+        public override VehicleHash[] ExcludedVehicleHashes { get; } = { };
+        public override VehicleHash[] AdditionalVehicleHashes { get; } =
         {
             // Off-Road
             VehicleHash.Dune4, VehicleHash.Dune5, VehicleHash.Marshall, VehicleHash.Monster
 
         };
 
-        protected new VehicleClass[] CoveredVehicleClasses =
+        public override string GetHumanReadableName()
+        {
+            return "Stuntlizenz";
+        }
+
+        public override string GetHumanReadableDescription()
+        {
+            return "Diese Lizenz erlaubt das fahren von Fahrzeugen, die zum Zwecke von Stunts gebaut wurden.";
+        }
+
+        public override VehicleClass[] CoveredVehicleClasses { get; } =
         {
         };
 

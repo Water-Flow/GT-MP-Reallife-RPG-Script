@@ -8,16 +8,27 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
 {
     public class QuadLicense : VehicleLicense
     {
-        protected new VehicleHash[] AdditionalVehicleHashes =
+        public override VehicleHash[] ExcludedVehicleHashes { get; } = { };
+        public override VehicleHash[] AdditionalVehicleHashes { get; } =
         {
             // Off-Road
             VehicleHash.Blazer, VehicleHash.Blazer2, VehicleHash.Blazer3, VehicleHash.Blazer5, VehicleHash.Blazer4
 
         };
 
-        protected new VehicleClass[] CoveredVehicleClasses =
+        public override VehicleClass[] CoveredVehicleClasses { get; } =
         {
         };
+
+        public override string GetHumanReadableName()
+        {
+            return "Quadführerschein";
+        }
+
+        public override string GetHumanReadableDescription()
+        {
+            return "Dieser Führerschein erlaubt das fahren von Quads im öffentlichen Straßenverkehr.";
+        }
 
         public override int GetMinRequiredLevel()
         {

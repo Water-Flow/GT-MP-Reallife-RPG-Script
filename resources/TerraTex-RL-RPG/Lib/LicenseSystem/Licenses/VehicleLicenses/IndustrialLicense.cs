@@ -9,7 +9,8 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
 {
     public class IndustrialLicense : VehicleLicense
     {
-        protected new VehicleHash[] AdditionalVehicleHashes =
+        public override VehicleHash[] ExcludedVehicleHashes { get; } = { };
+        public override VehicleHash[] AdditionalVehicleHashes { get; } =
         {
             // Industrial
             VehicleHash.Bulldozer,
@@ -24,7 +25,17 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
             VehicleHash.Tractor3
         };
 
-        protected new VehicleClass[] CoveredVehicleClasses =
+        public override string GetHumanReadableDescription()
+        {
+            return "Diese Lizenz erlaubt die Nutzung und Steuerung größeren Industriemaschinen und -fahrzeugen.";
+        }
+
+        public override string GetHumanReadableName()
+        {
+            return "Industriemaschinenlizenz";
+        }
+
+        public override VehicleClass[] CoveredVehicleClasses { get; } =
         {
         };
 

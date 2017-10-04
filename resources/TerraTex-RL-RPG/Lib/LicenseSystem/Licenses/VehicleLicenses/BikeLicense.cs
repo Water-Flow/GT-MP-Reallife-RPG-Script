@@ -9,16 +9,16 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
 {
     public class BikeLicense : VehicleLicense
     {
-        protected new VehicleHash[] AdditionalVehicleHashes =
+        public override VehicleHash[] ExcludedVehicleHashes { get; } = { };
+        public override VehicleHash[] AdditionalVehicleHashes { get; } =
         {
             // Emergency Vehicles
             VehicleHash.Policeb
         };
 
-        protected new VehicleClass[] CoveredVehicleClasses =
+        public override VehicleClass[] CoveredVehicleClasses { get; } =
         {
             VehicleClass.Motorcycles
-
         };
 
         public override int GetMinRequiredLevel()
@@ -29,6 +29,16 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
         public override string GetLicenseIdentifierName()
         {
             return "vehicle-bike";
+        }
+
+        public override string GetHumanReadableName()
+        {
+            return "Motorradführerschein";
+        }
+
+        public override string GetHumanReadableDescription()
+        {
+            return "Dieser Führerschein wird zum führen eines Motorrades benötigt.";
         }
 
         public override float GetLicensePrice()

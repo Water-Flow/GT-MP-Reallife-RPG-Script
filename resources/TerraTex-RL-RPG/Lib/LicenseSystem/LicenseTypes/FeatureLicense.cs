@@ -6,6 +6,8 @@
 
         public abstract int GetMinRequiredLevel();
         public abstract string GetLicenseIdentifierName();
+        public abstract string GetHumanReadableName();
+        public abstract string GetHumanReadableDescription();
         public abstract float GetLicensePrice();
     }
 }

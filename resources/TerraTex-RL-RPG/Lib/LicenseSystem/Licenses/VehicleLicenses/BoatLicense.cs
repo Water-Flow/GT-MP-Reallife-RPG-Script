@@ -9,12 +9,23 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
 {
     public class BoatLicense : VehicleLicense
     {
-        protected new VehicleHash[] AdditionalVehicleHashes =
+        public override VehicleHash[] ExcludedVehicleHashes { get; } = { };
+        public override VehicleHash[] AdditionalVehicleHashes { get; } =
         {
             VehicleHash.Predator
         };
 
-        protected new VehicleClass[] CoveredVehicleClasses =
+        public override string GetHumanReadableName()
+        {
+            return "Bootslizenz";
+        }
+
+        public override string GetHumanReadableDescription()
+        {
+            return "Diese Lizenz erlaubt das fahren und führen eines Bootes.";
+        }
+
+        public override VehicleClass[] CoveredVehicleClasses { get; } =
         {
             VehicleClass.Boats
         };

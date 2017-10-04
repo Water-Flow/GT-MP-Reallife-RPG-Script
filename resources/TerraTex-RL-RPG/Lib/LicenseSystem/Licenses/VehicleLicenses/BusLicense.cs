@@ -9,7 +9,8 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
 {
     public class BusLicense : VehicleLicense
     {
-        protected new VehicleHash[] AdditionalVehicleHashes =
+        public override VehicleHash[] ExcludedVehicleHashes { get; } = { };
+        public override VehicleHash[] AdditionalVehicleHashes { get; } =
         {
             VehicleHash.PBus,
             VehicleHash.Airbus,
@@ -19,7 +20,17 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
             VehicleHash.Coach
         };
 
-        protected new VehicleClass[] CoveredVehicleClasses =
+        public override string GetHumanReadableName()
+        {
+            return "Busführerschein";
+        }
+
+        public override string GetHumanReadableDescription()
+        {
+            return "Dieser Führerschein erlaubt das fahren eines Busses und das Transportieren einer größeren Passagiermenge im öffentlichen Straßenverkehr.";
+        }
+
+        public override VehicleClass[] CoveredVehicleClasses { get; } =
         {
         };
 

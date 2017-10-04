@@ -9,14 +9,26 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
 {
     public class RacingPkwLicense : VehicleLicense
     {
-        protected new int[] AdditionalVehicleHashes =
+        public override VehicleHash[] ExcludedVehicleHashes { get; } = { };
+        public override VehicleHash[] AdditionalVehicleHashes { get; } =
         {
         };
 
-        protected new VehicleClass[] CoveredVehicleClasses =
+        public override VehicleClass[] CoveredVehicleClasses { get; } =
         {
             VehicleClass.Super
         };
+
+        public override string GetHumanReadableName()
+        {
+            return "Stuntlizenz";
+        }
+
+        public override string GetHumanReadableDescription()
+        {
+            return "Diese Lizenz erlaubt das fahren von Fahrzeugen mit erhöhter Höchstgeschwindigkeit," +
+                   " darunter fallen Renn- und Supersportfahrzeuge, im öffentlichen Straßenverkehr.";
+        }
 
         public override int GetMinRequiredLevel()
         {

@@ -8,19 +8,17 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.LicenseTypes
 {
     public abstract class VehicleLicense : ILicense
     {
-        protected VehicleHash[] AdditionalVehicleHashes =
-        {
-
-        };
-
-        protected VehicleClass[] CoveredVehicleClasses =
-        {
-
-        };
+        public abstract VehicleHash[] ExcludedVehicleHashes { get; }
+        public abstract VehicleHash[] AdditionalVehicleHashes { get; }
+        public abstract VehicleClass[] CoveredVehicleClasses { get; }
 
         public bool IsVehicleCoveredByThisLicense(VehicleHash vehicleHash)
         {
-            if (Array.IndexOf(CoveredVehicleClasses, API.shared.getVehicleClass(vehicleHash)) > -1)
+            if (Array.IndexOf(ExcludedVehicleHashes, vehicleHash) > -1)
+            {
+                return false;
+            }
+            if (Array.IndexOf(CoveredVehicleClasses, (VehicleClass) API.shared.getVehicleClass(vehicleHash)) > -1)
             {
                 return true;
             }
@@ -45,6 +43,8 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.LicenseTypes
 
         public abstract int GetMinRequiredLevel();
         public abstract string GetLicenseIdentifierName();
+        public abstract string GetHumanReadableName();
+        public abstract string GetHumanReadableDescription();
         public abstract float GetLicensePrice();
     }
 }

@@ -9,15 +9,27 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
 {
     public class HelicopterLicense : VehicleLicense
     {
-        protected new VehicleHash[] AdditionalVehicleHashes =
+        public override VehicleHash[] ExcludedVehicleHashes { get; } = { };
+        public override VehicleHash[] AdditionalVehicleHashes { get; } =
         {
             VehicleHash.Polmav
         };
 
-        protected new VehicleClass[] CoveredVehicleClasses =
+        public override VehicleClass[] CoveredVehicleClasses { get; } =
         {
             VehicleClass.Helicopters15,
         };
+
+        public override string GetHumanReadableName()
+        {
+            return "Helicopterlizenz";
+        }
+
+        public override string GetHumanReadableDescription()
+        {
+            return "Diese Lizenz erlaubt das fliegen von Helicoptern.";
+        }
+
 
         public override int GetMinRequiredLevel()
         {

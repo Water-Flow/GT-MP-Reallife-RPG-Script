@@ -9,7 +9,11 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
 {
     public class PkwLicense : VehicleLicense
     {
-        protected new VehicleHash[] AdditionalVehicleHashes =
+        public override VehicleHash[] ExcludedVehicleHashes { get; } =
+        {
+            VehicleHash.Limo2
+        };
+        public override VehicleHash[] AdditionalVehicleHashes { get; } =
         {
             // Emergency Vehicles
             VehicleHash.Ambulance, VehicleHash.FBI, VehicleHash.FBI2, VehicleHash.Police, VehicleHash.Police2, VehicleHash.Police3, VehicleHash.Police4, 
@@ -35,7 +39,17 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
 
         };
 
-        protected new VehicleClass[] CoveredVehicleClasses =
+        public override string GetHumanReadableName()
+        {
+            return "PKW-Führerschein";
+        }
+
+        public override string GetHumanReadableDescription()
+        {
+            return "Dieser Führerschein erlaubt das führen eines Personenkraftwagens.";
+        }
+
+        public override VehicleClass[] CoveredVehicleClasses { get; } =
         {
             VehicleClass.Compacts, 
             VehicleClass.Coupes, 

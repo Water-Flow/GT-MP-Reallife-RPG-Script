@@ -9,15 +9,26 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
 {
     public class MilitaryLicense : VehicleLicense
     {
-        protected new VehicleHash[] AdditionalVehicleHashes =
+        public override VehicleHash[] ExcludedVehicleHashes { get; } = { };
+        public override VehicleHash[] AdditionalVehicleHashes { get; } =
         {
             VehicleHash.APC, VehicleHash.Halftrack, VehicleHash.Rhino, VehicleHash.Insurgent3, VehicleHash.Insurgent,
-            VehicleHash.Technical, VehicleHash.Technical2, VehicleHash.Technical3, 
+            VehicleHash.Technical, VehicleHash.Technical2, VehicleHash.Technical3, VehicleHash.Limo2
         };
 
-        protected new VehicleClass[] CoveredVehicleClasses =
+        public override VehicleClass[] CoveredVehicleClasses { get; } =
         {
         };
+
+        public override string GetHumanReadableName()
+        {
+            return "Militärlizenz";
+        }
+
+        public override string GetHumanReadableDescription()
+        {
+            return "Diese Lizenz erlaubt die Nutzung von bewaffneten Fahrzeugen und Maschinen.";
+        }
 
         public override int GetMinRequiredLevel()
         {
