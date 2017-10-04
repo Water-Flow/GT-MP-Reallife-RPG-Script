@@ -47,23 +47,7 @@ namespace TerraTex_RL_RPG.Lib.Admin
 
                 API.createMarker(28, position, new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(5,5, 100), 150, 255, 100 , 100);
 
-                Directory.CreateDirectory(API.getResourceFolder() + "/Logs");
-                string path = API.getResourceFolder() + "/Logs/Position.log";
-
-                if (!File.Exists(path))
-                {
-                    string createText = "" + Environment.NewLine;
-                    File.WriteAllText(path, createText);
-                }
-
-                string appendText = position.X.ToString("R").Replace(",", ".") + ", " +
-                                    position.Y.ToString("R").Replace(",", ".") + ", " +
-                                    position.Z.ToString("R").Replace(",", ".") + " // " + info + Environment.NewLine;
-                File.AppendAllText(path, appendText);
-                player.sendNotification("Dev-System",
-                    "Saved Position: X: " + position.X + "; Y: " + position.Y + "; Z: " + position.Z);
-
-               
+                SaveCommand(player, info);
             }
         }
 

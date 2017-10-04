@@ -257,6 +257,7 @@
     <Content Include="Lib\Helper\Client\Events.js" />
     <Content Include="Lib\Jobs\Bergwerk\BergWerk.js" />
     <Content Include="Lib\Jobs\Fischer\Fischer.js" />
+    <Content Include="Lib\LicenseSystem\LicenseMenu.js" />
     <Content Include="Lib\User\KeyBinding\KeyBinds.js" />
     <Content Include="Lib\User\KeyBinding\KeyConfigurationScreen.js" />
     <Content Include="Lib\User\Management\UI\PayDayUI.js" />
