@@ -44,7 +44,7 @@ API.onServerEventTrigger.connect((event, args) => {
 
 function buyLic(identifier) {
     mainMenu.Visible = false;
-
+    API.triggerServerEvent("buyLicense", identifier);
 }
 
 function createLicItem(lic) {

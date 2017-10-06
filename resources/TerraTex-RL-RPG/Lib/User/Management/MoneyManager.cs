@@ -24,7 +24,13 @@ namespace TerraTex_RL_RPG.Lib.User.Management
             Job,
             Other
         }
-        
+
+        public static bool PlayerPayMoneyOrBank(Client player, float amount, Categorys category, string reason,
+            string additionalDataAsJson)
+        {
+            throw new NotImplementedException();
+        }
+
         public static void ChangePlayerMoney(Client player, float amount, bool bankPay,
             Categorys category, string reason, string additionalDataAsJson)
         {

@@ -5,6 +5,7 @@ using GrandTheftMultiplayer.Server.Managers;
 using GrandTheftMultiplayer.Shared;
 using GrandTheftMultiplayer.Shared.Math;
 using Newtonsoft.Json.Linq;
+using TerraTex_RL_RPG.Lib.User.Management;
 
 namespace TerraTex_RL_RPG.Lib.LicenseSystem
 {
@@ -13,6 +14,22 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem
         public LicenseMenu()
         {
             API.onResourceStart += CreateMenuMarker;
+            API.onClientEventTrigger += OnClientLicenseTrigger;
+        }
+
+        private void OnClientLicenseTrigger(Client sender, string eventName, params object[] arguments)
+        {
+            if (eventName.Equals("buyLicense"))
+            {
+                string identifier = (string) arguments[0];
+                ILicense lic = Licenses.GetLicenseByIdentifier(identifier);
+                if (!Licenses.HasLicense(sender, lic.GetLicenseIdentifierName()))
+                {
+                    // @todo: allow bankpay when money is not enough
+                    // bool hasPaid = MoneyManager.PlayerPayMoneyOrBank();
+                }
+
+            }
         }
 
         private void CreateMenuMarker()
@@ -33,70 +50,75 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem
                 if (colshape.hasData("isLicenseMarker"))
                 {
                     Client player = API.getPlayerFromHandle(entity);
-
-                    // @todo: create Menu
-                    List<Dictionary<string, dynamic>> vehicleLicenseList = new List<Dictionary<string, dynamic>>();
-                    List<Dictionary<string, dynamic>> weaponLicenseList = new List<Dictionary<string, dynamic>>();
-                    List<Dictionary<string, dynamic>> featureLicenseList = new List<Dictionary<string, dynamic>>();
-
-                    List<string> ownedLicenses = new List<string>();
-                    List<ILicense> userLicenses = (List<ILicense>) player.getData("UserLicenses");
-
-                    foreach (ILicense lic in userLicenses)
-                    {
-                        ownedLicenses.Add(lic.GetLicenseIdentifierName());
-                    }
-
-                    foreach (ILicense lic in Licenses.GetAllLicenses())
-                    {
-                        Dictionary<string, dynamic> licenseObject = new Dictionary<string, dynamic>();
-                        licenseObject.Add("price", lic.GetLicensePrice());
-                        licenseObject.Add("identifier", lic.GetLicenseIdentifierName());
-                        licenseObject.Add("name", lic.GetHumanReadableName());
-                        licenseObject.Add("description", lic.GetHumanReadableDescription());
-                        if ((int) player.getSyncedData("Level") < lic.GetMinRequiredLevel())
-                        {
-                            licenseObject.Add("error", "Level " + lic.GetMinRequiredLevel());
-                            licenseObject.Add("enabled", false);
-                        }
-                        else if (ownedLicenses.Contains(lic.GetLicenseIdentifierName()))
-                        {
-                            licenseObject.Add("error", "im Besitz");
-                            licenseObject.Add("enabled", false);
-                        }
-                        else if ((float) player.getSyncedData("Money") < lic.GetLicensePrice())
-                        {
-                            licenseObject.Add("color", "~r~");
-                            licenseObject.Add("enabled", false);
-                        }
-                        else
-                        {
-                            licenseObject.Add("enabled", true);
-                        }
-
-                        var memberInfo = lic.GetType().BaseType;
-                        if (memberInfo != null && memberInfo.Name.Equals("VehicleLicense"))
-                        {
-                            vehicleLicenseList.Add(licenseObject);
-                        }
-                        else if (memberInfo != null && memberInfo.Name.Equals("FeatureLicense")) { 
-                            featureLicenseList.Add(licenseObject);
-                        }
-                        else if (memberInfo != null && memberInfo.Name.Equals("WeaponLicense"))
-                        {
-                            weaponLicenseList.Add(licenseObject);
-                        }
-                    }
-
-                    Dictionary<string, dynamic> licensesDictionary = new Dictionary<string, dynamic>();
-                    licensesDictionary.Add("vehicleLicenses", vehicleLicenseList);
-                    licensesDictionary.Add("featureLicenses", featureLicenseList);
-                    licensesDictionary.Add("weaponLicenses", weaponLicenseList);
-
-                    string json = JObject.FromObject(licensesDictionary).ToString();
-                    player.triggerEvent("createLicensesMenu", json);
+                    SendLicenseMenuToPlayer(player);
                 }
             }
         }
-    }
+
+        private void SendLicenseMenuToPlayer(Client player, bool isUpdate = false)
+        {
+            List<Dictionary<string, dynamic>> vehicleLicenseList = new List<Dictionary<string, dynamic>>();
+            List<Dictionary<string, dynamic>> weaponLicenseList = new List<Dictionary<string, dynamic>>();
+            List<Dictionary<string, dynamic>> featureLicenseList = new List<Dictionary<string, dynamic>>();
+
+            List<string> ownedLicenses = new List<string>();
+            List<ILicense> userLicenses = (List<ILicense>)player.getData("UserLicenses");
+
+            foreach (ILicense lic in userLicenses)
+            {
+                ownedLicenses.Add(lic.GetLicenseIdentifierName());
+            }
+
+            foreach (ILicense lic in Licenses.GetAllLicenses())
+            {
+                Dictionary<string, dynamic> licenseObject = new Dictionary<string, dynamic>();
+                licenseObject.Add("price", lic.GetLicensePrice());
+                licenseObject.Add("identifier", lic.GetLicenseIdentifierName());
+                licenseObject.Add("name", lic.GetHumanReadableName());
+                licenseObject.Add("description", lic.GetHumanReadableDescription());
+                if ((int)player.getSyncedData("Level") < lic.GetMinRequiredLevel())
+                {
+                    licenseObject.Add("error", "Level " + lic.GetMinRequiredLevel());
+                    licenseObject.Add("enabled", false);
+                }
+                else if (ownedLicenses.Contains(lic.GetLicenseIdentifierName()))
+                {
+                    licenseObject.Add("error", "im Besitz");
+                    licenseObject.Add("enabled", false);
+                }
+                else if ((float)player.getSyncedData("Money") < lic.GetLicensePrice())
+                {
+                    licenseObject.Add("color", "~r~");
+                    licenseObject.Add("enabled", false);
+                }
+                else
+                {
+                    licenseObject.Add("enabled", true);
+                }
+
+                var memberInfo = lic.GetType().BaseType;
+                if (memberInfo != null && memberInfo.Name.Equals("VehicleLicense"))
+                {
+                    vehicleLicenseList.Add(licenseObject);
+                }
+                else if (memberInfo != null && memberInfo.Name.Equals("FeatureLicense"))
+                {
+                    featureLicenseList.Add(licenseObject);
+                }
+                else if (memberInfo != null && memberInfo.Name.Equals("WeaponLicense"))
+                {
+                    weaponLicenseList.Add(licenseObject);
+                }
+            }
+
+            Dictionary<string, dynamic> licensesDictionary = new Dictionary<string, dynamic>();
+            licensesDictionary.Add("vehicleLicenses", vehicleLicenseList);
+            licensesDictionary.Add("featureLicenses", featureLicenseList);
+            licensesDictionary.Add("weaponLicenses", weaponLicenseList);
+
+            string json = JObject.FromObject(licensesDictionary).ToString();
+
+            player.triggerEvent(isUpdate ? "updateLicensesMenu" : "createLicensesMenu", json);
+        }
+    }    
 }
