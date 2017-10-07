@@ -60,6 +60,10 @@ API.onServerEventTrigger.connect((event, args) => {
                 case "feature":
                     submenu = featureSubMenu;
                     break;
+                default:
+                    submenu = vehicleSubMenu;
+                    lastSelectedMenu = "vehicle";
+                    break;
             }
             submenu.Visible = true;
             submenu.CurrentSelection = lastSelected;
