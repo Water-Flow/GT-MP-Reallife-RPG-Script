@@ -4,7 +4,9 @@ using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Server.Managers;
 using GrandTheftMultiplayer.Shared;
 using GrandTheftMultiplayer.Shared.Math;
+using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Linq;
+using TerraTex_RL_RPG.Lib.Helper;
 using TerraTex_RL_RPG.Lib.User.Management;
 
 namespace TerraTex_RL_RPG.Lib.LicenseSystem
@@ -25,10 +27,33 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem
                 ILicense lic = Licenses.GetLicenseByIdentifier(identifier);
                 if (!Licenses.HasLicense(sender, lic.GetLicenseIdentifierName()))
                 {
-                    // @todo: allow bankpay when money is not enough
-                    // bool hasPaid = MoneyManager.PlayerPayMoneyOrBank();
-                }
+                    bool hasPaid = MoneyManager.PlayerPayMoneyOrBank(sender, -lic.GetLicensePrice(), MoneyManager.Categorys.Purchase, "Lizenzkauf: " + lic.GetHumanReadableName(), null);
+                    if (hasPaid)
+                    {
+                        ChatHelper.SendChatNotificationToPlayer(sender, "Lizenzkauf", "Du hast die Lizenz \"" + lic.GetHumanReadableName() + "\" erworben.");
+                        // Add License to player and database
+                        List<ILicense> userLicenses = (List<ILicense>)sender.getData("UserLicenses");
+                        userLicenses.Add(lic);
+                        sender.setData("UserLicenses", userLicenses);
 
+                        MySqlCommand createLicenseCommand = TTRPG.Mysql.Conn.CreateCommand();
+                        createLicenseCommand.CommandText =
+                            "INSERT INTO user_licenses (UserID, LicenseKey) " +
+                            "VALUES (@userID, @licenseKey)";
+
+                        createLicenseCommand.Parameters.AddWithValue("@userID", (int) sender.getSyncedData("ID"));
+                        createLicenseCommand.Parameters.AddWithValue("@licenseKey", lic.GetLicenseIdentifierName());
+
+                        createLicenseCommand.ExecuteNonQuery();
+
+                        SendLicenseMenuToPlayer(sender, true);
+                    }
+                    else
+                    {
+                        ChatHelper.SendChatNotificationToPlayer(sender, "Lizenzkauf", "~r~Du hast nicht gnügend Geld auf der Hand oder deinem Konto um die Lizenz zu erwerben.");
+                    }
+
+                }
             }
         }
 
@@ -86,7 +111,7 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem
                     licenseObject.Add("error", "im Besitz");
                     licenseObject.Add("enabled", false);
                 }
-                else if ((float)player.getSyncedData("Money") < lic.GetLicensePrice())
+                else if (MoneyManager.GetPlayerMoney(player) < lic.GetLicensePrice() && MoneyManager.GetPlayerBank(player) < lic.GetLicensePrice())
                 {
                     licenseObject.Add("color", "~r~");
                     licenseObject.Add("enabled", false);

@@ -22,13 +22,40 @@ namespace TerraTex_RL_RPG.Lib.User.Management
             PlayerToPlayer,
             PayDay,
             Job,
+            Purchase,
             Other
         }
 
+        /// <summary>
+        /// Checks if a player can pay with money on hand or with bankaccount and pays the amount
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="amount">has to be negative</param>
+        /// <param name="category"></param>
+        /// <param name="reason"></param>
+        /// <param name="additionalDataAsJson"></param>
+        /// <returns></returns>
         public static bool PlayerPayMoneyOrBank(Client player, float amount, Categorys category, string reason,
             string additionalDataAsJson)
         {
-            throw new NotImplementedException();
+            if (GetPlayerBank(player) < -amount && GetPlayerMoney(player) < -amount)
+            {
+                return false;
+            }
+
+            if (GetPlayerMoney(player) >= -amount)
+            {
+                // pay with money
+                ChangePlayerMoney(player, amount, false, category, reason, additionalDataAsJson);
+            }
+            else
+            {
+                // pay with bank
+                ChangePlayerMoney(player, amount, true, category, reason, additionalDataAsJson);
+                player.sendNotification("EC-Zahlung", "Dein Konto wurde mit einem Betrag von ~r~" + amount.ToString("C2") + "~s~ belastet.");
+            }
+
+            return true;
         }
 
         public static void ChangePlayerMoney(Client player, float amount, bool bankPay,

@@ -1,5 +1,6 @@
 ﻿let lics = {};
-let mainMenu, vehicleMenu, weaponMenu, featureMenu;
+let mainMenu, vehicleMenu, weaponMenu, featureMenu, lastSelectedMenu, lastSelected;
+let vehicleSubMenu, weaponSubMenu, featureSubMenu;
 API.onServerEventTrigger.connect((event, args) => {
     if (event === "updateLicensesMenu" || event === "createLicensesMenu") {
         if (mainMenu && mainMenu.Visible) {
@@ -24,26 +25,59 @@ API.onServerEventTrigger.connect((event, args) => {
             featureMenu.AddItem(createLicItem(lic));
         }
 
-        API.addSubMenu(mainMenu, vehicleMenu, "Fahrzeuglizenzen", "Lizensen zum führen verschiedener Fahrzeuge, Flugzeuge, ...");
-        API.addSubMenu(mainMenu, weaponMenu, "Waffenlizenzen", "Lizensen zur Nutzung verschiedener Waffenklassen.");
-        API.addSubMenu(mainMenu, featureMenu, "Sonstige Lizenzen", "Sonstige Lizenzen, wie Pässe, Ausweise, ...");
+        vehicleSubMenu = API.addSubMenu(mainMenu, vehicleMenu, "Fahrzeuglizenzen", "Lizensen zum führen verschiedener Fahrzeuge, Flugzeuge, ...");
+        weaponSubMenu = API.addSubMenu(mainMenu, weaponMenu, "Waffenlizenzen", "Lizensen zur Nutzung verschiedener Waffenklassen.");
+        featureSubMenu = API.addSubMenu(mainMenu, featureMenu, "Sonstige Lizenzen", "Sonstige Lizenzen, wie Pässe, Ausweise, ...");
 
-        vehicleMenu.OnItemSelect.connect(function (sender, item) {
+        vehicleMenu.OnItemSelect.connect(function (sender, item, index) {
+            lastSelected = index;
+            lastSelectedMenu = "vehicle";
             buyLic(lics[item.Text]);
         });
-        weaponMenu.OnItemSelect.connect(function (sender, item) {
+        weaponMenu.OnItemSelect.connect(function (sender, item, index) {
+            lastSelected = index;
+            lastSelectedMenu = "weapon";
             buyLic(lics[item.Text]);
         });
-        featureMenu.OnItemSelect.connect(function (sender, item) {
+        featureMenu.OnItemSelect.connect(function (sender, item, index) {
+            lastSelected = index;
+            lastSelectedMenu = "feature";
             buyLic(lics[item.Text]);
         });
 
         mainMenu.Visible = true;
+
+        if (event === "updateLicensesMenu") {
+            mainMenu.Visible = false;
+            let submenu;
+            switch (lastSelectedMenu) {
+                case "vehicle":
+                    submenu = vehicleSubMenu;
+                    break;
+                case "weapon":
+                    submenu = weaponSubMenu;
+                    break;
+                case "feature":
+                    submenu = featureSubMenu;
+                    break;
+            }
+            submenu.Visible = true;
+            submenu.CurrentSelection = lastSelected;
+        }
     }
 });
 
 function buyLic(identifier) {
     mainMenu.Visible = false;
+    lastSelectedMenu.Visible = false;
+    featureSubMenu.Visible = false;
+    weaponSubMenu.Visible = false;
+    vehicleSubMenu.Visible = false;
+    featureSubMenu = null;
+    weaponSubMenu = null;
+    vehicleSubMenu = null;
+    mainMenu = null;
+    
     API.triggerServerEvent("buyLicense", identifier);
 }
 
