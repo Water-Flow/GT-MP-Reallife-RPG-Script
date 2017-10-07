@@ -5,14 +5,14 @@ using GrandTheftMultiplayer.Shared;
 using GrandTheftMultiplayer.Shared.Math;
 using Newtonsoft.Json;
 
-namespace TerraTex_RL_RPG.Lib.Enviroment
+namespace TerraTex_RL_RPG.Lib.Systems.ClickSystem
 {
     public class ClickSystem : Script
     {
         public class WorldObject
         {
-            public Vector3 HitPosition;
-            public int EntityHash;
+            public Vector3 HitPosition { get; }
+            public int EntityHash { get; }
 
             public WorldObject(Vector3 hitPosition, int entityHash)
             {

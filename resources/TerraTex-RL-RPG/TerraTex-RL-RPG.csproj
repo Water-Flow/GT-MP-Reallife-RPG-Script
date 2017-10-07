@@ -90,7 +90,7 @@
     <Compile Include="Lib\Data\Database.cs" />
     <Compile Include="Lib\Enviroment\Chat\BasicChatCommands.cs" />
     <Compile Include="Lib\Enviroment\Chat\DistanceChat.cs" />
-    <Compile Include="Lib\Enviroment\ClickSystem.cs" />
+    <Compile Include="Lib\Systems\ClickSystem\ClickSystem.cs" />
     <Compile Include="Lib\Enviroment\GeneralBlips.cs" />
     <Compile Include="Lib\Helper\ChatHelper.cs" />
     <Compile Include="Lib\Helper\LoadedDie.cs" />
@@ -254,7 +254,7 @@
     <Content Include="Configs\database_example.xml" />
     <Content Include="Configs\server_example.xml" />
     <Content Include="Gruntfile.js" />
-    <Content Include="Lib\Enviroment\ClickSystem.js" />
+    <Content Include="Lib\Systems\ClickSystem\ClickSystem.js" />
     <Content Include="Lib\Enviroment\Hud\InfoHud.js" />
     <Content Include="Lib\Helper\Client\Events.js" />
     <Content Include="Lib\Jobs\Bergwerk\BergWerk.js" />
