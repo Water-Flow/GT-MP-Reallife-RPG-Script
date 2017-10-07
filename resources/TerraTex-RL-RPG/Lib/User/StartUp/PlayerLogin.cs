@@ -8,7 +8,7 @@ using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using TerraTex_RL_RPG.Lib.Admin;
 using TerraTex_RL_RPG.Lib.Helper;
-using TerraTex_RL_RPG.Lib.LicenseSystem;
+using TerraTex_RL_RPG.Lib.Systems.LicenseSystem;
 using TerraTex_RL_RPG.Lib.Threads;
 using TerraTex_RL_RPG.Lib.User.Management;
 using TerraTex_RL_RPG.Lib.User.SpawnAndDeath;

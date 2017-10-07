@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Shared;
-using TerraTex_RL_RPG.Lib.LicenseSystem;
+using TerraTex_RL_RPG.Lib.Systems.LicenseSystem;
 
 namespace TerraTex_RL_RPG.Lib.Vehicles
 {

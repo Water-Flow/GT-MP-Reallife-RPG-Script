@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 using TerraTex_RL_RPG.Lib.Helper;
 using TerraTex_RL_RPG.Lib.User.Management;
 
-namespace TerraTex_RL_RPG.Lib.LicenseSystem
+namespace TerraTex_RL_RPG.Lib.Systems.LicenseSystem
 {
     public class LicenseMenu : Script
     {

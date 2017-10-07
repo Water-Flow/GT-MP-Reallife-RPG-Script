@@ -1,4 +1,4 @@
-﻿namespace TerraTex_RL_RPG.Lib.LicenseSystem
+﻿namespace TerraTex_RL_RPG.Lib.Systems.LicenseSystem
 {
     public interface ILicense
     {

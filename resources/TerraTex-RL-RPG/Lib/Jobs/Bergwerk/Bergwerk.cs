@@ -6,7 +6,7 @@ using GrandTheftMultiplayer.Server.Managers;
 using GrandTheftMultiplayer.Shared;
 using GrandTheftMultiplayer.Shared.Math;
 using TerraTex_RL_RPG.Lib.Helper;
-using TerraTex_RL_RPG.Lib.LicenseSystem;
+using TerraTex_RL_RPG.Lib.Systems.LicenseSystem;
 using TerraTex_RL_RPG.Lib.User.Management;
 
 namespace TerraTex_RL_RPG.Lib.Jobs.Bergwerk

@@ -1,47 +1,46 @@
-﻿using System;
-using GrandTheftMultiplayer.Server.API;
-using GrandTheftMultiplayer.Server.Elements;
-using GrandTheftMultiplayer.Shared;
+﻿using GrandTheftMultiplayer.Shared;
 using GrandTheftMultiplayer.Shared.Gta.Vehicle;
-using TerraTex_RL_RPG.Lib.LicenseSystem.LicenseTypes;
+using TerraTex_RL_RPG.Lib.Systems.LicenseSystem.LicenseTypes;
 
-namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
+namespace TerraTex_RL_RPG.Lib.Systems.LicenseSystem.VehicleLicenses
 {
-    public class PlaneLicense : VehicleLicense
+    public class QuadLicense : VehicleLicense
     {
         public override VehicleHash[] ExcludedVehicleHashes { get; } = { };
         public override VehicleHash[] AdditionalVehicleHashes { get; } =
         {
+            // Off-Road
+            VehicleHash.Blazer, VehicleHash.Blazer2, VehicleHash.Blazer3, VehicleHash.Blazer5, VehicleHash.Blazer4
+
         };
 
         public override VehicleClass[] CoveredVehicleClasses { get; } =
         {
-            VehicleClass.Planes
         };
 
         public override string GetHumanReadableName()
         {
-            return "Flugzeuglizenz";
+            return "Quadführerschein";
         }
 
         public override string GetHumanReadableDescription()
         {
-            return "Diese Lizenz erlaubt das fliegen von Flugzeugen.";
+            return "Dieser Führerschein erlaubt das fahren von Quads im öffentlichen Straßenverkehr.";
         }
 
         public override int GetMinRequiredLevel()
         {
-            return 15;
+            return 0;
         }
 
         public override string GetLicenseIdentifierName()
         {
-            return "vehicle-planes";
+            return "vehicle-quad";
         }
 
         public override float GetLicensePrice()
         {
-            return 150000.00f;
+            return 1000.00f;
         }
     }
 }

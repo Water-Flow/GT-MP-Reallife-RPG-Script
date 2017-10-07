@@ -5,7 +5,7 @@ using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Constant;
 using GrandTheftMultiplayer.Server.Elements;
 using TerraTex_RL_RPG.Lib.Data;
-using TerraTex_RL_RPG.Lib.LicenseSystem;
+using TerraTex_RL_RPG.Lib.Systems.LicenseSystem;
 using TerraTex_RL_RPG.Lib.Threads;
 
 namespace TerraTex_RL_RPG

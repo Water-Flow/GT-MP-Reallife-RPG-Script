@@ -4,7 +4,7 @@ using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Shared;
 using GrandTheftMultiplayer.Shared.Gta.Vehicle;
 
-namespace TerraTex_RL_RPG.Lib.LicenseSystem.LicenseTypes
+namespace TerraTex_RL_RPG.Lib.Systems.LicenseSystem.LicenseTypes
 {
     public abstract class VehicleLicense : ILicense
     {

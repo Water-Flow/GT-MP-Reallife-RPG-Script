@@ -1,48 +1,45 @@
-﻿using GrandTheftMultiplayer.Server.API;
-using GrandTheftMultiplayer.Server.Elements;
-using GrandTheftMultiplayer.Shared;
+﻿using GrandTheftMultiplayer.Shared;
 using GrandTheftMultiplayer.Shared.Gta.Vehicle;
-using TerraTex_RL_RPG.Lib.LicenseSystem.LicenseTypes;
+using TerraTex_RL_RPG.Lib.Systems.LicenseSystem.LicenseTypes;
 
-namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
+namespace TerraTex_RL_RPG.Lib.Systems.LicenseSystem.VehicleLicenses
 {
-    public class QuadLicense : VehicleLicense
+    public class RacingPkwLicense : VehicleLicense
     {
         public override VehicleHash[] ExcludedVehicleHashes { get; } = { };
         public override VehicleHash[] AdditionalVehicleHashes { get; } =
         {
-            // Off-Road
-            VehicleHash.Blazer, VehicleHash.Blazer2, VehicleHash.Blazer3, VehicleHash.Blazer5, VehicleHash.Blazer4
-
         };
 
         public override VehicleClass[] CoveredVehicleClasses { get; } =
         {
+            VehicleClass.Super
         };
 
         public override string GetHumanReadableName()
         {
-            return "Quadführerschein";
+            return "Stuntlizenz";
         }
 
         public override string GetHumanReadableDescription()
         {
-            return "Dieser Führerschein erlaubt das fahren von Quads im öffentlichen Straßenverkehr.";
+            return "Diese Lizenz erlaubt das fahren von Fahrzeugen mit erhöhter Höchstgeschwindigkeit," +
+                   " darunter fallen Renn- und Supersportfahrzeuge, im öffentlichen Straßenverkehr.";
         }
 
         public override int GetMinRequiredLevel()
         {
-            return 0;
+            return 10;
         }
 
         public override string GetLicenseIdentifierName()
         {
-            return "vehicle-quad";
+            return "vehicle-racing-pkw";
         }
 
         public override float GetLicensePrice()
         {
-            return 1000.00f;
+            return 40000.00f;
         }
     }
 }

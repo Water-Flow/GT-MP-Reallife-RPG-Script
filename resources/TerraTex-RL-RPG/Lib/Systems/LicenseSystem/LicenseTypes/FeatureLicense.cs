@@ -1,8 +1,8 @@
-﻿namespace TerraTex_RL_RPG.Lib.LicenseSystem.LicenseTypes
+﻿namespace TerraTex_RL_RPG.Lib.Systems.LicenseSystem.LicenseTypes
 {
-    public abstract class WeaponLicense : ILicense
+    public abstract class FeatureLicense : ILicense
     {
-        public abstract bool IsWeaponCoveredByThisLicense(int weaponHash);
+        public abstract string GetFeatureName();
 
         public abstract int GetMinRequiredLevel();
         public abstract string GetLicenseIdentifierName();

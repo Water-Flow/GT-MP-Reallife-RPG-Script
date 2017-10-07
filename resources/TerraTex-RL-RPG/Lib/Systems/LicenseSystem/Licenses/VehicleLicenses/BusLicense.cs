@@ -1,33 +1,34 @@
-﻿using System;
-using GrandTheftMultiplayer.Server.API;
-using GrandTheftMultiplayer.Server.Elements;
-using GrandTheftMultiplayer.Shared;
+﻿using GrandTheftMultiplayer.Shared;
 using GrandTheftMultiplayer.Shared.Gta.Vehicle;
-using TerraTex_RL_RPG.Lib.LicenseSystem.LicenseTypes;
+using TerraTex_RL_RPG.Lib.Systems.LicenseSystem.LicenseTypes;
 
-namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
+namespace TerraTex_RL_RPG.Lib.Systems.LicenseSystem.VehicleLicenses
 {
-    public class BoatLicense : VehicleLicense
+    public class BusLicense : VehicleLicense
     {
         public override VehicleHash[] ExcludedVehicleHashes { get; } = { };
         public override VehicleHash[] AdditionalVehicleHashes { get; } =
         {
-            VehicleHash.Predator
+            VehicleHash.PBus,
+            VehicleHash.Airbus,
+            VehicleHash.Bus,
+            VehicleHash.RentalBus,
+            VehicleHash.Tourbus,
+            VehicleHash.Coach
         };
 
         public override string GetHumanReadableName()
         {
-            return "Bootslizenz";
+            return "Busführerschein";
         }
 
         public override string GetHumanReadableDescription()
         {
-            return "Diese Lizenz erlaubt das fahren und führen eines Bootes.";
+            return "Dieser Führerschein erlaubt das fahren eines Busses und das Transportieren einer größeren Passagiermenge im öffentlichen Straßenverkehr.";
         }
 
         public override VehicleClass[] CoveredVehicleClasses { get; } =
         {
-            VehicleClass.Boats
         };
 
         public override int GetMinRequiredLevel()
@@ -37,12 +38,12 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem.VehicleLicenses
 
         public override string GetLicenseIdentifierName()
         {
-            return "vehicle-boat";
+            return "vehicle-bus";
         }
 
         public override float GetLicensePrice()
         {
-            return 7500.00f;
+            return 10000.00f;
         }
     }
 }
