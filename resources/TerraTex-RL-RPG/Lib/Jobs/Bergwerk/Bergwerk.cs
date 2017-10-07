@@ -261,7 +261,7 @@ namespace TerraTex_RL_RPG.Lib.Jobs.Bergwerk
 
         public void StartJob(Client player)
         {
-            Vehicle bulldozi = VehiclesHelper.CreateVehicleFromName("Bulldozer",
+            Vehicle bulldozi = VehiclesHelper.CreateVehicleWithDefaultData(VehicleHash.Bulldozer, 
                 new Vector3(2587.20581, 2722.64185, 42.2129631),
                 new Vector3(-1.93598115, -0.36494568, -96.7531));
 

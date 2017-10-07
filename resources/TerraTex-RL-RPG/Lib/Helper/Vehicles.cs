@@ -7,10 +7,10 @@ namespace TerraTex_RL_RPG.Lib.Helper
 {
     static class VehiclesHelper
     {
-        public static Vehicle CreateVehicleIdleRespawn(string name, Vector3 pos, Vector3 rot, int respawnMinutes = 10,
+        public static Vehicle CreateVehicleIdleRespawn(VehicleHash hash, Vector3 pos, Vector3 rot, int respawnMinutes = 10,
             int color1 = 0, int color2 = 0, int dim = 0)
         {
-            VehicleHash vehicleHash = TTRPG.Api.vehicleNameToModel(name);
+            VehicleHash vehicleHash = hash;
             Vehicle veh = TTRPG.Api.createVehicle(vehicleHash, pos, rot, color1, color2, dim);
             veh.setSyncedData("MaxIdleTime", respawnMinutes * 60000);
             veh.setSyncedData("SpawnPosition", pos);
@@ -23,10 +23,10 @@ namespace TerraTex_RL_RPG.Lib.Helper
             return veh;
         }
 
-        public static Vehicle CreateVehicleFromName(string name, Vector3 pos, Vector3 rot, int color1 = 0,
+        public static Vehicle CreateVehicleWithDefaultData(VehicleHash hash, Vector3 pos, Vector3 rot, int color1 = 0,
             int color2 = 0, int dim = 0)
         {
-            VehicleHash vehicleHash = TTRPG.Api.vehicleNameToModel(name);
+            VehicleHash vehicleHash = hash;
             Vehicle veh = TTRPG.Api.createVehicle(vehicleHash, pos, rot, color1, color2, dim);
             veh.setSyncedData("MaxIdleTime", -1);
             veh.setSyncedData("SpawnPosition", pos);
