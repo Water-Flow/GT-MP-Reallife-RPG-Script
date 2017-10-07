@@ -17,7 +17,7 @@
     <script src="Lib/Jobs/Bergwerk/Bergwerk.js" type="client" lang="javascript" />
     <script src="Lib/Jobs/Fischer/Fischer.js" type="client" lang="javascript" />
     <script src="Lib/Enviroment/Hud/InfoHud.js" type="client" lang="javascript" />
-    <script src="Lib/Enviroment/Clicksystem.js" type="client" lang="javascript" />
+    <script src="Lib/Enviroment/ClickSystem.js" type="client" lang="javascript" />
     <script src="Lib/Helper/Client/Events.js" type="client" lang="javascript" />
     <script src="Lib/LicenseSystem/LicenseMenu.js" type="client" lang="javascript" />
   
