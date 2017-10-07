@@ -86,13 +86,7 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem
             List<Dictionary<string, dynamic>> weaponLicenseList = new List<Dictionary<string, dynamic>>();
             List<Dictionary<string, dynamic>> featureLicenseList = new List<Dictionary<string, dynamic>>();
 
-            List<string> ownedLicenses = new List<string>();
-            List<ILicense> userLicenses = (List<ILicense>)player.getData("UserLicenses");
-
-            foreach (ILicense lic in userLicenses)
-            {
-                ownedLicenses.Add(lic.GetLicenseIdentifierName());
-            }
+            List<string> ownedLicenses = Licenses.GetUserLicensesIndentifiers(player);
 
             foreach (ILicense lic in Licenses.GetAllLicenses())
             {

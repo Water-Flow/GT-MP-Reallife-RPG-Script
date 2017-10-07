@@ -92,20 +92,25 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem
 
             if (saveMissed)
             {
-                foreach (ILicense license in licenses)
+                SetPlayerMissedVehicleLicenses(player, hash);
+            }
+            return false;
+        }
+
+        private static void SetPlayerMissedVehicleLicenses(Client player, VehicleHash hash)
+        {
+            foreach (ILicense license in licenses)
+            {
+                var memberInfo = license.GetType().BaseType;
+                if (memberInfo != null && memberInfo.Name.Equals("VehicleLicense"))
                 {
-                    var memberInfo = license.GetType().BaseType;
-                    if (memberInfo != null && memberInfo.Name.Equals("VehicleLicense"))
+                    if (((VehicleLicense)license).IsVehicleCoveredByThisLicense(hash))
                     {
-                        if (((VehicleLicense)license).IsVehicleCoveredByThisLicense(hash))
-                        {
-                            player.setData("MissedLicense", license);
-                            return false;
-                        }
+                        player.setData("MissedLicense", license);
+                        return;
                     }
                 }
             }
-            return false;
         }
 
         /// <summary>
@@ -195,6 +200,22 @@ namespace TerraTex_RL_RPG.Lib.LicenseSystem
             }
 
             return levelBasedList;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        public static List<String> GetUserLicensesIndentifiers(Client player)
+        {
+            List<ILicense> userLicenses = (List<ILicense>)player.getData("UserLicenses");
+            List<string> ownedLicenses = new List<string>();
+            foreach (ILicense lic in userLicenses)
+            {
+                ownedLicenses.Add(lic.GetLicenseIdentifierName());
+            }
+            return ownedLicenses;
         }
     }
 }
