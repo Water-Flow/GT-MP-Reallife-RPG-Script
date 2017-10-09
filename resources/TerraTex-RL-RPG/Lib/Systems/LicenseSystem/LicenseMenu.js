@@ -86,11 +86,8 @@ function getLastSelectedSubmenu() {
 }
 
 function buyLic(identifier) {
-    mainMenu.Visible = false;
-    lastSelectedMenu.Visible = false;
-    featureSubMenu.Visible = false;
-    weaponSubMenu.Visible = false;
-    vehicleSubMenu.Visible = false;
+    API.closeAllMenus();
+
     featureSubMenu = null;
     weaponSubMenu = null;
     vehicleSubMenu = null;
