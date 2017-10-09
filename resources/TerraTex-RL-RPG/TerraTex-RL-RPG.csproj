@@ -270,9 +270,6 @@
     <Content Include="meta.template.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="meta.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="UI\custom\Images\angel-1862011_640.png" />
     <Content Include="UI\custom\Images\logo.png" />
     <Content Include="UI\custom\clipboard.js" />
@@ -384,7 +381,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>npm run build &amp;&amp; node createMeta</PreBuildEvent>
+    <PreBuildEvent>IF EXIST $(ProjectDir)node_modules ( 
+npm run build
+node createMeta
+)</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>IF EXIST $(ProjectDir)..\..\Server (
