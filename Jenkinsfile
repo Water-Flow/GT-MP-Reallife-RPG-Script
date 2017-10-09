@@ -34,11 +34,9 @@ node('windows'){
 			bat 'msbuild resources/TerraTex-RL-RPG/TerraTex-RL-RPG.csproj'		
 		}
 		if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == 'develop') {
-			bat 'cd resources/TerraTex-RL-RPG'
-			bat 'npm install'
-			bat 'npm run build'
-			bat 'rd node_modules /S /Q'
-			bat 'cd ../..'
+			bat 'cd resources/TerraTex-RL-RPG && npm install'
+			bat 'cd resources/TerraTex-RL-RPG && npm run build'
+			bat 'cd resources/TerraTex-RL-RPG && rd node_modules /S /Q'
 			stash includes:'**/*.*', name: 'compiled'
 		}
 	}
