@@ -36,3 +36,6 @@ textarea {
 
 .flex {
   display: flex; }
+
+.flex-right {
+  margin-left: auto; }

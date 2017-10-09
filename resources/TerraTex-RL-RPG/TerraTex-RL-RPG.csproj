@@ -279,6 +279,7 @@
     <Content Include="UI\general\Scripts\jquery-3.1.1.min.js" />
     <Content Include="Sqls\Install.sql" />
     <Content Include="UI\general\Styles\bootstrap\bootstrap.css" />
+    <Content Include="UI\ATM.html" />
     <Content Include="UI\KeyConfiguration.html" />
     <Content Include="UI\PayDay-Calculation.html" />
     <Content Include="UI\Register_Login_Profile\GetFingerprint.html" />
