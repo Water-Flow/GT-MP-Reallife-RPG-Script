@@ -382,8 +382,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>IF EXIST $(ProjectDir)node_modules ( 
-npm run build
-node createMeta
+cd $(ProjectDir). &amp;&amp; npm run build
+cd $(ProjectDir). &amp;&amp; node createMeta
 )</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
