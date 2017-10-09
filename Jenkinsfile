@@ -36,7 +36,7 @@ node('windows'){
 		if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == 'develop') {
 			bat 'cd resources/TerraTex-RL-RPG && npm install'
 			bat 'cd resources/TerraTex-RL-RPG && npm run build'
-			bat 'rd \"resources\TerraTex-RL-RPG\node_modules\" /S /Q'
+			bat 'rd \"resources/TerraTex-RL-RPG/node_modules\" /S /Q'
 			stash includes:'**/*.*', name: 'compiled'
 		}
 	}
