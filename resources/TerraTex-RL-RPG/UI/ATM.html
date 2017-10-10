@@ -80,7 +80,7 @@
                 </tr>
                 <tr>
                     <td><button type="submit" class="btn-success btn" onclick="pay('in');">Einzahlen</button></td>
-                    <td><button type="submit" class="btn-success btn float-right"onclick="pay('out');">Auszahlen</button></td>
+                    <td><button type="submit" class="btn-success btn float-right" onclick="pay('out');">Auszahlen</button></td>
                 </tr>
             </table>
             </form>
@@ -93,7 +93,7 @@
 
 <script>
     function pay(type) {
-        resourceCall("payInPayOut", type, $("#payment_amount").val(), $("#payment_text").val());
+        resourceCall("payInPayOut", type, $("#payment_amount").val(), $("#payment_text").val().length < 1 ? " " : "" + $("#payment_text").val());
     }
     function setAccount(amount) {
         let lastMoneyString = amount.toFixed(2).replace(/\./g, ",").replace(/./g,
