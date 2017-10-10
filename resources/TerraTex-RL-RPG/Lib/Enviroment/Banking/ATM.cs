@@ -8,7 +8,7 @@ namespace TerraTex_RL_RPG.Lib.Enviroment.Banking
 {
     public class Atm : Script
     {
-        private int[] atmHashes =
+        private readonly int[] atmHashes =
         {
             -1126237515,
             -1364697528,
