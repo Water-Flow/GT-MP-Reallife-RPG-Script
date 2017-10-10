@@ -57,7 +57,7 @@ module.exports = function(grunt) {
             dist: [
                 'build/clumsy-min.js'
             ]
-        },
+        }
 
     });
 

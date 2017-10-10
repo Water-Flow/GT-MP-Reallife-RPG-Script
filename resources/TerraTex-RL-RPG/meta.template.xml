@@ -1,0 +1,14 @@
+﻿<meta>
+    <info name="TerraTex Roleplay / Reallife Script"
+          description="A mixed roleplay and reallife script"
+          author="TerraTex-Community, Geramy92"
+          version="0.0.1"
+          type="gamemode"/>
+
+
+    <script src="bin/Debug/TerraTex-RL-RPG.dll" type="server" lang="compiled"/>
+    <include resource="scoreboard"/>
+
+    <!--PASTE_LINKS_HERE-->
+
+</meta>

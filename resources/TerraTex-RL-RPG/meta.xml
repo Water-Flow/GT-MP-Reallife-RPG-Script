@@ -1,76 +1,77 @@
 ﻿<meta>
-  <info name="TerraTex Roleplay / Reallife Script"
-         description="A mixed roleplay and reallife script"
-         author="TerraTex-Community, Geramy92"
-         version="0.0.1"
-         type="gamemode" />
+    <info name="TerraTex Roleplay / Reallife Script"
+          description="A mixed roleplay and reallife script"
+          author="TerraTex-Community, Geramy92"
+          version="0.0.1"
+          type="gamemode"/>
 
 
-  
-    <script src="bin/Debug/TerraTex-RL-RPG.dll" type="server" lang="compiled" />
-    <script src="Lib/User/StartUp/PlayerConnection_Client.js" type="client" lang="javascript" />
-    <script src="Lib/User/KeyBinding/KeyBinds.js" type="client" lang="javascript" />
-    <script src="Lib/User/KeyBinding/KeyConfigurationScreen.js" type="client" lang="javascript" />
-    <script src="Lib/User/StartUp/PlayerConnection_Register_Client.js" type="client" lang="javascript" />
-    <script src="Lib/User/StartUp/PlayerConnection_Login_Client.js" type="client" lang="javascript" />
-    <script src="Lib/User/Management/UI/PayDayUI.js" type="client" lang="javascript" />
-    <script src="Lib/Jobs/Bergwerk/Bergwerk.js" type="client" lang="javascript" />
-    <script src="Lib/Jobs/Fischer/Fischer.js" type="client" lang="javascript" />
-    <script src="Lib/Enviroment/Hud/InfoHud.js" type="client" lang="javascript" />
-    <script src="Lib/Enviroment/Clicksystem.js" type="client" lang="javascript" />
-    <script src="Lib/Helper/Client/Events.js" type="client" lang="javascript" />
-  
-  
-    <!-- UI Stuff-->
-      <file src="UI/custom/styles.css" />
-      <file src="UI/custom/clipboard.js" />
-      <file src="UI/custom/Images/logo.png" />
-      <file src="UI/custom/Images/angel-1862011_640.png" />
-      <file src="UI/general/Scripts/bootstrap.min.js" />
-      <file src="UI/general/Scripts/fingerprint2.min.js" />
-      <file src="UI/general/Scripts/jquery-3.1.1.min.js" />
-      <file src="UI/general/Styles/bootstrap/bootstrap.css" />
-      <file src="UI/Register_Login_Profile/Register.html" />
-      <file src="UI/Register_Login_Profile/Login.html" />
-      <file src="UI/Register_Login_Profile/GetFingerprint.html" />
-      <file src="UI/PayDay-Calculation.html" />
-      <file src="UI/KeyConfiguration.html" />
+    <script src="bin/Debug/TerraTex-RL-RPG.dll" type="server" lang="compiled"/>
+    <include resource="scoreboard"/>
 
-  <!-- Flappy Bird -->
-  <file src="_IncludedExternalResources/clumsy-bird-master/js/melonJS-min.js" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/build/clumsy-min.js" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/index.html" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/index.css" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/bgm/theme.mp3" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/bgm/theme.ogg" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/bg.png" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/clumsy.png" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/gameover.png" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/gameoverbg.png" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/getready.png" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/ground.png" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/hit.png" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/logo.png" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/new.png" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/img/pipe.png" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/hit.mp3" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/hit.ogg" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/lose.mp3" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/lose.ogg" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/wing.mp3" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/wing.ogg" />
-  <file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/wing.wav" />
+    <file src="_IncludedExternalResources/cefchat/chat.html" /> 
+<file src="_IncludedExternalResources/cefchat/chat.js" /> 
+<script src="_IncludedExternalResources/cefchat/chatcontroller.js"  type="client" lang="javascript" /> 
+<file src="_IncludedExternalResources/cefchat/jquery.js" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/build/clumsy-min.js" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/bgm/theme.mp3" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/bgm/theme.ogg" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/img/bg.png" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/img/clumsy.png" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/img/gameover.png" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/img/gameoverbg.png" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/img/getready.png" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/img/ground.png" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/img/hit.png" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/img/logo.png" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/img/new.png" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/img/pipe.png" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/img/share.png" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/img/touch-icon-iphone-retina.png" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/img/touch-icon-iphone.png" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/img/tweet.png" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/hit.mp3" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/hit.ogg" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/lose.mp3" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/lose.ogg" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/wing.mp3" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/wing.ogg" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/sfx/wing.wav" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/Gruntfile.js" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/index.css" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/index.html" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/js/entities/entities.js" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/js/entities/HUD.js" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/js/game.js" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/js/melonJS-min.js" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/js/screens/gameover.js" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/js/screens/play.js" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/js/screens/title.js" /> 
+<script src="Lib/Enviroment/Banking/ATM.js"  type="client" lang="javascript" /> 
+<script src="Lib/Enviroment/Hud/InfoHud.js"  type="client" lang="javascript" /> 
+<script src="Lib/Helper/Client/Events.js"  type="client" lang="javascript" /> 
+<script src="Lib/Jobs/Bergwerk/BergWerk.js"  type="client" lang="javascript" /> 
+<script src="Lib/Jobs/Fischer/Fischer.js"  type="client" lang="javascript" /> 
+<script src="Lib/Systems/ClickSystem/ClickSystem.js"  type="client" lang="javascript" /> 
+<script src="Lib/Systems/LicenseSystem/LicenseMenu.js"  type="client" lang="javascript" /> 
+<script src="Lib/User/KeyBinding/KeyBinds.js"  type="client" lang="javascript" /> 
+<script src="Lib/User/KeyBinding/KeyConfigurationScreen.js"  type="client" lang="javascript" /> 
+<script src="Lib/User/Management/UI/PayDayUI.js"  type="client" lang="javascript" /> 
+<script src="Lib/User/StartUp/PlayerConnection_Client.js"  type="client" lang="javascript" /> 
+<script src="Lib/User/StartUp/PlayerConnection_Login_Client.js"  type="client" lang="javascript" /> 
+<script src="Lib/User/StartUp/PlayerConnection_Register_Client.js"  type="client" lang="javascript" /> 
+<file src="UI/ATM.html" /> 
+<file src="UI/custom/clipboard.js" /> 
+<file src="UI/custom/Images/angel-1862011_640.png" /> 
+<file src="UI/custom/Images/logo.png" /> 
+<file src="UI/custom/styles.css" /> 
+<file src="UI/general/Scripts/bootstrap.min.js" /> 
+<file src="UI/general/Scripts/jquery-3.1.1.min.js" /> 
+<file src="UI/general/Styles/bootstrap/bootstrap.css" /> 
+<file src="UI/KeyConfiguration.html" /> 
+<file src="UI/PayDay-Calculation.html" /> 
+<file src="UI/Register_Login_Profile/Login.html" /> 
+<file src="UI/Register_Login_Profile/Register.html" /> 
 
 
-    <include resource="scoreboard" />
-
-    <!-- Included Resources in _IncludedExternalResources -->
-    <!-- cefchat -->
-    <script src="_IncludedExternalResources/cefchat/chatcontroller.js" type="client" lang="javascript" />
-    <file src="_IncludedExternalResources/cefchat/chat.html" />
-    <file src="_IncludedExternalResources/cefchat/chat.js" />
-    <file src="_IncludedExternalResources/cefchat/jquery.js" />
-    <file src="_IncludedExternalResources/cefchat/Roboto-Regular.ttf" />
-    <file src="_IncludedExternalResources/cefchat/Roboto-Thin.ttf" />
-  
 </meta>

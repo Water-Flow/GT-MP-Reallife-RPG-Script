@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using GrandTheftMultiplayer.Server.API;
 
 namespace TerraTex_RL_RPG.Lib.Threads
 {
@@ -31,7 +32,7 @@ namespace TerraTex_RL_RPG.Lib.Threads
                     }
                     else
                     {
-                        TTRPG.Api.sendChatMessageToAll("<span style='font-weight: bold'>[SERVER-INFORMATION]: " + s + "</span>");
+                        TTRPG.Api.triggerClientEventForAll("addHtmlMessage", "<span style='font-weight: bold'>[SERVER-INFORMATION]: " + s + "</span>");
                         TTRPG.Api.consoleOutput("Sending Message: [SERVER - INFORMATION]: " + s);
                     }
                 }

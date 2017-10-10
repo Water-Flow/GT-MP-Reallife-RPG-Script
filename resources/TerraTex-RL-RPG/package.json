@@ -8,8 +8,11 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
+    "glob": "^7.1.2",
     "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
     "grunt-sass": "^2.0.0"
   }
 }

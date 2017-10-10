@@ -8,6 +8,7 @@ using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using TerraTex_RL_RPG.Lib.Admin;
 using TerraTex_RL_RPG.Lib.Helper;
+using TerraTex_RL_RPG.Lib.Systems.LicenseSystem;
 using TerraTex_RL_RPG.Lib.Threads;
 using TerraTex_RL_RPG.Lib.User.Management;
 using TerraTex_RL_RPG.Lib.User.SpawnAndDeath;
@@ -118,6 +119,8 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
 
             DataRow userConfigurationStorage = GetDataFromUserTable("user_configuration_storage", userId);
             ApplyTableToPlayerUserConfigurationStorage(player, userConfigurationStorage);
+
+            LoadUserLicensesFromDatabase(player, userId);
         }
 
         private void ApplyTableToPlayerUserConfigurationStorage(Client player, DataRow data)
@@ -178,6 +181,27 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
             DataTable result = new DataTable();
             result.Load(getUserDataCommand.ExecuteReader());
             return result.Rows[0];
+        }
+
+        private void LoadUserLicensesFromDatabase(Client player, int userId)
+        {
+            MySqlCommand getUserDataCommand = TTRPG.Mysql.Conn.CreateCommand();
+            getUserDataCommand.CommandText = "SELECT * FROM user_licenses WHERE UserID = @id";
+            getUserDataCommand.Parameters.AddWithValue("id", userId);
+            DataTable result = new DataTable();
+            result.Load(getUserDataCommand.ExecuteReader());
+
+            List<ILicense> userLicenses = new List<ILicense>();
+            foreach (DataRow row in result.Rows)
+            {
+                ILicense license = Licenses.GetLicenseByIdentifier((string) row["LicenseKey"]);
+                if (license != null)
+                {
+                    userLicenses.Add(license);
+                }
+            }
+
+            player.setData("UserLicenses", userLicenses);
         }
     }
 }

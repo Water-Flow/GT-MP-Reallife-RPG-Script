@@ -19,10 +19,9 @@ function setDisableKeyInput(bool) {
     disableKeyInput = bool;
 }
 
-API.onKeyDown.connect(function(sender, e) {
+API.onKeyDown.connect(function (sender, e) {
     if (!API.isChatOpen() && API.getEntitySyncedData(API.getLocalPlayer(), "loggedin")) {
         if ([Keys.Control, Keys.ControlKey, Keys.Shift, Keys.Alt, Keys.Menu].indexOf(e.KeyCode) === -1) {
-
             if (!waitForKey) {
                 if (!disableKeyInput) {
                     if (e.KeyCode === Keys.F2) {

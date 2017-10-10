@@ -68,3 +68,13 @@ CREATE TABLE user_configuration_storage
     CONSTRAINT user_configuration_storage_user_ID_fk FOREIGN KEY (UserId) REFERENCES user (ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 ALTER TABLE user_data ADD CurrentJobId INT DEFAULT 0 NULL;
+
+CREATE TABLE user_licenses
+(
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT,
+    LicenseKey VARCHAR(255),
+    BoughtAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT user_licenses_user_ID_fk FOREIGN KEY (UserID) REFERENCES user (ID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE UNIQUE INDEX user_licenses_UserID_LicenseKey_uindex ON user_licenses (UserID, LicenseKey);

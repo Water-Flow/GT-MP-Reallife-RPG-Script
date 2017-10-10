@@ -23,7 +23,7 @@ var game = {
         { name: "theme", type: "audio", src: "/_IncludedExternalResources/clumsy-bird-master/data/bgm/"},
         { name: "hit", type: "audio", src: "/_IncludedExternalResources/clumsy-bird-master/data/sfx/"},
         { name: "lose", type: "audio", src: "/_IncludedExternalResources/clumsy-bird-master/data/sfx/"},
-        { name: "wing", type: "audio", src: "/_IncludedExternalResources/clumsy-bird-master/data/sfx/"},
+        { name: "wing", type: "audio", src: "/_IncludedExternalResources/clumsy-bird-master/data/sfx/"}
 
     ],
 

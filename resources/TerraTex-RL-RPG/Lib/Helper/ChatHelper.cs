@@ -3,7 +3,7 @@ using GrandTheftMultiplayer.Server.Elements;
 
 namespace TerraTex_RL_RPG.Lib.Helper
 {
-    public class ChatHelper
+    public static class ChatHelper
     {
         public static void SendChatNotificationToPlayer(Client player, string title, string content)
         {
@@ -14,8 +14,7 @@ namespace TerraTex_RL_RPG.Lib.Helper
             sb.Append("</span><br/>");
             sb.Append(content);
             sb.Append("</div>");
-
-            //player.sendChatMessage(sb.ToString());
+            
             player.triggerEvent("addHtmlMessage", sb.ToString());
         }
     }

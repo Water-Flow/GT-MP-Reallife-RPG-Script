@@ -29,11 +29,15 @@ node('windows'){
 	
 	stage('Build') {
 		if (env.BRANCH_NAME == 'master') {
-			bat 'cd resources/TerraTex-RL-RPG && npm install && npm run-script build'
 			bat 'nuget install resources/TerraTex-RL-RPG/packages.config -OutputDirectory resources/packages'
 			bat 'msbuild resources/TerraTex-RL-RPG/TerraTex-RL-RPG.csproj'		
 		}
 		if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == 'develop') {
+			bat 'cd resources/TerraTex-RL-RPG && npm install'
+			bat 'cd resources/TerraTex-RL-RPG && npm run build'
+			bat 'cd resources/TerraTex-RL-RPG && node createMeta'
+			bat 'rd \"resources/TerraTex-RL-RPG/node_modules\" /S /Q'
+			
 			stash includes:'**/*.*', name: 'compiled'
 		}
 	}

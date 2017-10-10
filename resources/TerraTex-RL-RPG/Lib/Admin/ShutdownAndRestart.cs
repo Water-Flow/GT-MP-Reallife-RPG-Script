@@ -31,7 +31,7 @@ namespace TerraTex_RL_RPG.Lib.Admin
                 {
                     reason = string.Join(" ", infos.Skip(1).ToArray());
                 }
-
+                API.consoleOutput("Started Server Shutdown");
                 InitShutdown("Console", timeInMinutes, reason);
             }
         }

@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Server.Managers;
 using GrandTheftMultiplayer.Shared;
+using GrandTheftMultiplayer.Shared.Gta.Vehicle;
 using GrandTheftMultiplayer.Shared.Math;
+using TerraTex_RL_RPG.Lib.Helper;
 
 namespace TerraTex_RL_RPG.Lib.Admin
 {
@@ -44,23 +47,7 @@ namespace TerraTex_RL_RPG.Lib.Admin
 
                 API.createMarker(28, position, new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(5,5, 100), 150, 255, 100 , 100);
 
-                Directory.CreateDirectory(API.getResourceFolder() + "/Logs");
-                string path = API.getResourceFolder() + "/Logs/Position.log";
-
-                if (!File.Exists(path))
-                {
-                    string createText = "" + Environment.NewLine;
-                    File.WriteAllText(path, createText);
-                }
-
-                string appendText = position.X.ToString("R").Replace(",", ".") + ", " +
-                                    position.Y.ToString("R").Replace(",", ".") + ", " +
-                                    position.Z.ToString("R").Replace(",", ".") + " // " + info + Environment.NewLine;
-                File.AppendAllText(path, appendText);
-                player.sendNotification("Dev-System",
-                    "Saved Position: X: " + position.X + "; Y: " + position.Y + "; Z: " + position.Z);
-
-               
+                SaveCommand(player, info);
             }
         }
 
@@ -110,6 +97,19 @@ namespace TerraTex_RL_RPG.Lib.Admin
             }
         }
 
+        [Command("pos", Group = "dev", SensitiveInfo = false)]
+        public void PosCommand(Client player)
+        {
+            if (DevServer.CheckDevCommandAccess(player) || AdminChecks.CheckAdminLvl(player, 3))
+            {
+                Vector3 position = player.position;
+                ChatHelper.SendChatNotificationToPlayer(player, "Position", 
+                    position.X.ToString(CultureInfo.CreateSpecificCulture("en-GB"))
+                   + ", " + position.Y.ToString(CultureInfo.CreateSpecificCulture("en-GB"))
+                   + ", " + position.Z.ToString(CultureInfo.CreateSpecificCulture("en-GB")));
+            }
+        }
+
         [Command("veh", Group = "dev", SensitiveInfo = false)]
         public void VehCommand(Client player, string vehicleModelName)
         {
@@ -121,6 +121,16 @@ namespace TerraTex_RL_RPG.Lib.Admin
                 VehicleHash myVehicle = API.vehicleNameToModel(vehicleModelName);
                 Random rnd = new Random();
                 API.createVehicle(myVehicle, position, rotation, rnd.Next(0, 159), rnd.Next(0, 159));
+            }
+        }
+
+        [Command("vehclass", Group = "dev", SensitiveInfo = false)]
+        public void VehClassCommand(Client player)
+        {
+            if (DevServer.CheckDevCommandAccess(player))
+            {
+                Vehicle veh = player.vehicle;
+                player.sendNotification("Vehicle Class", ((VehicleClass)veh.ClassName).ToString());
             }
         }
     }

@@ -14,7 +14,7 @@ textarea {
   clear: both; }
 
 .hidden {
-  display: none; }
+  display: none !important; }
 
 .mleft {
   margin-left: auto; }
@@ -36,3 +36,6 @@ textarea {
 
 .flex {
   display: flex; }
+
+.flex-right {
+  margin-left: auto; }
