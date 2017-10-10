@@ -19,6 +19,7 @@ namespace TerraTex_RL_RPG.Lib.User.Management
 
         public enum Categorys
         {
+            BankToMoney,
             PlayerToPlayer,
             PayDay,
             Job,

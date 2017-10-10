@@ -47,6 +47,7 @@
 <file src="_IncludedExternalResources/clumsy-bird-master/js/screens/gameover.js" /> 
 <file src="_IncludedExternalResources/clumsy-bird-master/js/screens/play.js" /> 
 <file src="_IncludedExternalResources/clumsy-bird-master/js/screens/title.js" /> 
+<script src="Lib/Enviroment/Banking/ATM.js"  type="client" lang="javascript" /> 
 <script src="Lib/Enviroment/Hud/InfoHud.js"  type="client" lang="javascript" /> 
 <script src="Lib/Helper/Client/Events.js"  type="client" lang="javascript" /> 
 <script src="Lib/Jobs/Bergwerk/BergWerk.js"  type="client" lang="javascript" /> 
@@ -65,12 +66,10 @@
 <file src="UI/custom/Images/logo.png" /> 
 <file src="UI/custom/styles.css" /> 
 <file src="UI/general/Scripts/bootstrap.min.js" /> 
-<file src="UI/general/Scripts/fingerprint2.min.js" /> 
 <file src="UI/general/Scripts/jquery-3.1.1.min.js" /> 
 <file src="UI/general/Styles/bootstrap/bootstrap.css" /> 
 <file src="UI/KeyConfiguration.html" /> 
 <file src="UI/PayDay-Calculation.html" /> 
-<file src="UI/Register_Login_Profile/GetFingerprint.html" /> 
 <file src="UI/Register_Login_Profile/Login.html" /> 
 <file src="UI/Register_Login_Profile/Register.html" /> 
 

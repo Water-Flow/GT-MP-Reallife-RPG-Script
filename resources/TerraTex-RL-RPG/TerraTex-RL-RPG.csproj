@@ -88,6 +88,7 @@
     <Compile Include="Lib\Admin\Teleports.cs" />
     <Compile Include="Lib\Data\Configs.cs" />
     <Compile Include="Lib\Data\Database.cs" />
+    <Compile Include="Lib\Enviroment\Banking\ATM.cs" />
     <Compile Include="Lib\Enviroment\Chat\BasicChatCommands.cs" />
     <Compile Include="Lib\Enviroment\Chat\DistanceChat.cs" />
     <Compile Include="Lib\Systems\ClickSystem\ClickSystem.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Lib\Jobs\Job.cs" />
     <Compile Include="Lib\Jobs\IJob.cs" />
     <Compile Include="Lib\Jobs\JobSystem.cs" />
+    <Compile Include="Lib\Systems\ClickSystem\WorldObject.cs" />
     <Compile Include="Lib\Systems\LicenseSystem\ILicense.cs" />
     <Compile Include="Lib\Systems\LicenseSystem\LicenseMenu.cs" />
     <Compile Include="Lib\Systems\LicenseSystem\Licenses.cs" />
@@ -254,6 +256,7 @@
     <Content Include="Configs\database_example.xml" />
     <Content Include="Configs\server_example.xml" />
     <Content Include="Gruntfile.js" />
+    <Content Include="Lib\Enviroment\Banking\ATM.js" />
     <Content Include="Lib\Systems\ClickSystem\ClickSystem.js" />
     <Content Include="Lib\Enviroment\Hud\InfoHud.js" />
     <Content Include="Lib\Helper\Client\Events.js" />
@@ -275,14 +278,12 @@
     <Content Include="UI\custom\clipboard.js" />
     <Content Include="UI\custom\styles.css" />
     <Content Include="UI\general\Scripts\bootstrap.min.js" />
-    <Content Include="UI\general\Scripts\fingerprint2.min.js" />
     <Content Include="UI\general\Scripts\jquery-3.1.1.min.js" />
     <Content Include="Sqls\Install.sql" />
     <Content Include="UI\general\Styles\bootstrap\bootstrap.css" />
     <Content Include="UI\ATM.html" />
     <Content Include="UI\KeyConfiguration.html" />
     <Content Include="UI\PayDay-Calculation.html" />
-    <Content Include="UI\Register_Login_Profile\GetFingerprint.html" />
     <Content Include="UI\Register_Login_Profile\Login.html" />
     <Content Include="UI\Register_Login_Profile\Register.html" />
     <Content Include="_IncludedExternalResources\cefchat\chat.html" />
@@ -326,7 +327,6 @@
     <Content Include="_IncludedExternalResources\clumsy-bird-master\js\screens\title.js" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="types-gt-mp\Declarations.d.ts" />
     <TypeScriptCompile Include="types-gt-mp\Definitions\Declarations.d.ts" />
     <TypeScriptCompile Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Contracts.d.ts" />
     <TypeScriptCompile Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.GUI.d.ts" />
@@ -354,30 +354,6 @@
     <TypeScriptCompile Include="types-gt-mp\Definitions\System.d.ts" />
     <TypeScriptCompile Include="types-gt-mp\Definitions\System.Drawing.d.ts" />
     <TypeScriptCompile Include="types-gt-mp\Definitions\System.Windows.Forms.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\GrandTheftMultiplayer.Client.Contracts.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\GrandTheftMultiplayer.Client.GUI.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\GrandTheftMultiplayer.Client.Javascript.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\GrandTheftMultiplayer.Client.Javascript.ScriptContext.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\GrandTheftMultiplayer.Client.Models.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\GrandTheftMultiplayer.Client.Sync.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\GrandTheftMultiplayer.Shared.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\GrandTheftMultiplayer.Shared.Math.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\GTA.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\GTA.Math.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\GTA.Native.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\GTA.NaturalMotion.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\GTA.UI.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\index.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\Microsoft.ClearScript.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\NativeUI.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\NativeUI.UIMenu.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\NativeUI.UIMenuDynamicListItem.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\NativeUI.UIMenuItem.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\NativeUI.UIResText.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\System.Collections.Generic.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\System.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\System.Drawing.d.ts" />
-    <TypeScriptCompile Include="types-gt-mp\System.Windows.Forms.d.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

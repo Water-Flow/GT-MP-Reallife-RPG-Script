@@ -14,7 +14,7 @@ textarea {
   clear: both; }
 
 .hidden {
-  display: none; }
+  display: none !important; }
 
 .mleft {
   margin-left: auto; }
