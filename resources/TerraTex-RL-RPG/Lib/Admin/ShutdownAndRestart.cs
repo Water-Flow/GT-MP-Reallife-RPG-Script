@@ -61,7 +61,7 @@ namespace TerraTex_RL_RPG.Lib.Admin
         }
 
         [Command("gmx", Group = "admin", SensitiveInfo = false, GreedyArg = true)]
-        public void SaveAndMarkCommand(Client player, int timeInMinutes, string info = "")
+        public void GmxCommand(Client player, int timeInMinutes, string info = "")
         {
             if (AdminChecks.CheckAdminLvl(player, 4))
             {
