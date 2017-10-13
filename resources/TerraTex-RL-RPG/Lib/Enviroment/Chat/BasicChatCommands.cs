@@ -77,5 +77,3 @@ namespace TerraTex_RL_RPG.Lib.Enviroment.Chat
         }
     }
 }
-
-
