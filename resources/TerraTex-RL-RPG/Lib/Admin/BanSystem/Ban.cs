@@ -10,6 +10,7 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
         public string Nickname { get; }
         public string HardwareId { get; }
         public bool IsBlackList { get; }
+        public int ReferenceId { get; }
 
         public Ban(DataRow dataRow)
         {
@@ -26,6 +27,7 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
             HardwareId = (string) dataRow["HardwareID"];
             Nickname = (string) dataRow["UserName"];
             IsBlackList = (int) dataRow["BlacklistBan"] == 1;
+            ReferenceId = (int) dataRow["ID"];
         }
     }
 }

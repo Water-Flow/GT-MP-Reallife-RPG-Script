@@ -18,6 +18,7 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
         public static List<Ban> GetBans(Client player)
         {
             const string selectStatement = @"SELECT
+                    admin_bans.ID,
                     admin_bans.UserID,
                     (SELECT user.Nickname FROM user WHERE user.ID = admin_bans.UserID) AS UserName,
                     admin_bans.HardwareID,
