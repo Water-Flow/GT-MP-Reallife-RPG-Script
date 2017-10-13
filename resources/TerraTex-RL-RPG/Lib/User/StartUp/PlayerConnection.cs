@@ -5,6 +5,7 @@ using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Shared.Math;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json.Linq;
 using TerraTex_RL_RPG.Lib.Admin.BanSystem;
 
 namespace TerraTex_RL_RPG.Lib.User.StartUp
@@ -54,7 +55,8 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
                 List<Ban> bans = BanSystem.GetBans(player);
                 if (bans.Count > 0)
                 {
-                    // @todo: open window and show bans
+                    string json = JObject.FromObject(bans).ToString();
+                    player.triggerEvent("showBans", json);
                 }
                 else
                 {

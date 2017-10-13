@@ -329,6 +329,8 @@
     <Content Include="_IncludedExternalResources\clumsy-bird-master\js\screens\title.js" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Lib\Admin\BanSystem\ShowBans.js" />
+    <TypeScriptCompile Include="Lib\Admin\file1.ts" />
     <TypeScriptCompile Include="types-gt-mp\Definitions\Declarations.d.ts" />
     <TypeScriptCompile Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Contracts.d.ts" />
     <TypeScriptCompile Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.GUI.d.ts" />

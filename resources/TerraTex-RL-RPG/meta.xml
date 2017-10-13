@@ -47,6 +47,8 @@
 <file src="_IncludedExternalResources/clumsy-bird-master/js/screens/gameover.js" /> 
 <file src="_IncludedExternalResources/clumsy-bird-master/js/screens/play.js" /> 
 <file src="_IncludedExternalResources/clumsy-bird-master/js/screens/title.js" /> 
+<script src="Lib/Admin/BanSystem/ShowBans.js"  type="client" lang="javascript" /> 
+<script src="Lib/Admin/file1.js"  type="client" lang="javascript" /> 
 <script src="Lib/Enviroment/Banking/ATM.js"  type="client" lang="javascript" /> 
 <script src="Lib/Enviroment/Hud/InfoHud.js"  type="client" lang="javascript" /> 
 <script src="Lib/Helper/Client/Events.js"  type="client" lang="javascript" /> 
