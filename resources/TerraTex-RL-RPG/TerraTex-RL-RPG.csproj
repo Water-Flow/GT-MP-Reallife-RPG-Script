@@ -81,6 +81,8 @@
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Lib\Admin\AdminChecks.cs" />
+    <Compile Include="Lib\Admin\BanSystem\Ban.cs" />
+    <Compile Include="Lib\Admin\BanSystem\BanSystem.cs" />
     <Compile Include="Lib\Admin\DevServer.cs" />
     <Compile Include="Lib\Admin\DevServerCommands.cs" />
     <Compile Include="Lib\Admin\Helper\GmxTimer.cs" />
