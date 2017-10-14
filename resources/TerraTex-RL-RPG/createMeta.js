@@ -7,7 +7,7 @@ let outputString = "";
 glob("?*/**/*.*", {matchBase:true}, function (er, files) {
     for(const file of files) {
         if (validExt.indexOf(path.extname(file)) === -1) continue;
-        if (file.indexOf("node_modules") !== -1) continue;
+        if (file.indexOf("node_modules") !== -1 || file.indexOf("types-gt-mp") !== -1) continue;
 
         if ((path.extname(file) === ".js" || path.extname(file) === ".ts") && file.indexOf('.min.') === -1 && file.indexOf('-min.') === -1) {
             // check for API

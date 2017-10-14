@@ -56,7 +56,6 @@
 <script src="Lib/Admin/BanSystem/ShowBans.js"  type="client" lang="javascript" /> 
 <script src="Lib/Enviroment/Banking/ATM.js"  type="client" lang="javascript" /> 
 <script src="Lib/Enviroment/Hud/InfoHud.js"  type="client" lang="javascript" /> 
-<script src="Lib/Helper/Client/Dates.bak.js"  type="client" lang="javascript" /> 
 <script src="Lib/Helper/Client/Dates.js"  type="client" lang="javascript" /> 
 <script src="Lib/Helper/Client/Events.js"  type="client" lang="javascript" /> 
 <script src="Lib/Jobs/Bergwerk/BergWerk.js"  type="client" lang="javascript" /> 
@@ -69,34 +68,6 @@
 <script src="Lib/User/StartUp/PlayerConnection_Client.js"  type="client" lang="javascript" /> 
 <script src="Lib/User/StartUp/PlayerConnection_Login_Client.js"  type="client" lang="javascript" /> 
 <script src="Lib/User/StartUp/PlayerConnection_Register_Client.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Declarations.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/Declarations.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/GrandTheftMultiplayer.Client.Contracts.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/GrandTheftMultiplayer.Client.GUI.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/GrandTheftMultiplayer.Client.Javascript.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/GrandTheftMultiplayer.Client.Javascript.ScriptContext.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/GrandTheftMultiplayer.Client.Models.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/GrandTheftMultiplayer.Client.Sound.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/GrandTheftMultiplayer.Client.Sync.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/GrandTheftMultiplayer.Shared.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/GrandTheftMultiplayer.Shared.Math.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/GTA.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/GTA.Math.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/GTA.Native.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/GTA.NaturalMotion.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/GTA.UI.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/index.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/Microsoft.ClearScript.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/NativeUI.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/NativeUI.UIMenu.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/NativeUI.UIMenuDynamicListItem.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/NativeUI.UIMenuItem.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/NativeUI.UIResText.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/System.Collections.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/System.Collections.Generic.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/System.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/System.Drawing.d.js"  type="client" lang="javascript" /> 
-<script src="types-gt-mp/Definitions/System.Windows.Forms.d.js"  type="client" lang="javascript" /> 
 <file src="UI/ATM.html" /> 
 <file src="UI/custom/clipboard.js" /> 
 <file src="UI/custom/Images/angel-1862011_640.png" /> 
