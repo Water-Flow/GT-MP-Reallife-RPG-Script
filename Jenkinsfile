@@ -7,14 +7,16 @@ node('windows'){
 			if (env.BRANCH_NAME.startsWith('PR-')) {
 				bat "SonarQube.Scanner.MSBuild.exe begin /key:terratex:gtmp-rl-rpg /s:${WORKSPACE}/SonarQube.Analysis.xml /version:${BUILD_DISPLAY_NAME} /d:sonar.analysis.mode=preview /d:sonar.github.pullRequest=${CHANGE_ID} /d:sonar.github.oauth=${github_oauth} /d:sonar.github.repository=TerraTex-Community/GTMP-Real--Roleplay-Script"
 				bat 'nuget install resources/TerraTex-RL-RPG/packages.config -OutputDirectory resources/packages'
-				bat 'npm install && node movetypings'
+                bat 'npm install'
+                bat 'node movetypings'
 				bat 'msbuild resources/TerraTex-RL-RPG/TerraTex-RL-RPG.csproj'
 				bat "SonarQube.Scanner.MSBuild.exe end"			
 			} else if (env.BRANCH_NAME == 'develop') {
 				withSonarQubeEnv('TerraTex SonarQube') {
 					bat "SonarQube.Scanner.MSBuild.exe begin /key:terratex:gtmp-rl-rpg /s:${WORKSPACE}/SonarQube.Analysis.xml /version:${BUILD_DISPLAY_NAME}"
 					bat 'nuget install resources/TerraTex-RL-RPG/packages.config -OutputDirectory resources/packages'
-					bat 'npm install && node movetypings'
+					bat 'npm install'
+					bat 'node movetypings'
 					bat 'msbuild resources/TerraTex-RL-RPG/TerraTex-RL-RPG.csproj'
 					bat "SonarQube.Scanner.MSBuild.exe end"	
 				}					
@@ -32,7 +34,8 @@ node('windows'){
 	stage('Build') {
 		if (env.BRANCH_NAME == 'master') {
 			bat 'nuget install resources/TerraTex-RL-RPG/packages.config -OutputDirectory resources/packages'
-			bat 'npm install && node movetypings'
+            bat 'npm install'
+            bat 'node movetypings'
 			bat 'msbuild resources/TerraTex-RL-RPG/TerraTex-RL-RPG.csproj'		
 		}
 		if (env.BRANCH_NAME == 'master' || env.BRANCH_NAME == 'develop') {
