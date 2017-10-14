@@ -6,5 +6,6 @@ var glob = require("glob");
 
 // options is optional
 glob("**/types-gt-mp/", {}, function (er, files) {
-	fs.copySync(files[0], '/resources/TerraTex-RL-RPG/types-gt-mp')
+
+	fs.copySync(files[0], 'resources/TerraTex-RL-RPG/types-gt-mp')
 });
