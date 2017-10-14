@@ -9,6 +9,7 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
         public bool IsAdminSystem { get; }
         public string Nickname { get; }
         public string HardwareId { get; }
+        public DateTime BannedUntil { get; }
         public bool IsBlackList { get; }
         public int ReferenceId { get; }
 
@@ -24,10 +25,11 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
                 AdminName = (string)dataRow["SystemName"];
                 IsAdminSystem = true;
             }
-            HardwareId = (string) dataRow["HardwareID"];
+            HardwareId = dataRow.IsNull("HardwareID") ? null : (string) dataRow["HardwareID"];
             Nickname = (string) dataRow["UserName"];
-            IsBlackList = (int) dataRow["BlacklistBan"] == 1;
+            IsBlackList = (bool) dataRow["BlacklistBan"];
             ReferenceId = (int) dataRow["ID"];
+            BannedUntil = DateTime.Parse(dataRow["DateTo"].ToString());
         }
     }
 }

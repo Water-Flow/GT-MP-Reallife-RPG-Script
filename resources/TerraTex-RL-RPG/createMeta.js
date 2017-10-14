@@ -1,7 +1,7 @@
 const glob = require("glob");
 const path = require('path');
 const fs = require('fs');
-const validExt = ['.js', '.html', '.css', '.png', '.mp3', '.ogg', '.wav', '.tff'];
+const validExt = ['.js', '.html', '.css', '.png', '.mp3', '.ogg', '.wav', '.ttf', '.eot', '.svg', '.woff', '.woff2', '.otf'];
 let outputString = "";
 // options is optional
 glob("?*/**/*.*", {matchBase:true}, function (er, files) {

@@ -24,6 +24,7 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
                     admin_bans.HardwareID,
                     admin_bans.SystemName,
                     admin_bans.BlacklistBan,
+                    admin_bans.DateTo,
                     (SELECT user.Nickname FROM user WHERE user.ID = admin_bans.AdminID) AS Admin
                 FROM admin_bans
                 WHERE

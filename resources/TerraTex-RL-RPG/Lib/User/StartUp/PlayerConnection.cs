@@ -55,7 +55,7 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
                 List<Ban> bans = BanSystem.GetBans(player);
                 if (bans.Count > 0)
                 {
-                    string json = JObject.FromObject(bans).ToString();
+                    string json = JArray.FromObject(bans).ToString();
                     player.triggerEvent("showBans", json);
                 }
                 else

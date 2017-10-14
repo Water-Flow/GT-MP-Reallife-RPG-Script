@@ -13,9 +13,15 @@
 <file src="_IncludedExternalResources/cefchat/chat.js" /> 
 <script src="_IncludedExternalResources/cefchat/chatcontroller.js"  type="client" lang="javascript" /> 
 <file src="_IncludedExternalResources/cefchat/jquery.js" /> 
+<file src="_IncludedExternalResources/cefchat/Roboto-Regular.ttf" /> 
+<file src="_IncludedExternalResources/cefchat/Roboto-Thin.ttf" /> 
 <file src="_IncludedExternalResources/clumsy-bird-master/build/clumsy-min.js" /> 
 <file src="_IncludedExternalResources/clumsy-bird-master/data/bgm/theme.mp3" /> 
 <file src="_IncludedExternalResources/clumsy-bird-master/data/bgm/theme.ogg" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/css/gamefont.eot" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/css/gamefont.svg" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/css/gamefont.ttf" /> 
+<file src="_IncludedExternalResources/clumsy-bird-master/data/css/gamefont.woff" /> 
 <file src="_IncludedExternalResources/clumsy-bird-master/data/img/bg.png" /> 
 <file src="_IncludedExternalResources/clumsy-bird-master/data/img/clumsy.png" /> 
 <file src="_IncludedExternalResources/clumsy-bird-master/data/img/gameover.png" /> 
@@ -48,7 +54,6 @@
 <file src="_IncludedExternalResources/clumsy-bird-master/js/screens/play.js" /> 
 <file src="_IncludedExternalResources/clumsy-bird-master/js/screens/title.js" /> 
 <script src="Lib/Admin/BanSystem/ShowBans.js"  type="client" lang="javascript" /> 
-<script src="Lib/Admin/file1.js"  type="client" lang="javascript" /> 
 <script src="Lib/Enviroment/Banking/ATM.js"  type="client" lang="javascript" /> 
 <script src="Lib/Enviroment/Hud/InfoHud.js"  type="client" lang="javascript" /> 
 <script src="Lib/Helper/Client/Events.js"  type="client" lang="javascript" /> 
@@ -68,12 +73,21 @@
 <file src="UI/custom/Images/logo.png" /> 
 <file src="UI/custom/styles.css" /> 
 <file src="UI/general/Scripts/bootstrap.min.js" /> 
+<file src="UI/general/Scripts/handlebars-v4.0.10.js" /> 
 <file src="UI/general/Scripts/jquery-3.1.1.min.js" /> 
 <file src="UI/general/Styles/bootstrap/bootstrap.css" /> 
+<file src="UI/general/Styles/font-awesome/css/font-awesome.css" /> 
+<file src="UI/general/Styles/font-awesome/fonts/fontawesome-webfont.eot" /> 
+<file src="UI/general/Styles/font-awesome/fonts/fontawesome-webfont.svg" /> 
+<file src="UI/general/Styles/font-awesome/fonts/fontawesome-webfont.ttf" /> 
+<file src="UI/general/Styles/font-awesome/fonts/fontawesome-webfont.woff" /> 
+<file src="UI/general/Styles/font-awesome/fonts/fontawesome-webfont.woff2" /> 
+<file src="UI/general/Styles/font-awesome/fonts/FontAwesome.otf" /> 
 <file src="UI/KeyConfiguration.html" /> 
 <file src="UI/PayDay-Calculation.html" /> 
 <file src="UI/Register_Login_Profile/Login.html" /> 
 <file src="UI/Register_Login_Profile/Register.html" /> 
+<file src="UI/ShowBans.html" /> 
 
 
 </meta>
