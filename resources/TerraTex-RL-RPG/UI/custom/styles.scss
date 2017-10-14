@@ -56,7 +56,7 @@ textarea {
     cursor: pointer;
 }
 
-#banList  {
+#ban-list  {
     .card-block {
         padding: 0;
     }
@@ -91,7 +91,7 @@ table {
         }
     }
 
-    &.showBans {
+    &.show-bans {
         margin-bottom: 0;
 
         td:first-child {
