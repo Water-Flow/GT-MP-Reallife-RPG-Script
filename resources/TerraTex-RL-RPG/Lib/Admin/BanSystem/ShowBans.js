@@ -6,7 +6,7 @@ API.onServerEventTrigger.connect((eventName, data) => {
         API.setCanOpenChat(false);
         const resolution = API.getScreenResolution();
         const width = Math.round(resolution.Width < 690 ? resolution.Width : 690);
-        const height = Math.round(resolution.Height < 390 ? resolution.Height : 390);
+        const height = Math.round(resolution.Height < 590 ? resolution.Height : 590);
 
         browser = API.createCefBrowser(width, height, true);
         API.waitUntilCefBrowserInit(browser);
@@ -23,10 +23,30 @@ API.onServerEventTrigger.connect((eventName, data) => {
 
 function onFinishLoading() {
     for (const ban of lastBanData) {
-        const title = "";
-        const bannedUntil = "";
-        const bannedBy = "";
-        browser.call("addBan", title, bannedUntil, ban.AdminName, bannedBy, reason, ban.ReferenceId);
+        let title;
+        const bannedBy = [];
+        if (API.getUniqueHardwareId() === ban.HardwareId) {
+            bannedBy.push("Hardware-Adresse");
+        }
+        if (API.getPlayerName(API.getLocalPlayer()) === ban.Nickname) {
+            bannedBy.push("Account");
+        }
+        
+        let date = ban.BannedUntil;
+        if (ban.IsBlackList) {
+            title = "Blacklistban (permanent)";
+        } else {
+            if (date === null || resource.Dates.getDifferenceOfTwoDatesInDays(new Date(), new Date(date)) >= 365) {
+                title = "Permanenter Ban";
+                if (resource.Dates.getDifferenceOfTwoDatesInDays(new Date(), new Date(ban.BannedAt)) >= 7) {
+                    title += " (Entbannanfrage über Forum (Support) möglich)";
+                }
+            } else {
+                title = "Zeitban bis " + resource.Dates.getGermanDateTimeString(new Date(date));
+            }
+        }
+        
+        browser.call("addBan", title, ban.AdminName, bannedBy.join(" + "), ban.Reason, ban.ReferenceId);
     }
 }
 

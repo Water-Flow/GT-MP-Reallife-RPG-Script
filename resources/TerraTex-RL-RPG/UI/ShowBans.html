@@ -56,14 +56,6 @@
                     </tr>
                     <tr>
                         <td>
-                            Gebannt bis:
-                        </td>
-                        <td>
-                            {{bannedUntil}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                             Gebannt von:
                         </td>
                         <td>
@@ -85,14 +77,13 @@
 
     <script>
         let id = 0;
-        function addBan(title, bannedUntil, bannedByAdmin, bannedBy, reason, referenceId) {
+        function addBan(title, bannedByAdmin, bannedBy, reason, referenceId) {
             id++;
             var source = $("#banTemplate").html();
             var template = Handlebars.compile(source);
             var context = {
                 title,
                 id,
-                bannedUntil,
                 bannedByAdmin,
                 bannedBy,
                 reason,
