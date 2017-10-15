@@ -1,12 +1,12 @@
-﻿const eventHandlers: any = {};
+﻿const eventHandlers = {};
 
 /**
  * Register a function that is called on an event trigger.
  *
- * @param eventName - Name of Event
- * @param func - function to call on event trigger
+ * @param {string} eventName - Name of Event
+ * @param {function} func - function to call on event trigger
  */
-function registerHandler(eventName: string, func: (...args: any[]) => {}) {
+function registerHandler(eventName, func) {
     eventName = eventName.toLowerCase();
     if (!eventHandlers[eventName]) {
         eventHandlers[eventName] = [];
@@ -22,10 +22,10 @@ function registerHandler(eventName: string, func: (...args: any[]) => {}) {
 /**
  * Triggers registered Eventhandlers of event
  *
- * @param eventName - Name of Event
- * @param args - Arguments
+ * @param {string} eventName - Name of Event
+ * @param {any} args - Arguments
  */
-function triggerEvent(eventName : string, ...args: any[]) {
+function triggerEvent(eventName, ...args) {
     eventName = eventName.toLowerCase();
     if (eventHandlers[eventName]) {
         for (const func of eventHandlers[eventName]) {

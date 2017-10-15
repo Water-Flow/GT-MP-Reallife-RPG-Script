@@ -31,7 +31,7 @@ function onFinishLoading() {
         if (API.getPlayerName(API.getLocalPlayer()) === ban.Nickname) {
             bannedBy.push("Account");
         }
-
+        
         let date = ban.BannedUntil;
         if (ban.IsBlackList) {
             title = "Blacklistban (permanent)";
@@ -45,7 +45,7 @@ function onFinishLoading() {
                 title = "Zeitban bis " + resource.Dates.getGermanDateTimeString(new Date(date));
             }
         }
-
+        
         browser.call("addBan", title, ban.AdminName, bannedBy.join(" + "), ban.Reason, ban.ReferenceId);
     }
 }

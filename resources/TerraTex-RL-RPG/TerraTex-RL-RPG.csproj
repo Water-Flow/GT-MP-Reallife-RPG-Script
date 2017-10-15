@@ -1,12 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.2.5.3\build\Microsoft.TypeScript.MSBuild.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.2.5.3\build\Microsoft.TypeScript.MSBuild.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
-    <TypeScriptSourceMap>true</TypeScriptSourceMap>
-  </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -17,9 +11,6 @@
     <AssemblyName>TerraTex-RL-RPG</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -158,8 +149,6 @@
     <None Include="app.config" />
     <None Include="package.json" />
     <None Include="TerraTex-RL-RPG.ruleset" />
-    <None Include="tsconfig.json" />
-    <None Include="tslint.json" />
     <None Include="UI\custom\styles.scss" />
     <None Include="UI\general\Styles\bootstrap\bootstrap-grid.scss" />
     <None Include="UI\general\Styles\bootstrap\bootstrap-reboot.scss" />
@@ -289,10 +278,11 @@
     <Content Include="Configs\server_example.xml" />
     <Content Include="createMeta.js" />
     <Content Include="Gruntfile.js" />
-    <TypeScriptCompile Include="Lib\Enviroment\Banking\ATM.ts" />
+    <Content Include="Lib\Enviroment\Banking\ATM.js" />
+    <Content Include="Lib\Helper\Client\Dates.bak.js" />
     <Content Include="Lib\Systems\ClickSystem\ClickSystem.js" />
     <Content Include="Lib\Enviroment\Hud\InfoHud.js" />
-    <TypeScriptCompile Include="Lib\Helper\Client\Events.ts" />
+    <Content Include="Lib\Helper\Client\Events.js" />
     <Content Include="Lib\Jobs\Bergwerk\BergWerk.js" />
     <Content Include="Lib\Jobs\Fischer\Fischer.js" />
     <Content Include="Lib\Systems\LicenseSystem\LicenseMenu.js" />
@@ -366,34 +356,34 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Lib\Helper\Client\Dates.ts" />
-    <None Include="types-gt-mp\Declarations.d.ts" />
-    <None Include="types-gt-mp\Definitions\Declarations.d.ts" />
-    <None Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Contracts.d.ts" />
-    <None Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.GUI.d.ts" />
-    <None Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Javascript.d.ts" />
-    <None Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Javascript.ScriptContext.d.ts" />
-    <None Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Models.d.ts" />
-    <None Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Sound.d.ts" />
-    <None Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Sync.d.ts" />
-    <None Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Shared.d.ts" />
-    <None Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Shared.Math.d.ts" />
-    <None Include="types-gt-mp\Definitions\GTA.d.ts" />
-    <None Include="types-gt-mp\Definitions\GTA.Math.d.ts" />
-    <None Include="types-gt-mp\Definitions\GTA.Native.d.ts" />
-    <None Include="types-gt-mp\Definitions\GTA.NaturalMotion.d.ts" />
-    <None Include="types-gt-mp\Definitions\GTA.UI.d.ts" />
-    <None Include="types-gt-mp\Definitions\index.d.ts" />
-    <None Include="types-gt-mp\Definitions\Microsoft.ClearScript.d.ts" />
-    <None Include="types-gt-mp\Definitions\NativeUI.d.ts" />
-    <None Include="types-gt-mp\Definitions\NativeUI.UIMenu.d.ts" />
-    <None Include="types-gt-mp\Definitions\NativeUI.UIMenuDynamicListItem.d.ts" />
-    <None Include="types-gt-mp\Definitions\NativeUI.UIMenuItem.d.ts" />
-    <None Include="types-gt-mp\Definitions\NativeUI.UIResText.d.ts" />
-    <None Include="types-gt-mp\Definitions\System.Collections.d.ts" />
-    <None Include="types-gt-mp\Definitions\System.Collections.Generic.d.ts" />
-    <None Include="types-gt-mp\Definitions\System.d.ts" />
-    <None Include="types-gt-mp\Definitions\System.Drawing.d.ts" />
-    <None Include="types-gt-mp\Definitions\System.Windows.Forms.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Declarations.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\Declarations.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Contracts.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.GUI.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Javascript.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Javascript.ScriptContext.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Models.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Sound.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Sync.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Shared.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Shared.Math.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\GTA.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\GTA.Math.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\GTA.Native.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\GTA.NaturalMotion.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\GTA.UI.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\index.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\Microsoft.ClearScript.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\NativeUI.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\NativeUI.UIMenu.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\NativeUI.UIMenuDynamicListItem.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\NativeUI.UIMenuItem.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\NativeUI.UIResText.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\System.Collections.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\System.Collections.Generic.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\System.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\System.Drawing.d.ts" />
+    <TypeScriptCompile Include="types-gt-mp\Definitions\System.Windows.Forms.d.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -408,14 +398,4 @@ rmdir  /S /Q "$(ProjectDir)..\..\Server\resources/TerraTex-RL-RPG"
 xcopy /S /I /Y /E "$(ProjectDir)." "$(ProjectDir)..\..\Server\resources/TerraTex-RL-RPG"
 )</PostBuildEvent>
   </PropertyGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>Dieses Projekt verweist auf mindestens ein NuGet-Paket, das auf diesem Computer fehlt. Verwenden Sie die Wiederherstellung von NuGet-Paketen, um die fehlenden Dateien herunterzuladen. Weitere Informationen finden Sie unter "http://go.microsoft.com/fwlink/?LinkID=322105". Die fehlende Datei ist "{0}".</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.2.5.3\build\Microsoft.TypeScript.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.2.5.3\build\Microsoft.TypeScript.MSBuild.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.TypeScript.MSBuild.2.5.3\build\Microsoft.TypeScript.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.TypeScript.MSBuild.2.5.3\build\Microsoft.TypeScript.MSBuild.targets'))" />
-    <Error Condition="!Exists('..\packages\TSLint.MSBuild.1.2.1\build\TSLint.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\TSLint.MSBuild.1.2.1\build\TSLint.MSBuild.targets'))" />
-  </Target>
-  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.2.5.3\build\Microsoft.TypeScript.MSBuild.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.2.5.3\build\Microsoft.TypeScript.MSBuild.targets')" />
-  <Import Project="..\packages\TSLint.MSBuild.1.2.1\build\TSLint.MSBuild.targets" Condition="Exists('..\packages\TSLint.MSBuild.1.2.1\build\TSLint.MSBuild.targets')" />
 </Project>

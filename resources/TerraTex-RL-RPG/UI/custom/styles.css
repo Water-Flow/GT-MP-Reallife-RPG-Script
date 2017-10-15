@@ -43,7 +43,7 @@ textarea {
 .clickable {
   cursor: pointer; }
 
-#ban-list .card-block {
+#banList .card-block {
   padding: 0; }
 
 .card-header[aria-expanded=true] .fa-caret-down {
@@ -61,8 +61,8 @@ textarea {
 table.collapse.show {
   display: table; }
 
-table.show-bans {
+table.showBans {
   margin-bottom: 0; }
-  table.show-bans td:first-child {
+  table.showBans td:first-child {
     width: 150px;
     font-weight: bold; }
