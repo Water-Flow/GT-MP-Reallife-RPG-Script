@@ -20,7 +20,7 @@ API.onServerEventTrigger.connect((eventName: string) => {
         API.loadPageCefBrowser(browser, 'UI/ATM.html', false);
         API.showCursor(true);
         API.waitUntilCefBrowserLoaded(browser);
-    } else if (eventName === "updateATM") {
+    } else if (eventName == "updateATM") {
         browser.call("setAccount", API.getEntitySyncedData(API.getLocalPlayer(), "BankAccount"));
     }
 });

@@ -159,6 +159,7 @@
     <None Include="package.json" />
     <None Include="TerraTex-RL-RPG.ruleset" />
     <None Include="tsconfig.json" />
+    <None Include="tslint.json" />
     <None Include="UI\custom\styles.scss" />
     <None Include="UI\general\Styles\bootstrap\bootstrap-grid.scss" />
     <None Include="UI\general\Styles\bootstrap\bootstrap-reboot.scss" />
