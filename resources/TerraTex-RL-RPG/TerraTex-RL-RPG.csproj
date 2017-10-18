@@ -279,7 +279,7 @@
     <Content Include="createMeta.js" />
     <Content Include="Gruntfile.js" />
     <Content Include="Lib\Enviroment\Banking\ATM.js" />
-    <Content Include="Lib\Helper\Client\Dates.bak.js" />
+    <Content Include="Lib\Helper\Client\Dates.js" />
     <Content Include="Lib\Systems\ClickSystem\ClickSystem.js" />
     <Content Include="Lib\Enviroment\Hud\InfoHud.js" />
     <Content Include="Lib\Helper\Client\Events.js" />
@@ -355,7 +355,6 @@
     <Content Include="Lib\Admin\BanSystem\ShowBans.js" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Lib\Helper\Client\Dates.ts" />
     <TypeScriptCompile Include="types-gt-mp\Declarations.d.ts" />
     <TypeScriptCompile Include="types-gt-mp\Definitions\Declarations.d.ts" />
     <TypeScriptCompile Include="types-gt-mp\Definitions\GrandTheftMultiplayer.Client.Contracts.d.ts" />
