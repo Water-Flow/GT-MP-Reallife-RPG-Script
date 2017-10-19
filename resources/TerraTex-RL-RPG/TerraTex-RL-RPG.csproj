@@ -86,6 +86,7 @@
     <Compile Include="Lib\Admin\BanSystem\BanSystem.cs" />
     <Compile Include="Lib\Admin\DevServer.cs" />
     <Compile Include="Lib\Admin\DevServerCommands.cs" />
+    <Compile Include="Lib\Admin\GeneralConsoleCommands.cs" />
     <Compile Include="Lib\Admin\Helper\GmxTimer.cs" />
     <Compile Include="Lib\Admin\ShutdownAndRestart.cs" />
     <Compile Include="Lib\Admin\Teleports.cs" />
