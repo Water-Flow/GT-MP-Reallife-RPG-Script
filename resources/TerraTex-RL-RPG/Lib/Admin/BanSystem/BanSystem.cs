@@ -104,12 +104,14 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
             {
                 ChatHelper.SendChatHtmlToAll(
                     $"<span style=\"font-weight:bold;color:red;\">{player.name} wurde vom {adminSystem} bis {until} gebannt. Grund: {reason}</span>");
-                player.kick($"Du wurdest vom {adminSystem} bis {until} gebannt. Grund: {reason}");
+                Console.WriteLine($"{player.name} wurde von {adminSystem} bis {until} gebannt. Grund: {reason}");
+                player.kick($"Du wurdest von {adminSystem} bis {until} gebannt. Grund: {reason}");
             }
             else
             {
                 ChatHelper.SendChatHtmlToAll(
                     $"<span style=\"font-weight:bold;color:red;\">{player.name} wurde vom {adminSystem} gebannt. Grund: {reason}</span>");
+                Console.WriteLine($"{player.name} wurde von {adminSystem} gebannt. Grund: {reason}");
                 player.kick($"Du wurdest vom {adminSystem} gebannt. Grund: {reason}");
             }
         }
@@ -142,12 +144,14 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
             {
                 ChatHelper.SendChatHtmlToAll(
                     $"<span style=\"font-weight:bold;color:red;\">{player.name} wurde von {admin.name} bis {until} gebannt. Grund: {reason}</span>");
+                Console.WriteLine($"{player.name} wurde von {admin.name} bis {until} gebannt. Grund: {reason}");
                 player.kick($"Du wurdest von {admin.name} bis {until} gebannt. Grund: {reason}");
             }
             else
             {
                 ChatHelper.SendChatHtmlToAll(
                     $"<span style=\"font-weight:bold;color:red;\">{player.name} wurde von {admin.name} gebannt. Grund: {reason}</span>");
+                Console.WriteLine($"{player.name} wurde von {admin.name} gebannt. Grund: {reason}");
                 player.kick($"Du wurdest von {admin.name} gebannt. Grund: {reason}");
             }
         }
