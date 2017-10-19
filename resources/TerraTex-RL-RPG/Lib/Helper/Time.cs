@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 
 namespace TerraTex_RL_RPG.Lib.Helper
@@ -7,11 +8,14 @@ namespace TerraTex_RL_RPG.Lib.Helper
     {
         public TimeHelperException(string msg) : base(msg)
         {
+        }
 
+        protected TimeHelperException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
         }
     }
 
-    public class Timehelper
+    public static class Timehelper
     {
         /// <summary>
         ///  Converts a timestring to a TimeSpan<br/>
