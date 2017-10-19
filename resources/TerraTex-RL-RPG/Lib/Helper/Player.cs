@@ -40,7 +40,7 @@ namespace TerraTex_RL_RPG.Lib.Helper
 
             foreach (Client player in clients)
             {
-                if (player.name != null && player.name.IndexOf(nickname) != -1)
+                if (player.name != null && player.name.IndexOf(nickname, StringComparison.CurrentCultureIgnoreCase) != -1)
                 {
                     foundClients.Add(player);
                 }
