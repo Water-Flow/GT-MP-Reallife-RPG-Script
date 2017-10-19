@@ -82,6 +82,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Lib\Admin\AdminChecks.cs" />
     <Compile Include="Lib\Admin\BanSystem\Ban.cs" />
+    <Compile Include="Lib\Admin\BanSystem\BanCommands.cs" />
     <Compile Include="Lib\Admin\BanSystem\BanSystem.cs" />
     <Compile Include="Lib\Admin\DevServer.cs" />
     <Compile Include="Lib\Admin\DevServerCommands.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Lib\Enviroment\Banking\ATM.cs" />
     <Compile Include="Lib\Enviroment\Chat\BasicChatCommands.cs" />
     <Compile Include="Lib\Enviroment\Chat\DistanceChat.cs" />
+    <Compile Include="Lib\Helper\Time.cs" />
     <Compile Include="Lib\Systems\ClickSystem\ClickSystem.cs" />
     <Compile Include="Lib\Enviroment\GeneralBlips.cs" />
     <Compile Include="Lib\Helper\ChatHelper.cs" />
