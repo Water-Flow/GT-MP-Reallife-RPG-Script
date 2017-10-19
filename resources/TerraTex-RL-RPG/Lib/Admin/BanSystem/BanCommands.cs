@@ -39,7 +39,7 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
                 {
                     TimeSpan ts = Timehelper.GetTimeSpanFromTimeString(infos[1]);
 
-                    DateTime dt = new DateTime();
+                    DateTime dt = DateTime.Now;
                     dt = dt.Add(ts);
 
                     string reason = String.Join(" ", infos.Skip(2).ToArray());
@@ -114,7 +114,7 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
                 {
                     TimeSpan ts = Timehelper.GetTimeSpanFromTimeString(time);
                     
-                    DateTime dt = new DateTime();
+                    DateTime dt = DateTime.Now;
                     dt = dt.Add(ts);
                     BanSystem.AddBanByAdmin(player, admin, reason, dt);
                 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Runtime.Serialization;
 using System.Text;
 using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Elements;
@@ -88,7 +89,14 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
             ic.Parameters.AddWithValue("ip", ip);
             ic.Parameters.AddWithValue("systemName", adminSystem);
             ic.Parameters.AddWithValue("reason", reason);
-            ic.Parameters.AddWithValue("dateTo", until);
+
+            string untilString = null;
+            if (until.HasValue)
+            {
+                untilString = ((DateTime) until).ToString("yyyy-MM-dd HH:mm:ss");
+            }
+
+            ic.Parameters.AddWithValue("dateTo", untilString);
 
             ic.ExecuteNonQuery();
 
@@ -119,7 +127,14 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
             ic.Parameters.AddWithValue("ip", ip);
             ic.Parameters.AddWithValue("adminId", admin.getSyncedData("ID"));
             ic.Parameters.AddWithValue("reason", reason);
-            ic.Parameters.AddWithValue("dateTo", until);
+
+            string untilString = null;
+            if (until.HasValue)
+            {
+                untilString = ((DateTime)until).ToString("yyyy-MM-dd HH:mm:ss");
+            }
+
+            ic.Parameters.AddWithValue("dateTo", untilString);
 
             ic.ExecuteNonQuery();
 
