@@ -28,16 +28,7 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
                     return;
                 }
 
-                Client player;
-                if (int.TryParse(infos[0], out int result))
-                {
-                    player = PlayerHelper.GetPlayerById(result);
-                }
-                else
-                {
-                    player = PlayerHelper.GetPlayerByPartialNickname(infos[0]);
-                }
-
+                Client player = PlayerHelper.GetPlayerFromNameOrId(infos[0]);
                 if (player == null)
                 {
                     Console.WriteLine("Error! Dieser Spieler existiert nicht!");
@@ -68,16 +59,8 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
                     return;
                 }
 
-                Client player;
-                if (int.TryParse(infos[0], out int result))
-                {
-                    player = PlayerHelper.GetPlayerById(result);
-                }
-                else
-                {
-                    player = PlayerHelper.GetPlayerByPartialNickname(infos[0]);
-                }
 
+                Client player = PlayerHelper.GetPlayerFromNameOrId(infos[0]);
                 if (player == null)
                 {
                     Console.WriteLine("Error! Dieser Spieler existiert nicht!");
@@ -94,15 +77,7 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
         {
             if (AdminChecks.CheckAdminLvl(admin, 2))
             {
-                Client player;
-                if (int.TryParse(playerNameOrId, out int result))
-                {
-                    player = PlayerHelper.GetPlayerById(result);
-                }
-                else
-                {
-                    player = PlayerHelper.GetPlayerByPartialNickname(playerNameOrId);
-                }
+                Client player = PlayerHelper.GetPlayerFromNameOrId(playerNameOrId);
 
                 if (player == null)
                 {
@@ -126,15 +101,8 @@ namespace TerraTex_RL_RPG.Lib.Admin.BanSystem
         {
             if (AdminChecks.CheckAdminLvl(admin, 2))
             {
-                Client player;
-                if (int.TryParse(playerNameOrId, out int result))
-                {
-                    player = PlayerHelper.GetPlayerById(result);
-                }
-                else
-                {
-                    player = PlayerHelper.GetPlayerByPartialNickname(playerNameOrId);
-                }
+
+                Client player = PlayerHelper.GetPlayerFromNameOrId(playerNameOrId);
 
                 if (player == null)
                 {
