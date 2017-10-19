@@ -20,7 +20,7 @@ namespace TerraTex_RL_RPG.Lib.Threads
                 DateTime currentTime = DateTime.Now;
 
                 // add functions here
-                API.shared.call("ShutdownAndRestart", "Check24HShutdown", currentTime);
+                TTRPG.Api.call("ShutdownAndRestart", "Check24HShutdown", currentTime);
 
 
                 // Run Thread only every Minutes
