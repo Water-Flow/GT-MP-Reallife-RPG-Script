@@ -53,5 +53,19 @@ namespace TerraTex_RL_RPG.Lib.Helper
 
             return null;
         }
+
+        public static Client GetPlayerFromNameOrId(string playerNameOrId)
+        {
+            Client player = null;
+            if (int.TryParse(playerNameOrId, out int result))
+            {
+                player = GetPlayerById(result);
+            }
+            else
+            {
+                player = GetPlayerByPartialNickname(playerNameOrId);
+            }
+            return player;
+        }
     }
 }
