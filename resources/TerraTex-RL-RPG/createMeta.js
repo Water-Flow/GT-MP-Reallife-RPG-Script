@@ -18,11 +18,7 @@ glob("?*/**/*.*", {matchBase:true}, function (er, files) {
                 outputString += "<file src=\"" + file + "\" /> \n";
             }
         } else {
-            if (path.extname(file) === ".ts") {
-                outputString += "<file src=\"" + file + "\" /> \n";
-            } else {
-                outputString += "<file src=\"" + file + "\" /> \n";
-            }
+            outputString += "<file src=\"" + file + "\" /> \n";
         }
     }
 

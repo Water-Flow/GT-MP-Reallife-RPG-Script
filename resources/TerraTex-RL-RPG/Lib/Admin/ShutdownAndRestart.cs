@@ -16,8 +16,8 @@ namespace TerraTex_RL_RPG.Lib.Admin
     class ShutdownAndRestart : Script
     {
         private GmxTimer _gmxTimer;
-        private static bool _autoShutdown;
-        private static TimeSpan _autoShutdownTime;
+        private bool _autoShutdown;
+        private TimeSpan _autoShutdownTime;
 
         public ShutdownAndRestart()
         {
