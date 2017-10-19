@@ -21,6 +21,7 @@ namespace TerraTex_RL_RPG
         private static UpdateWeather _dynamicWeatherThread;
         private static CleanVehicles _cleanVehiclesThread;
         private static ConsoleReader _consoleReaderThread;
+        private static RealTimeWorker _realTimeWorkerThread;
 
         public static Database Mysql => _mysql;
 
@@ -81,6 +82,9 @@ namespace TerraTex_RL_RPG
 
             _consoleReaderThread = new ConsoleReader();
             _api.startThread(_consoleReaderThread.DoWork);
+
+            _realTimeWorkerThread = new RealTimeWorker();
+            _api.startThread(_realTimeWorkerThread.DoWork);
 
             _api.exported.scoreboard.addScoreboardColumn("Level", "Level", 120);
             _api.exported.scoreboard.addScoreboardColumn("PlayTime", "PlayTime", 120);
