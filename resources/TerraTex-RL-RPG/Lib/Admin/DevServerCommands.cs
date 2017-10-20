@@ -87,7 +87,7 @@ namespace TerraTex_RL_RPG.Lib.Admin
                                  rotation.Y.ToString("R").Replace(",", ".") + ", " +
                                  rotation.Z.ToString("R").Replace(",", ".");
 
-                sb.AppendLine("VehiclesHelper.CreateVehicleFromName(\"" + name + "\", new Vector3(" + posText +
+                sb.AppendLine("VehiclesHelper.CreateVehicle(VehicleHash." + name + ", new Vector3(" + posText +
                               "), new Vector3(" + rotText + "));");
                 sb.AppendLine("");
 
@@ -121,16 +121,6 @@ namespace TerraTex_RL_RPG.Lib.Admin
                 VehicleHash myVehicle = API.vehicleNameToModel(vehicleModelName);
                 Random rnd = new Random();
                 API.createVehicle(myVehicle, position, rotation, rnd.Next(0, 159), rnd.Next(0, 159));
-            }
-        }
-
-        [Command("vehclass", Group = "dev", SensitiveInfo = false)]
-        public void VehClassCommand(Client player)
-        {
-            if (DevServer.CheckDevCommandAccess(player))
-            {
-                Vehicle veh = player.vehicle;
-                player.sendNotification("Vehicle Class", ((VehicleClass)veh.ClassName).ToString());
             }
         }
     }

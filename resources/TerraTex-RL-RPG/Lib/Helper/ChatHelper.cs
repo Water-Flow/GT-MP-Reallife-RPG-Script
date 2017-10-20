@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Elements;
 
 namespace TerraTex_RL_RPG.Lib.Helper
@@ -16,6 +17,11 @@ namespace TerraTex_RL_RPG.Lib.Helper
             sb.Append("</div>");
             
             player.triggerEvent("addHtmlMessage", sb.ToString());
+        }
+
+        public static void SendChatHtmlToAll(string html)
+        {
+            API.shared.triggerClientEventForAll("addHtmlMessage", html);
         }
     }
 }

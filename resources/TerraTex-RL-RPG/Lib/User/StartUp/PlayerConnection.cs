@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using GrandTheftMultiplayer.Server.API;
 using GrandTheftMultiplayer.Server.Elements;
 using GrandTheftMultiplayer.Shared.Math;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json.Linq;
+using TerraTex_RL_RPG.Lib.Admin.BanSystem;
 
 namespace TerraTex_RL_RPG.Lib.User.StartUp
 {
@@ -49,7 +52,16 @@ namespace TerraTex_RL_RPG.Lib.User.StartUp
                 
                 player.setSyncedData("fingerprint", player.uniqueHardwareId);
 
-                player.triggerEvent(accounts == 1 ? "startLogin" : "startRegister", player.name);
+                List<Ban> bans = BanSystem.GetBans(player);
+                if (bans.Count > 0)
+                {
+                    string json = JArray.FromObject(bans).ToString();
+                    player.triggerEvent("showBans", json);
+                }
+                else
+                {
+                    player.triggerEvent(accounts == 1 ? "startLogin" : "startRegister", player.name);
+                }
             }
         }
     }

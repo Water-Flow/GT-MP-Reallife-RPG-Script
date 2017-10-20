@@ -49,11 +49,11 @@ namespace TerraTex_RL_RPG.Lib.Admin.Helper
             API.shared.sendChatMessageToAll("<span style='color: red; font-weight: bold'>Der Server wird in " + _time + " Minuten neu gestartet.; Grund: " + _reason + "</span>");
             API.shared.consoleOutput("Der Server wird in " + _time + " Minuten neu gestartet.; Grund: " + _reason);
 
-            if (_time <= 1)
+            if (_time == 0)
             {
                 StartShutDownKickProcess();
             }
-            else if(_time <= -4)
+            else if(_time == -2)
             {
                 StartShutDown();
             }
@@ -61,7 +61,7 @@ namespace TerraTex_RL_RPG.Lib.Admin.Helper
 
         private void StartShutDown()
         {
-            API.shared.stopResource(API.shared.getThisResource());
+            TTRPG.Api.stopResource(TTRPG.Api.getThisResource());
         }
 
         private void StartShutDownKickProcess()

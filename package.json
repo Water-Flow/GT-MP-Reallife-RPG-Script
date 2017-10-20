@@ -1,0 +1,23 @@
+{
+  "name": "gtmp-real--roleplay-script",
+  "version": "1.0.0",
+  "description": "GTMP Real-/Roleplay Script des TerraTex Servers",
+  "main": "movetypings.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TerraTex-Community/GT-MP-Reallife-RPG-Script.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TerraTex-Community/GT-MP-Reallife-RPG-Script/issues"
+  },
+  "homepage": "https://github.com/TerraTex-Community/GT-MP-Reallife-RPG-Script#readme",
+  "dependencies": {
+    "fs-extra": "^4.0.2",
+    "glob": "^7.1.2"
+  }
+}

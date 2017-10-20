@@ -78,3 +78,19 @@ CREATE TABLE user_licenses
     CONSTRAINT user_licenses_user_ID_fk FOREIGN KEY (UserID) REFERENCES user (ID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE UNIQUE INDEX user_licenses_UserID_LicenseKey_uindex ON user_licenses (UserID, LicenseKey);
+
+CREATE TABLE admin_bans
+(
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT DEFAULT null,
+    HardwareID VARCHAR(256) DEFAULT null,
+    IP VARCHAR(256) DEFAULT NULL,
+    AdminID INT DEFAULT null,
+    SystemName VARCHAR(256) DEFAULT null,
+    Reason TEXT,
+    DateFrom DATETIME DEFAULT current_timestamp(),
+    DateTo DATETIME DEFAULT null,
+    BlacklistBan BOOLEAN DEFAULT 0,
+    CONSTRAINT admin_bans_user_ID_fk FOREIGN KEY (UserID) REFERENCES user (ID) ON UPDATE CASCADE,
+    CONSTRAINT admin_bans_user_ID_fk2 FOREIGN KEY (AdminID) REFERENCES user (ID) ON DELETE SET NULL ON UPDATE CASCADE
+);

@@ -51,3 +51,52 @@ textarea {
 .flex-right {
     margin-left: auto;
 }
+
+.clickable {
+    cursor: pointer;
+}
+
+#ban-list  {
+    .card-block {
+        padding: 0;
+    }
+}
+
+.card-header {
+    &[aria-expanded=true] {
+        .fa-caret-down {
+            display: inline;
+        }
+
+        .fa-caret-right {
+            display: none;
+        }
+    }
+
+    &[aria-expanded=false] {
+        .fa-caret-down {
+            display: none;
+        }
+
+        .fa-caret-right {
+            display: inline;
+        }
+    }
+}
+
+table {
+    &.collapse {
+        &.show {
+            display: table;
+        }
+    }
+
+    &.show-bans {
+        margin-bottom: 0;
+
+        td:first-child {
+            width: 150px;
+            font-weight: bold;
+        }
+    }
+}

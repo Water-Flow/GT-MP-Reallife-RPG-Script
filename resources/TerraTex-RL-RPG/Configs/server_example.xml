@@ -1,4 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <config>
   <isDevServer>0</isDevServer>
+  <automaticShutDown>true</automaticShutDown>
+  <automaticShutDownTime>4h30m</automaticShutDownTime>
 </config>
