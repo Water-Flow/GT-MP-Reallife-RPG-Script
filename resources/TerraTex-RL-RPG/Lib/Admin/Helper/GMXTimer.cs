@@ -46,8 +46,8 @@ namespace TerraTex_RL_RPG.Lib.Admin.Helper
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             _time -= 1;
-            API.shared.sendChatMessageToAll("<span style='color: red; font-weight: bold'>Der Server wird in " + _time + " Minuten neu gestartet.; Grund: " + _reason + "</span>");
-            API.shared.consoleOutput("Der Server wird in " + _time + " Minuten neu gestartet.; Grund: " + _reason);
+            API.shared.sendChatMessageToAll("<span style='color: red; font-weight: bold'>Der Server wird in " + _time + " Minuten neu gestartet. Grund: " + _reason + "</span>");
+            API.shared.consoleOutput("Der Server wird in " + _time + " Minuten neu gestartet. Grund: " + _reason);
 
             if (_time == 0)
             {
