@@ -1,3 +1,7 @@
+Der hier auf Github veröffentlichte Code, ist unter MIT veröffentlicht. Er wird nicht aktiv entwickelt oder supportet.    
+Eine mögliche Aktualisierung auf eine veraltete Version des offiziellen Scriptes (unter Closed Source) ist denkbar.    
+Mehr Information gibt es hier: https://forum.terratex.eu/index.php?/topic/107-terratex-closed-source-zugriff/&tab=comments#comment-541    
+
 # GTMP-Real--Roleplay-Script
 GTMP Real-/Roleplay Script des TerraTex Servers   
    
